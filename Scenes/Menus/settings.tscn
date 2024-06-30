@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2bq6338e52dv"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/settings.gd" id="1_hb23r"]
+[ext_resource type="PackedScene" uid="uid://een5uuf10rts" path="res://Scenes/Menus/ui_audio_elements/vol_slider.tscn" id="2_8lpt4"]
+[ext_resource type="AudioStream" uid="uid://1ir30jrv4a8d" path="res://Assets/Audio/Alone(loop) - melancholic - slow.mp3" id="2_jbrrx"]
+[ext_resource type="PackedScene" uid="uid://ct4y5yhcqilif" path="res://Scenes/Menus/ui_audio_elements/vol_mute.tscn" id="3_nmpa3"]
+[ext_resource type="PackedScene" uid="uid://2dashfyrcmm6" path="res://Scenes/Menus/ui_audio_elements/vol_lvl_label.tscn" id="4_ydigq"]
+
+[node name="settings_ui" type="CanvasLayer"]
+script = ExtResource("1_hb23r")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -60.5
+offset_right = 37.0
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="settings" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="master_selection" type="HBoxContainer" parent="Control/VBoxContainer/settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/settings/master_selection"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="vol_slider" parent="Control/VBoxContainer/settings/master_selection" instance=ExtResource("2_8lpt4")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+bus_name = "Master"
+
+[node name="vol_lvl_label" parent="Control/VBoxContainer/settings/master_selection" instance=ExtResource("4_ydigq")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="vol_mute" parent="Control/VBoxContainer/settings/master_selection" instance=ExtResource("3_nmpa3")]
+layout_mode = 2
+button_pressed = true
+bus_name = "Master"
+
+[node name="music_selection" type="HBoxContainer" parent="Control/VBoxContainer/settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/settings/music_selection"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="vol_slider" parent="Control/VBoxContainer/settings/music_selection" instance=ExtResource("2_8lpt4")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+bus_name = "music"
+
+[node name="vol_lvl_label" parent="Control/VBoxContainer/settings/music_selection" instance=ExtResource("4_ydigq")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="vol_mute" parent="Control/VBoxContainer/settings/music_selection" instance=ExtResource("3_nmpa3")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="sfx_selection" type="HBoxContainer" parent="Control/VBoxContainer/settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/settings/sfx_selection"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="vol_slider" parent="Control/VBoxContainer/settings/sfx_selection" instance=ExtResource("2_8lpt4")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="vol_lvl_label" parent="Control/VBoxContainer/settings/sfx_selection" instance=ExtResource("4_ydigq")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="vol_mute" parent="Control/VBoxContainer/settings/sfx_selection" instance=ExtResource("3_nmpa3")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="back_button" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[node name="mm_button" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[node name="exit_button" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jbrrx")
+autoplay = true
+
+[connection signal="button_up" from="Control/VBoxContainer/back_button" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/mm_button" to="." method="_on_mm_button_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/exit_button" to="." method="_on_exit_button_button_up"]

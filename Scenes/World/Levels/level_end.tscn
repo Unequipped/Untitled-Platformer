@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://00rnn2sr0t2r"]
+
+[ext_resource type="Script" path="res://Scenes/World/Levels/level_end.gd" id="1_a0ixp"]
+[ext_resource type="Texture2D" uid="uid://bs533bv2ewica" path="res://Assets/tileset.png" id="1_kc2q2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gicli"]
+size = Vector2(10, 10)
+
+[node name="level_end" type="Node2D"]
+script = ExtResource("1_a0ixp")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kc2q2")
+region_enabled = true
+region_rect = Rect2(118, 118, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_gicli")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

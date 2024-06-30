@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2dashfyrcmm6"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/ui_audio_elements/vol_lvl_label.gd" id="1_q20ca"]
+
+[node name="vol_lvl_label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_q20ca")

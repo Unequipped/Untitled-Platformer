@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1ir30jrv4a8d"
+path="res://.godot/imported/Alone(loop) - melancholic - slow.mp3-d2738215070e646a67fb2bfbf25eb5fd.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Alone(loop) - melancholic - slow.mp3"
+dest_files=["res://.godot/imported/Alone(loop) - melancholic - slow.mp3-d2738215070e646a67fb2bfbf25eb5fd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

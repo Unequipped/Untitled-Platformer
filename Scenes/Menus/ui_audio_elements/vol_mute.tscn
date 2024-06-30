@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct4y5yhcqilif"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/ui_audio_elements/vol_mute.gd" id="1_6pqpk"]
+
+[node name="vol_mute" type="CheckBox"]
+text = "Mute"
+script = ExtResource("1_6pqpk")
