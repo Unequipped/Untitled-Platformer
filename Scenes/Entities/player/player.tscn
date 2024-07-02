@@ -182,7 +182,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -327,7 +327,7 @@ metadata/_edit_group_ = true
 position = Vector2(2, -12)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"idle"
+animation = &"attack"
 
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
 collision_mask = 4

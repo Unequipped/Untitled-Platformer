@@ -15,7 +15,6 @@ func exit():
 
 func update(delta):
 	attack_playing = actor.animate(str(name)) # THIS NEEDS TO BE UPDATED SO ITS SAFER TO USE
-	print(actor.animate(str(name)))
 
 func physics_update(delta):
 	switch_state()
