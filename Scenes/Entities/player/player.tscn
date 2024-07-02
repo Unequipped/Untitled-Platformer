@@ -8,10 +8,10 @@
 [ext_resource type="Script" path="res://Scenes/Entities/components/health_component.gd" id="3_6pdar"]
 [ext_resource type="Texture2D" uid="uid://8p06bgcjfssc" path="res://Assets/Character/Outline/120x80_PNGSheets/_Jump.png" id="3_dvl3g"]
 [ext_resource type="Texture2D" uid="uid://be7idgbeq8p1s" path="res://Assets/Character/Outline/120x80_PNGSheets/_Run.png" id="3_fgymf"]
-[ext_resource type="Script" path="res://Scenes/Entities/components/gravity.gd" id="4_nx6bj"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/state_machine.gd" id="8_cib3w"]
 [ext_resource type="Script" path="res://Scenes/Entities/input_manager.gd" id="9_uitvm"]
 [ext_resource type="Script" path="res://Scenes/Entities/components/idle.gd" id="11_yjmi7"]
+[ext_resource type="Script" path="res://Scenes/Entities/components/fall.gd" id="12_rdel1"]
 [ext_resource type="Script" path="res://Scenes/Entities/components/run.gd" id="13_eiore"]
 [ext_resource type="Script" path="res://Scenes/Entities/components/jump.gd" id="14_yfwqa"]
 
@@ -297,15 +297,15 @@ script = ExtResource("9_uitvm")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("8_cib3w")
-starting_state = NodePath("gravity")
+starting_state = NodePath("fall")
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("actor", "falling_state")]
 script = ExtResource("11_yjmi7")
 actor = NodePath("../..")
-falling_state = NodePath("../gravity")
+falling_state = NodePath("../fall")
 
-[node name="gravity" type="Node" parent="state_machine" node_paths=PackedStringArray("actor", "idle_state")]
-script = ExtResource("4_nx6bj")
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("actor", "idle_state")]
+script = ExtResource("12_rdel1")
 actor = NodePath("../..")
 idle_state = NodePath("../idle")
 

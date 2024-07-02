@@ -1,4 +1,4 @@
-class_name Gravity
+class_name Fall
 extends State
 
 @export var actor: CharacterBody2D

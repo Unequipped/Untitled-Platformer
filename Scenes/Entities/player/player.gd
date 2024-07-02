@@ -42,8 +42,10 @@ func get_input():
 	var direction:Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("right"):
 		direction.x += 1
-	if Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("left"):
 		direction.x -= 1
+	else:
+		return null
 	return direction.x
 
 
