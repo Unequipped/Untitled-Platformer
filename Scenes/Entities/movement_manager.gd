@@ -9,6 +9,7 @@ extends Node
 @export var y_max: int = 200
 
 var current_vel: Vector2
+var attacking: bool = false
 
 func x_movement(x_dir):
 	return x_dir * SPEED
@@ -36,5 +37,6 @@ func apply_gravity():
 		actor.velocity.y = y_max
 
 func _physics_process(delta):
-	apply_movement()
+	if !attacking:
+		apply_movement()
 	apply_gravity()

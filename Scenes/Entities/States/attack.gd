@@ -21,7 +21,6 @@ func physics_update(delta):
 	switch_state()
 
 func switch_state():
-	if !attack_playing:
-		print("done")
+	if !InputManager.attack_inp():
 		if actor.is_on_floor():
 			Transitioned.emit(self, "idle")
