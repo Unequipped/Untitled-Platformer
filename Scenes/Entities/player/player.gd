@@ -26,4 +26,8 @@ func _process(delta: float):
 	pass
 
 func animate(animation: String):
+	if velocity.x > 0:
+		sprite_pivot.scale.x = 1
+	elif velocity.x < 0:
+		sprite_pivot.scale.x = -1
 	animator.play(animation)
