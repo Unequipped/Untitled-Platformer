@@ -1,10 +1,11 @@
-class_name Falling
 extends State
 
 @export var actor: CharacterBody2D
 
+@export var jump_force: int = 80
+
 func enter():
-	pass
+	jump_apply()
 
 func exit():
 	pass
@@ -16,8 +17,11 @@ func physics_update(delta):
 	switch_state()
 
 func switch_state():
-	if actor.is_on_floor():
+	if actor.is_on_floor() and not actor.velocity.y < 0:
 		Transitioned.emit(self, "idle")
+	
+	if actor.velocity.y > 0:
+		Transitioned.emit(self, "fall")
 
-	if actor.is_on_floor() and Input.get_axis("left", "right") != 0:
-		Transitioned.emit(self, "run")
+func jump_apply():
+	actor.velocity.y = -jump_force

@@ -1,11 +1,29 @@
+class_name Run
 extends State
 
+@export var actor: CharacterBody2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func enter():
+	pass
 
+func exit():
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func update(delta):
+	actor.animate(str(name))
+
+func physics_update(delta):
+	switch_state()
+
+func switch_state():
+	if !actor.is_on_floor():
+		Transitioned.emit(self, "fall")
+	
+	if InputManager.x_inp() == 0:
+		Transitioned.emit(self, "idle")
+	
+	if Input.is_action_pressed("up"):
+		Transitioned.emit(self, "jump")
+
+func animate():
 	pass

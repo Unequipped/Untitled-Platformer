@@ -24,3 +24,6 @@ func _physics_process(delta: float):
 
 func _process(delta: float):
 	pass
+
+func animate(animation: String):
+	animator.play(animation)

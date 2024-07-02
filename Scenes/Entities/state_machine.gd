@@ -2,6 +2,8 @@ class_name State_Machine
 extends Node
 
 @export var initial_state: State
+@export var inputManager: InputManager
+@export var movementManager: Movement
 
 var current_state: State
 var states: Dictionary = {}

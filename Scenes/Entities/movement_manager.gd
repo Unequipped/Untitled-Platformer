@@ -1,10 +1,12 @@
-class_name movement
+class_name Movement
 extends Node
 
 @export var actor: CharacterBody2D
 @export var input_manager: InputManager
 
 @export var SPEED: int = 80
+@export var y_accel: int = 3
+@export var y_max: int = 200
 
 var current_vel: Vector2
 
@@ -19,7 +21,7 @@ func vec_movement():
 	var direction = input_manager.get_direction()
 
 	new_vel.x = x_movement(direction.x)
-	#new_vel.y = x_movement(direction.y) # UNIMPLEMENTED
+	#new_vel.y = y_movement(direction.y) # UNIMPLEMENTED
 	
 	return new_vel
 
@@ -27,5 +29,12 @@ func apply_movement():
 	current_vel = vec_movement()
 	actor.set_velocity(current_vel)
 
+func apply_gravity():
+	if actor.velocity.y < y_max:
+		actor.velocity.y += y_accel
+	elif actor.velocity.y >= y_max:
+		actor.velocity.y = y_max
+
 func _physics_process(delta):
 	apply_movement()
+	apply_gravity()
