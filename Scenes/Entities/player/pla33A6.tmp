@@ -1,14 +1,13 @@
-[gd_scene load_steps=57 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=49 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
-[ext_resource type="Texture2D" uid="uid://teawjfaqmuh" path="res://Assets/Character/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="2_cewkk"]
+[ext_resource type="Texture2D" uid="uid://cdhjvo8ebagoq" path="res://Assets/Character/Outline/120x80_PNGSheets/_Attack.png" id="2_k48sx"]
 [ext_resource type="Texture2D" uid="uid://74lj7y28bb2e" path="res://Assets/Character/Outline/120x80_PNGSheets/_Fall.png" id="2_qfr0e"]
 [ext_resource type="PackedScene" uid="uid://bvc20mqmyjoyq" path="res://Scenes/Entities/components/hitbox_component.tscn" id="3_4rgno"]
 [ext_resource type="Script" path="res://Scenes/Entities/components/health_component.gd" id="3_6pdar"]
 [ext_resource type="Texture2D" uid="uid://8p06bgcjfssc" path="res://Assets/Character/Outline/120x80_PNGSheets/_Jump.png" id="3_dvl3g"]
 [ext_resource type="Texture2D" uid="uid://be7idgbeq8p1s" path="res://Assets/Character/Outline/120x80_PNGSheets/_Run.png" id="3_fgymf"]
-[ext_resource type="Texture2D" uid="uid://xvkqqu3swpi7" path="res://Assets/Character/Outline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_jg78k"]
 [ext_resource type="Script" path="res://Scenes/Entities/movement_manager.gd" id="9_kbs1b"]
 [ext_resource type="Script" path="res://Scenes/Entities/input_manager.gd" id="9_uitvm"]
 [ext_resource type="Script" path="res://Scenes/Entities/state_machine.gd" id="10_r3ar5"]
@@ -16,50 +15,25 @@
 [ext_resource type="Script" path="res://Scenes/Entities/States/run.gd" id="12_h0by1"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/fall.gd" id="13_pdonm"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/jump.gd" id="15_2ioh0"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/attack.gd" id="16_rblma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7gx"]
 size = Vector2(15, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
-atlas = ExtResource("2_cewkk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwv5k"]
+atlas = ExtResource("2_k48sx")
 region = Rect2(0, 0, 120, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqve6"]
-atlas = ExtResource("2_cewkk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhegq"]
+atlas = ExtResource("2_k48sx")
 region = Rect2(120, 0, 120, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_13hej"]
-atlas = ExtResource("2_cewkk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxm2q"]
+atlas = ExtResource("2_k48sx")
 region = Rect2(240, 0, 120, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2f1r"]
-atlas = ExtResource("2_cewkk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x1hn"]
+atlas = ExtResource("2_k48sx")
 region = Rect2(360, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ogag"]
-atlas = ExtResource("3_jg78k")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0druw"]
-atlas = ExtResource("3_jg78k")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj32s"]
-atlas = ExtResource("3_jg78k")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8hnt"]
-atlas = ExtResource("3_jg78k")
-region = Rect2(360, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mg4s5"]
-atlas = ExtResource("3_jg78k")
-region = Rect2(480, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yl1q7"]
-atlas = ExtResource("3_jg78k")
-region = Rect2(600, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2kbd"]
 atlas = ExtResource("2_qfr0e")
@@ -169,43 +143,20 @@ region = Rect2(1080, 0, 120, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jjlj7")
+"texture": SubResource("AtlasTexture_jwv5k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqve6")
+"texture": SubResource("AtlasTexture_bhegq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_13hej")
+"texture": SubResource("AtlasTexture_kxm2q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h2f1r")
+"texture": SubResource("AtlasTexture_4x1hn")
 }],
 "loop": false,
 "name": &"attack",
 "speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ogag")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0druw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yj32s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8hnt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mg4s5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yl1q7")
-}],
-"loop": false,
-"name": &"attack2",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -327,7 +278,8 @@ metadata/_edit_group_ = true
 position = Vector2(2, -12)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"attack"
+animation = &"idle"
+frame_progress = 0.982857
 
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
 collision_mask = 4
@@ -339,6 +291,8 @@ shape = SubResource("CapsuleShape2D_aqj1f")
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_6pdar")
 
+[node name="animation_handler" type="Node" parent="."]
+
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
 script = ExtResource("9_kbs1b")
 actor = NodePath("..")
@@ -347,11 +301,9 @@ input_manager = NodePath("../input_manager")
 [node name="input_manager" type="Node" parent="."]
 script = ExtResource("9_uitvm")
 
-[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "inputManager", "movementManager")]
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_r3ar5")
 initial_state = NodePath("idle")
-inputManager = NodePath("../input_manager")
-movementManager = NodePath("../movement")
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("11_m0tou")
@@ -367,8 +319,4 @@ actor = NodePath("../..")
 
 [node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("15_2ioh0")
-actor = NodePath("../..")
-
-[node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
-script = ExtResource("16_rblma")
 actor = NodePath("../..")
