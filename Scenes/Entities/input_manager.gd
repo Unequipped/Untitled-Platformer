@@ -12,6 +12,9 @@ static func y_inp():
 		pass
 	return y_dir
 
+static func attack_inp():
+	return Input.is_action_pressed("attack")
+
 func get_direction():
 	var direction:Vector2 = Vector2.ZERO
 	direction.x = x_inp()

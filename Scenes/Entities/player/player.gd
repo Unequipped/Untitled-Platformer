@@ -31,3 +31,4 @@ func animate(animation: String):
 	elif velocity.x < 0:
 		sprite_pivot.scale.x = -1
 	animator.play(animation)
+	return animator.is_playing()

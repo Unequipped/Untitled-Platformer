@@ -10,7 +10,7 @@ func exit():
 	pass
 
 func update(delta):
-	actor.animate(str(name))
+	actor.animate(str(name)) # THIS NEEDS TO BE UPDATED SO ITS SAFER TO USE
 
 func physics_update(delta):
 	switch_state()
@@ -22,3 +22,5 @@ func switch_state():
 		Transitioned.emit(self, "run")
 	if Input.is_action_pressed("up"):
 		Transitioned.emit(self, "jump")
+	if InputManager.attack_inp():
+		Transitioned.emit(self, "attack")
