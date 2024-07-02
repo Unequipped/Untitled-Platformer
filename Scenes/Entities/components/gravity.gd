@@ -1,21 +1,30 @@
-extends Node
+class_name Gravity
+extends State
 
 @export var actor: CharacterBody2D
 
-@export var min_grav: int = 1
-@export var max_grav: int = 5
-@export var term_vel: int = 200
+@export var idle_state: State
 
-func apply_gravity(gravity_weight: float = 1, friction: float = 1):
-	var gravity = lerpf(min_grav, max_grav, gravity_weight) / friction
-	if actor.vel.y + gravity < term_vel:
-		actor.vel.y += gravity
+var y_accel: float = 2
+var y_speed: float = 0.0
+var term_vel: float = 200
+
+func enter():
+	actor.state = actor.states.FALL
+
+func process_physics(delta):
+	return apply_gravity()
+
+func apply_gravity():
+	if actor.vel.y < term_vel:
+		actor.vel.y += y_accel
 	elif actor.vel.y > term_vel:
 		actor.vel.y = term_vel
 	
 	if actor.is_on_floor():
+		y_speed = 0
 		actor.vel.y = 0
-	return actor.vel.y
+		return idle_state
+	
+	return null
 
-func _physics_process(delta):
-	apply_gravity()

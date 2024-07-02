@@ -1,8 +1,8 @@
-class_name jumper
-extends Node
+class_name Jumper
+extends State
 
 @export var actor: CharacterBody2D
-
+@export var jump_height: int = 110
 @export var buffer_time: float = 0.05
 
 var jump_buffer_timer: float = 0.0
@@ -17,7 +17,7 @@ func animate():
 func _physics_process(delta):
 	if actor.is_on_floor():
 		if jump_buffer_timer > 0:
-			actor.vel.y -= 110
+			actor.vel.y -= jump_height
 			animate()
 
 func _input(event):
