@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=58 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/States/fall.gd" id="13_pdonm"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/jump.gd" id="15_2ioh0"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/attack.gd" id="16_rblma"]
+[ext_resource type="Script" path="res://Scenes/Entities/States/attack2.gd" id="18_6og88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7gx"]
 size = Vector2(15, 10)
@@ -180,7 +181,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h2f1r")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 12.0
 }, {
@@ -328,8 +329,14 @@ position = Vector2(2, -12)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ubri2")
 animation = &"attack"
-frame = 3
-frame_progress = 1.0
+frame_progress = 0.362644
+
+[node name="dmg_box" type="Area2D" parent="spritePivot"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spritePivot/dmg_box"]
+position = Vector2(1.43051e-06, 2.38419e-06)
+scale = Vector2(2.4, 2.4)
+polygon = PackedVector2Array(3.33333, 1.66667, 6.66667, 3.33333, 9.16667, 3.33333, 10, 1.66667, 10, -1.25, 6.66667, -5.41667, 0.416666, -5.41667, -3.33333, -4.16667, -5.96046e-07, -3.75, 3.33333, -2.5, 4.58333, -0.416668, 3.75, 0.833332)
 
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
 collision_mask = 4
@@ -374,4 +381,7 @@ actor = NodePath("../..")
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("16_rblma")
 actor = NodePath("../..")
-end_frame = 3
+
+[node name="attack2" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("18_6og88")
+actor = NodePath("../..")

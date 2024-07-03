@@ -24,6 +24,9 @@ func switch_state():
 	
 	if Input.is_action_pressed("up"):
 		Transitioned.emit(self, "jump")
+	
+	if InputManager.attack_inp():
+		Transitioned.emit(self, "attack")
 
 func animate():
 	pass

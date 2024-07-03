@@ -36,17 +36,7 @@ func apply_gravity():
 	elif actor.velocity.y >= y_max:
 		actor.velocity.y = y_max
 
-func apply_attack():
-	if input_manager.attack_inp():
-		attacking = true
-	else:
-		attacking = false
-	pass
-
 func _physics_process(delta):
 	apply_gravity()
 	if !attacking:
 		apply_movement()
-
-func _input(event):
-	apply_attack()

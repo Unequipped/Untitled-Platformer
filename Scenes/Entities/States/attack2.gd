@@ -1,8 +1,8 @@
-class_name Attack
+class_name Attack2
 extends State
 
 @export var actor: CharacterBody2D
-@export var end_frame: int = 3
+@export var end_frame: int = 5
 
 var attack_playing:bool
 
@@ -24,12 +24,9 @@ func physics_update(delta):
 	switch_state()
 
 func switch_state():
-	if InputManager.attack_inp() and !attack_playing and actor.is_on_floor():
-			Transitioned.emit(self, "attack2")
-	
-	elif !attack_playing:
+	if !attack_playing:
 		Transitioned.emit(self, "idle")
 
-	elif !InputManager.attack_inp() and !attack_playing:
+	if !InputManager.attack_inp() and !attack_playing:
 		if actor.is_on_floor():
 			Transitioned.emit(self, "idle")
