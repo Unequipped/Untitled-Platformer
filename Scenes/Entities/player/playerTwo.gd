@@ -1,4 +1,4 @@
-class_name Player
+class_name PlayerTwo
 extends CharacterBody2D
 
 @onready var sprite_pivot: Node2D = $spritePivot

@@ -445,6 +445,9 @@ MAX_HEALTH = 20
 script = ExtResource("9_kbs1b")
 actor = NodePath("..")
 input_manager = NodePath("../input_manager")
+SPEED = null
+y_accel = null
+y_max = null
 
 [node name="input_manager" type="Node" parent="."]
 script = ExtResource("9_uitvm")
