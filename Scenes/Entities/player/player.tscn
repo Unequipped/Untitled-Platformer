@@ -328,6 +328,8 @@ position = Vector2(2, -12)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ubri2")
 animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
 collision_mask = 4
@@ -372,3 +374,4 @@ actor = NodePath("../..")
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("16_rblma")
 actor = NodePath("../..")
+end_frame = 3

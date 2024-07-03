@@ -45,6 +45,8 @@ func apply_attack():
 
 func _physics_process(delta):
 	apply_gravity()
-	apply_attack()
 	if !attacking:
 		apply_movement()
+
+func _input(event):
+	apply_attack()
