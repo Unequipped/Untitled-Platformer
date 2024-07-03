@@ -42,3 +42,5 @@ func animate(animation: String):
 
 func apply_dmg():
 	var bodies_list:Array = dmg_box.get_overlapping_bodies()
+	# check if bodies list has an enemy
+	# if it has an enemy apply dmg to it
