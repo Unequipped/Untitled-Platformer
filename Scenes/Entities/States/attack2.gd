@@ -11,7 +11,7 @@ func enter():
 	actor.velocity.x = 0
 
 func exit():
-	pass
+	actor.apply_dmg()
 
 func update(delta):
 	if actor.animator.frame < end_frame:

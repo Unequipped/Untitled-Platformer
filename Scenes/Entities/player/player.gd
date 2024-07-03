@@ -1,12 +1,16 @@
 class_name Player
 extends CharacterBody2D
 
-@export var animator:AnimatedSprite2D
 @onready var sprite_pivot: Node2D = $spritePivot
 @onready var state_machine: Object = $state_machine
+@onready var hitbox_comp: Area2D = $htibox_component
+
+@export var animator:AnimatedSprite2D
+@export var dmg_box: Area2D
 
 @export var SPEED = 65
 @export var GRAVITY = 5
+@export var roll_cd: int = 100
 
 # Movement related stuff 
 var vel = Vector2.ZERO
@@ -23,7 +27,10 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 func _process(delta: float):
-	pass
+	if roll_cd < 100:
+		roll_cd +=1
+	else:
+		roll_cd = 100
 
 func animate(animation: String):
 	if velocity.x > 0:
@@ -32,3 +39,6 @@ func animate(animation: String):
 		sprite_pivot.scale.x = -1
 	animator.play(animation)
 	return animator.is_playing()
+
+func apply_dmg():
+	var bodies_list:Array = dmg_box.get_overlapping_bodies()

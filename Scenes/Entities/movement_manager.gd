@@ -10,6 +10,7 @@ extends Node
 
 var current_vel: Vector2
 var attacking: bool = false
+static var rolling: bool = false
 
 func x_movement(x_dir):
 	return x_dir * SPEED
@@ -38,5 +39,6 @@ func apply_gravity():
 
 func _physics_process(delta):
 	apply_gravity()
-	if !attacking:
+	if !rolling:
 		apply_movement()
+	

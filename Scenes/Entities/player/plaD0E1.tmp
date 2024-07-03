@@ -438,7 +438,6 @@ shape = SubResource("CapsuleShape2D_aqj1f")
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_6pdar")
-MAX_HEALTH = 20
 
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
 script = ExtResource("9_kbs1b")
@@ -481,3 +480,4 @@ actor = NodePath("../..")
 [node name="roll" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("20_fctga")
 actor = NodePath("../..")
+end_frame = null

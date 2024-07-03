@@ -3,6 +3,7 @@ extends State
 
 @export var actor: CharacterBody2D
 @export var end_frame: int = 3
+@export var dmg: int = 5
 
 var attack_playing:bool
 
@@ -11,7 +12,7 @@ func enter():
 	actor.velocity.x = 0
 
 func exit():
-	pass
+	actor.apply_dmg()
 
 func update(delta):
 	if actor.animator.frame < end_frame:
