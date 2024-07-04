@@ -2,33 +2,102 @@
 
 [ext_resource type="Script" path="res://Scenes/Menus/hud.gd" id="1_l0bd8"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("p1_hp", "p1_en", "p2_hp", "p2_en")]
 layer = 10
 script = ExtResource("1_l0bd8")
+p1_hp = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar")
+p1_en = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar2")
+p2_hp = NodePath("Control/playerTwoStats/HBoxContainer/ProgressBar")
+p2_en = NodePath("Control/playerTwoStats/HBoxContainer/ProgressBar2")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="playerOneStats" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+offset_right = 517.0
 grow_vertical = 0
+alignment = 1
+
+[node name="player_label" type="Label" parent="Control/playerOneStats"]
+layout_mode = 2
+text = "Player One
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/playerOneStats"]
+layout_mode = 2
 size_flags_vertical = 8
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="hp_label" type="Label" parent="Control/playerOneStats/HBoxContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/playerOneStats/HBoxContainer"]
 modulate = Color(1, 0.145, 0.1, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="energy_label" type="Label" parent="Control/playerOneStats/HBoxContainer"]
+layout_mode = 2
+text = "Energy"
+
+[node name="ProgressBar2" type="ProgressBar" parent="Control/playerOneStats/HBoxContainer"]
+modulate = Color(0, 0.648482, 0.444248, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="playerTwoStats" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = -43.0
-offset_right = 280.0
-grow_horizontal = 2
+offset_left = -517.0
+offset_top = -77.0
+grow_horizontal = 0
 grow_vertical = 0
-max_value = 10.0
-value = 10.0
+alignment = 1
+
+[node name="player_label" type="Label" parent="Control/playerTwoStats"]
+layout_mode = 2
+text = "Player Two
+"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/playerTwoStats"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="hp_label" type="Label" parent="Control/playerTwoStats/HBoxContainer"]
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/playerTwoStats/HBoxContainer"]
+modulate = Color(1, 0.145, 0.1, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="energy_label" type="Label" parent="Control/playerTwoStats/HBoxContainer"]
+layout_mode = 2
+text = "Energy"
+horizontal_alignment = 2
+
+[node name="ProgressBar2" type="ProgressBar" parent="Control/playerTwoStats/HBoxContainer"]
+modulate = Color(0, 0.647059, 0.443137, 1)
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
 show_percentage = false

@@ -9,6 +9,7 @@ extends Node
 @onready var level_5_scene = preload("res://Scenes/World/Levels/level_5.tscn")
 @onready var level_6_scene = preload("res://Scenes/World/Levels/level_6.tscn")
 @onready var level_7_scene = preload("res://Scenes/World/Levels/level_7.tscn")
+@onready var level_X_scene = preload("res://Scenes/World/Levels/level_template.tscn")
 #@onready var pass = preload("res://Scenes/.tscn").instantiate()
 
 var game_state:int = 0

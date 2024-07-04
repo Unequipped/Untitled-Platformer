@@ -10,6 +10,7 @@ extends Node
 
 var current_vel: Vector2
 var attacking: bool = false
+static var rolling: bool = false
 
 func x_movement(x_dir):
 	return x_dir * SPEED
@@ -36,15 +37,8 @@ func apply_gravity():
 	elif actor.velocity.y >= y_max:
 		actor.velocity.y = y_max
 
-func apply_attack():
-	if input_manager.attack_inp():
-		attacking = true
-	else:
-		attacking = false
-	pass
-
 func _physics_process(delta):
 	apply_gravity()
-	apply_attack()
-	if !attacking:
+	if !rolling:
 		apply_movement()
+	
