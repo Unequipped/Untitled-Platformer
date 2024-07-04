@@ -16,11 +16,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player_one != null:
+	if player_one:
 		p1_hp.max_value = player_one.hp_comp.MAX_HEALTH
 		p1_hp.value = player_one.hp_comp.health
 		p1_en.value = player_one.roll_cd
-	if player_two != null:
+	if player_two:
 		p2_hp.max_value = player_two.hp_comp.MAX_HEALTH
 		p2_hp.value = player_two.hp_comp.health
 		p2_en.value = player_two.roll_cd
+
+	if p1_hp.value <= 0 or p2_hp.value <= 0:
+		queue_free()

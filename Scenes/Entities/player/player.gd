@@ -47,4 +47,5 @@ func apply_dmg():
 		if body.name == "player" or body.name == "playerTwo":
 			body.hp_comp.take_dmg(1)
 			if body.hp_comp.health <= 0:
+				get_parent().reset_game()
 				body.call_deferred("queue_free")

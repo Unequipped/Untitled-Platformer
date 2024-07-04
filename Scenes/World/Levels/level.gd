@@ -1,14 +1,10 @@
 extends Node2D
 
 @onready var Game = get_parent()
-@onready var loaded_player = preload("res://Scenes/Entities/player/player.tscn").instantiate()
-@onready var hud = preload("res://Scenes/Menus/hud.tscn").instantiate()
-@onready var spawn_point = get_node("spawn_point")
+@onready var hud = preload("res://Scenes/Menus/hud.tscn")
 
 func _ready():
-	self.call_deferred("add_child", loaded_player)#self.get_node("dungeonTileSet").call_deferred("add_child", loaded_player)
-	self.call_deferred("add_child", hud)
-	loaded_player.position = spawn_point.position
+	Game._add_scene(hud)
 
 func level_complete():
 	if self.name == "level_1":
@@ -29,3 +25,4 @@ func level_complete():
 
 func reset_game():
 	Game._add_scene(Game.main_menu_scene)
+	queue_free()
