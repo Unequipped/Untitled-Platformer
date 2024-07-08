@@ -8,12 +8,24 @@ extends Node
 @export var y_accel: int = 6
 @export var y_max: int = 200
 
+## x movement lerping
+@export var x_accel:float = 0.5
+@export var x_decel:float = 0.2
+
+
 var current_vel: Vector2
+var x_vel: float
 var attacking: bool = false
 static var rolling: bool = false
 
 func x_movement(x_dir):
-	return x_dir * SPEED
+	x_vel = current_vel.x
+	#if x_dir != 0: # if player is inputting x movement
+		#x_vel = lerp(actor.vel.x, SPEED * x_dir, x_accel)
+	#else: # neither control stick nor keyboar is being pressed
+		#x_vel = lerp(actor.vel.x, 0.0, x_decel)
+	print(lerp(x_vel, SPEED * x_dir, 0.1))
+	return lerp(x_vel, SPEED * x_dir, 0.1) # x_vel #* SPEED
 
 func y_movement():
 	pass

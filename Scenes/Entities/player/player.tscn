@@ -360,7 +360,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll",
-"speed": 24.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -481,3 +481,4 @@ actor = NodePath("../..")
 [node name="roll" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("20_fctga")
 actor = NodePath("../..")
+roll_speed = 110
