@@ -26,4 +26,4 @@ func _process(delta):
 		p2_en.value = player_two.roll_cd
 
 	if p1_hp.value <= 0 or p2_hp.value <= 0:
-		queue_free()
+		pass
