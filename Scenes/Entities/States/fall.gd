@@ -4,7 +4,7 @@ extends State
 @export var actor: CharacterBody2D
 
 func enter():
-	pass
+	actor.velocity.y = 0
 
 func exit():
 	pass
