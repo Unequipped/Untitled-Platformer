@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ygx7frg5y6q7"]
+[gd_scene load_steps=5 format=3 uid="uid://ygx7frg5y6q7"]
 
 [ext_resource type="Script" path="res://Scenes/World/Levels/level.gd" id="1_uojfp"]
 [ext_resource type="PackedScene" uid="uid://cibwhf4tqdq7g" path="res://Scenes/World/Tiles/castleTiles.tscn" id="2_fk8c7"]
 [ext_resource type="PackedScene" uid="uid://da4s40vtvfjng" path="res://Scenes/Entities/player/player.tscn" id="3_en8up"]
-[ext_resource type="PackedScene" uid="uid://5qxdluy3wce4" path="res://Scenes/Entities/player/playerTwo.tscn" id="4_1jhj4"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="5_6k7rp"]
 
 [node name="level_7" type="Node2D"]
@@ -19,9 +18,6 @@ zoom = Vector2(4, 4)
 [node name="player" parent="." instance=ExtResource("3_en8up")]
 position = Vector2(-120, 0)
 
-[node name="playerTwo" parent="." instance=ExtResource("4_1jhj4")]
-position = Vector2(120, 0)
-
 [node name="HUD" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("5_6k7rp")]
 player_one = NodePath("../player")
-player_two = NodePath("../playerTwo")
+player_two = NodePath("")
