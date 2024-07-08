@@ -5,7 +5,7 @@ extends Node
 @export var input_manager: InputManager
 
 @export var SPEED: int = 80
-@export var y_accel: int = 3
+@export var y_accel: int = 6
 @export var y_max: int = 200
 
 var current_vel: Vector2
