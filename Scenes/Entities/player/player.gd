@@ -9,9 +9,7 @@ extends CharacterBody2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 
-@export var SPEED = 65
-@export var GRAVITY = 10
-@export var roll_cd: int = 100
+@export var roll_cd: int = 80
 
 # Movement related stuff 
 var vel = Vector2.ZERO
