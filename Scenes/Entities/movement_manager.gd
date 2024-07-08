@@ -5,15 +5,33 @@ extends Node
 @export var input_manager: InputManager
 
 @export var SPEED: int = 80
-@export var y_accel: int = 3
+@export var y_accel: int = 6
 @export var y_max: int = 200
 
+## x movement lerping
+@export var x_accel:float = 0.1
+@export var x_decel:float = 0.3
+@export var x_decel_air:float = 0.01
+
+
 var current_vel: Vector2
+var x_vel: float
 var attacking: bool = false
 static var rolling: bool = false
 
 func x_movement(x_dir):
-	return x_dir * SPEED
+	x_vel = current_vel.x
+	if x_dir != 0: # if player is inputting x movement
+		x_vel = lerp(x_vel, SPEED * x_dir, x_accel)
+	else: # neither control stick nor keyboar is being pressed
+		if actor.is_on_floor():
+			x_vel = lerp(x_vel, 0.0, x_decel)
+		else:
+			x_vel = lerp(x_vel, 0.0, x_decel_air)
+	if actor.is_on_wall():
+		x_vel = 0
+	print(lerp(x_vel, SPEED * x_dir, 0.01))
+	return x_vel # x_vel #* SPEED
 
 func y_movement():
 	pass

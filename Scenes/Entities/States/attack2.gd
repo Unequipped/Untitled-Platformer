@@ -8,7 +8,6 @@ var attack_playing:bool
 
 func enter():
 	attack_playing = true
-	actor.velocity.x = 0
 
 func exit():
 	actor.apply_dmg()

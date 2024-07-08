@@ -2,7 +2,7 @@ extends State
 
 @export var actor: CharacterBody2D
 
-@export var jump_force: int = 80
+@export var jump_force: int = 110
 
 func enter():
 	jump_apply()
