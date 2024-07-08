@@ -28,6 +28,8 @@ func x_movement(x_dir):
 			x_vel = lerp(x_vel, 0.0, x_decel)
 		else:
 			x_vel = lerp(x_vel, 0.0, x_decel_air)
+	if actor.is_on_wall():
+		x_vel = 0
 	print(lerp(x_vel, SPEED * x_dir, 0.01))
 	return x_vel # x_vel #* SPEED
 
