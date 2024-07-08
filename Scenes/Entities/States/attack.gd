@@ -3,13 +3,12 @@ extends State
 
 @export var actor: CharacterBody2D
 @export var end_frame: int = 3
-@export var dmg: int = 5
+@export var dmg: int = 5 # remove?
 
 var attack_playing:bool
 
 func enter():
 	attack_playing = true
-	actor.velocity.x = 0
 
 func exit():
 	actor.apply_dmg()
