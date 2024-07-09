@@ -19,5 +19,5 @@ func switch_state():
 	if actor.is_on_floor():
 		Transitioned.emit(self, "idle")
 
-	if actor.is_on_floor() and Input.get_axis("left_2", "right_2") != 0:
+	if actor.is_on_floor() and Input.get_axis("left", "right") != 0:
 		Transitioned.emit(self, "run")

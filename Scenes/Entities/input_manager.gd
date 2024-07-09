@@ -10,8 +10,10 @@ func _input(event):
 		jump_buffer_time = jump_buffer_timer
 
 func _physics_process(delta):
-	if jump_buffer_time > jump_buffer_timer:
-		jump_buffer_time -= 1
+	if jump_buffer_time >= 0:
+		jump_buffer_time -= 0.1
+	else:
+		jump_buffer_time = 0
 	print(jump_buffer_time)
 
 static func x_inp():
@@ -26,8 +28,8 @@ static func attack_inp():
 	return Input.is_action_pressed("attack")
 
 
-static func jump_inp():
-	return Input.is_action_just_pressed("up") #jump_buffer_time > 0 #Input.is_action_just_pressed("up")
+func jump_inp():
+	return jump_buffer_time > 0 #Input.is_action_just_pressed("up")
 
 
 func get_direction():
