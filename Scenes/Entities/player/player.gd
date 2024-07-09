@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var dmg_box: Area2D
 
 @export var roll_cd: int = 100 # Need to fix this later
+@export var standard: bool = false
 
 # Movement related stuff 
 var vel = Vector2.ZERO
@@ -17,7 +18,10 @@ var walking:bool = false
 var jumping:bool = false
 
 func _ready():
-	pass
+	if standard == false:
+		self.scale = Vector2(0.5, 0.5)
+	else:
+		self.scale = Vector2(0.75, 0.75)
 
 func _physics_process(delta: float):
 	move_and_slide()
@@ -39,7 +43,7 @@ func animate(animation: String):
 func apply_dmg():
 	var bodies:Array = dmg_box.get_overlapping_bodies()
 	for body in bodies:
-		if body.name == "player" or body.name == "playerTwo":
+		if body.name == "enemy":
 			body.hp_comp.take_dmg(1)
 			if body.hp_comp.health <= 0:
 				get_parent().reset_game()
