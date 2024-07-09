@@ -1,16 +1,16 @@
-class_name Crouch
+class_name Crouch_walk
 extends State
 
 @export var actor: CharacterBody2D
 
 func enter():
-	actor.animate(str(name)) # didn't know I could do this for attacking...
+	movementManager.SPEED = 30
 
 func exit():
-	pass
+	movementManager.SPEED = movementManager.MAX_SPEED
 
 func update(delta):
-	actor.animate()
+	actor.animate(str(name))
 
 func physics_update(delta):
 	switch_state()
@@ -28,8 +28,8 @@ func switch_state():
 	if inputManager.jump_inp():
 		Transitioned.emit(self, "jump")
 	
-	if inputManager.x_inp() != 0 and inputManager.y_inp() == 1: # UNIMPLEMENTED
-		Transitioned.emit(self, "crouch_walk")
+	if inputManager.x_inp() == 0 and inputManager.y_inp() == 1: # UNIMPLEMENTED
+		Transitioned.emit(self, "crouch")
 	
 	#if InputManager.attack_inp():
 		#Transitioned.emit(self, "attack")

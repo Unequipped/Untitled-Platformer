@@ -4,6 +4,7 @@ extends Node
 signal Transitioned
 
 @onready var inputManager:InputManager = null
+@onready var movementManager: Movement = null
 
 func enter():
 	pass
