@@ -31,8 +31,7 @@ func x_movement(x_dir):
 			x_vel = lerp(x_vel, 0.0, x_decel_air)
 	if actor.is_on_wall(): #causes a bug where you can't turn around immediately while facing/touching a wall
 		x_vel = 0
-	print(x_vel)
-	return x_vel # x_vel #* SPEED
+	return x_vel
 
 func y_movement():
 	pass

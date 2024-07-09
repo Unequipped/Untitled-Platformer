@@ -441,19 +441,18 @@ shape = SubResource("CapsuleShape2D_aqj1f")
 script = ExtResource("3_6pdar")
 MAX_HEALTH = 20
 
-[node name="input_manager" type="Node" parent="."]
-script = ExtResource("9_uitvm")
-
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
 script = ExtResource("9_kbs1b")
 actor = NodePath("..")
 input_manager = NodePath("../input_manager")
 
-[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager", "inputManager")]
+[node name="input_manager" type="Node" parent="."]
+script = ExtResource("9_uitvm")
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager")]
 script = ExtResource("10_r3ar5")
 initial_state = NodePath("idle")
 movementManager = NodePath("../movement")
-inputManager = NodePath("../input_manager")
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("11_m0tou")
