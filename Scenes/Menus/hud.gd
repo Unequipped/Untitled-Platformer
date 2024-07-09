@@ -7,13 +7,22 @@ extends CanvasLayer
 @export var p1_hp: ProgressBar
 @export var p1_en: ProgressBar
 
-@export var w_key: BaseButton
-@export var a_key: BaseButton
-@export var s_key: BaseButton
-@export var d_key: BaseButton
+@export var input_section: Control
+
+@export var w_key: TextureButton
+@export var a_key: TextureButton
+@export var s_key: TextureButton
+@export var d_key: TextureButton
+
+@export var vis_btn: Button
 
 func _ready():
 	visible = true
+
+
+func _input(event):
+	if event.is_action_pressed("escape"):
+		visible = !visible
 
 
 func _process(delta):
@@ -38,3 +47,7 @@ func key_press_display(): # there is probably a better way of doing this but it 
 		s_key.button_pressed = true
 	if Input.is_action_pressed("right"):
 		d_key.button_pressed = true
+
+
+func _on_button_pressed():
+	input_section.visible = !input_section.visible

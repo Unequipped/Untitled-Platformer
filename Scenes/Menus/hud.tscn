@@ -10,15 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://o1ukswusrmn" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_d.png" id="8_mulju"]
 [ext_resource type="Texture2D" uid="uid://b1qpb3uetbjkb" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_d_outline.png" id="9_w3upj"]
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("p1_hp", "p1_en", "w_key", "a_key", "s_key", "d_key")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("p1_hp", "p1_en", "input_section", "w_key", "a_key", "s_key", "d_key", "vis_btn")]
 layer = 10
 script = ExtResource("1_l0bd8")
 p1_hp = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar")
 p1_en = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar2")
+input_section = NodePath("Control/inputs")
 w_key = NodePath("Control/inputs/w_btn")
 a_key = NodePath("Control/inputs/a_btn")
 s_key = NodePath("Control/inputs/s_btn")
 d_key = NodePath("Control/inputs/d_btn")
+vis_btn = NodePath("Control/Button")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -106,3 +108,12 @@ toggle_mode = true
 button_mask = 0
 texture_normal = ExtResource("8_mulju")
 texture_pressed = ExtResource("9_w3upj")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+offset_right = 8.0
+offset_bottom = 8.0
+shortcut_feedback = false
+text = "toggle"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
