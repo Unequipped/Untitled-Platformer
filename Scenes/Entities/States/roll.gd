@@ -28,10 +28,10 @@ func switch_state():
 	if !actor.is_on_floor():
 		Transitioned.emit(self, "fall")
 	
-	if InputManager.x_inp() == 0:
+	if inputManager.x_inp() == 0:
 		Transitioned.emit(self, "idle")
 
-	if InputManager.x_inp() != 0:
+	if inputManager.x_inp() != 0:
 		Transitioned.emit(self, "run")
 
 func animate():
