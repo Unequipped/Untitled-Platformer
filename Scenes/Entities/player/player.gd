@@ -9,15 +9,12 @@ extends CharacterBody2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 
-@export var roll_cd: int = 80 # Need to fix this later
+@export var roll_cd: int = 100 # Need to fix this later
 
 # Movement related stuff 
 var vel = Vector2.ZERO
 var walking:bool = false
 var jumping:bool = false
-
-enum states { IDLE, RUN, JUMP, FALL }
-var state: states
 
 func _ready():
 	pass

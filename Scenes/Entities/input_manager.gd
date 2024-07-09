@@ -2,7 +2,7 @@ class_name InputManager
 extends Node
 
 #need to rename vars
-@export var jump_buffer_timer: float = 0.7
+@export var jump_buffer_timer: float = 0.4
 var jump_buffer_time: float = 0.0
 
 func _input(event):

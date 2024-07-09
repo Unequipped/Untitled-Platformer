@@ -3,7 +3,6 @@ extends CanvasLayer
 #@onready var health_bar = get_node("Control/ProgressBar")
 
 @export var player_one: CharacterBody2D
-@export var player_two: CharacterBody2D
 
 @export var p1_hp: ProgressBar
 @export var p1_en: ProgressBar

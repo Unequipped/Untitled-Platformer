@@ -1,14 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmllgng144s00"]
+[gd_scene load_steps=5 format=3 uid="uid://dmllgng144s00"]
 
 [ext_resource type="Script" path="res://Scenes/World/Levels/level.gd" id="1_gseu0"]
 [ext_resource type="PackedScene" uid="uid://cibwhf4tqdq7g" path="res://Scenes/World/Tiles/castleTiles.tscn" id="2_v1rxg"]
 [ext_resource type="PackedScene" uid="uid://00rnn2sr0t2r" path="res://Scenes/World/Levels/level_end.tscn" id="3_qrluy"]
+[ext_resource type="PackedScene" uid="uid://da4s40vtvfjng" path="res://Scenes/Entities/player/player.tscn" id="4_fk1vm"]
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_gseu0")
-
-[node name="spawn_point" type="Node2D" parent="."]
-position = Vector2(-112, 24)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -18,3 +16,6 @@ layer_0/tile_data = PackedInt32Array(-262154, 0, 1, -196618, 0, 1, -131082, 0, 1
 
 [node name="level_end" parent="." instance=ExtResource("3_qrluy")]
 position = Vector2(120, 56)
+
+[node name="player" parent="." instance=ExtResource("4_fk1vm")]
+position = Vector2(-112, 24)
