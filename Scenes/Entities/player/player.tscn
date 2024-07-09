@@ -487,4 +487,5 @@ actor = NodePath("../..")
 roll_speed = 110
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player_one") instance=ExtResource("21_25cfi")]
+visible = false
 player_one = NodePath("..")
