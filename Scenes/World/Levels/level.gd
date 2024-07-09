@@ -1,10 +1,6 @@
 extends Node2D
 
 @onready var Game = get_parent()
-@onready var hud = preload("res://Scenes/Menus/hud.tscn")
-
-func _ready():
-	Game._add_scene(hud)
 
 func level_complete():
 	if self.name == "level_1":

@@ -9,9 +9,10 @@ extends Node
 @export var y_max: int = 200
 
 ## x movement lerping
-@export var x_accel:float = 0.1
-@export var x_decel:float = 0.3
-@export var x_decel_air:float = 0.01
+@export var x_accel:float = 0.7
+@export var x_decel:float = 0.4
+# keeps the air drag tame, for a more platformer oriented game you might want this to be lower for more floaty feel
+@export var x_decel_air:float = 0.05
 
 
 var current_vel: Vector2
@@ -28,10 +29,9 @@ func x_movement(x_dir):
 			x_vel = lerp(x_vel, 0.0, x_decel)
 		else:
 			x_vel = lerp(x_vel, 0.0, x_decel_air)
-	if actor.is_on_wall():
+	if actor.is_on_wall(): #causes a bug where you can't turn around immediately while facing/touching a wall
 		x_vel = 0
-	print(lerp(x_vel, SPEED * x_dir, 0.01))
-	return x_vel # x_vel #* SPEED
+	return x_vel
 
 func y_movement():
 	pass

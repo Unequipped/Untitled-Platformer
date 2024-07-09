@@ -22,7 +22,7 @@ func switch_state():
 	if InputManager.x_inp() == 0:
 		Transitioned.emit(self, "idle")
 	
-	if Input.is_action_pressed("up"):
+	if inputManager.jump_inp():
 		Transitioned.emit(self, "jump")
 	
 	if InputManager.attack_inp():

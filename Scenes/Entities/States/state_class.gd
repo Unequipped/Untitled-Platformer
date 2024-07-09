@@ -3,6 +3,8 @@ extends Node
 
 signal Transitioned
 
+@onready var inputManager:InputManager = null
+
 func enter():
 	pass
 

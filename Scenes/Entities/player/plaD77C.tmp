@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=72 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -20,7 +20,9 @@
 [ext_resource type="Script" path="res://Scenes/Entities/States/attack.gd" id="16_rblma"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/attack2.gd" id="18_6og88"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/roll.gd" id="20_fctga"]
-[ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7gx"]
+size = Vector2(15, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
 atlas = ExtResource("2_cewkk")
@@ -396,65 +398,61 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7gx"]
-size = Vector2(35.75, 14)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqj1f"]
-radius = 6.0
-height = 32.0
+radius = 4.0
+height = 16.0
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "hp_comp", "dmg_box")]
-collision_mask = 4
+collision_mask = 2
 script = ExtResource("1_rygmp")
 animator = NodePath("spritePivot/AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("spritePivot/dmg_box")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.48363e-06, 0.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_rh7gx")
+
 [node name="spritePivot" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
-position = Vector2(4, -15)
+position = Vector2(2, -12)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"idle"
-frame_progress = 0.687786
+animation = &"roll"
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spritePivot/dmg_box"]
-position = Vector2(0, 10)
-scale = Vector2(4.66667, 4.66667)
-polygon = PackedVector2Array(4.58333, 2.08333, 9.55357, 3.2619, 10.4107, -0.809527, 8.91071, -3.80953, 5.48214, -5.7381, -2.01786, -5.09524, 1.83928, -3.59524, 4.625, -1.45238, 4.58333, -0.416668)
-
-[node name="physics_collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_rh7gx")
+position = Vector2(1.43051e-06, 2.38419e-06)
+scale = Vector2(2.4, 2.4)
+polygon = PackedVector2Array(4.58333, 2.08333, 10, 1.66667, 8.33333, -3.33333, 0.416666, -5.41667, 3.33333, -3.33333, 4.58333, -0.416668)
 
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
 collision_mask = 4
 health = NodePath("../health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="htibox_component"]
-position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_aqj1f")
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_6pdar")
 MAX_HEALTH = 20
 
-[node name="input_manager" type="Node" parent="."]
-script = ExtResource("9_uitvm")
-
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
 script = ExtResource("9_kbs1b")
 actor = NodePath("..")
 input_manager = NodePath("../input_manager")
 
-[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager", "inputManager")]
+[node name="input_manager" type="Node" parent="."]
+script = ExtResource("9_uitvm")
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager")]
 script = ExtResource("10_r3ar5")
 initial_state = NodePath("idle")
 movementManager = NodePath("../movement")
-inputManager = NodePath("../input_manager")
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("11_m0tou")
@@ -471,7 +469,6 @@ actor = NodePath("../..")
 [node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("15_2ioh0")
 actor = NodePath("../..")
-jump_force = 130
 
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("16_rblma")
@@ -485,6 +482,3 @@ actor = NodePath("../..")
 script = ExtResource("20_fctga")
 actor = NodePath("../..")
 roll_speed = 110
-
-[node name="HUD" parent="." node_paths=PackedStringArray("player_one") instance=ExtResource("21_25cfi")]
-player_one = NodePath("..")
