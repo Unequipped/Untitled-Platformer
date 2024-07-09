@@ -32,13 +32,14 @@ func _process(delta: float):
 	else:
 		roll_cd = 100
 
-func animate(animation: String):
+func animate(animation: String = ""): # it might be better to separate out the scale.x snippet
 	if velocity.x > 0:
-		sprite_pivot.scale.x = 1
+			sprite_pivot.scale.x = 1
 	elif velocity.x < 0:
 		sprite_pivot.scale.x = -1
-	animator.play(animation)
-	return animator.is_playing()
+	if animation:
+		animator.play(animation)
+		return animator.is_playing()
 
 func apply_dmg():
 	var bodies:Array = dmg_box.get_overlapping_bodies()

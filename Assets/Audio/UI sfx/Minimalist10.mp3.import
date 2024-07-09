@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c54om5udvd0fh"
+path="res://.godot/imported/Minimalist10.mp3-21b0465316b72394770ae1c9b20dc25d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/UI sfx/Minimalist10.mp3"
+dest_files=["res://.godot/imported/Minimalist10.mp3-21b0465316b72394770ae1c9b20dc25d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

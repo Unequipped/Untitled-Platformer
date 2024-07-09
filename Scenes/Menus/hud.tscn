@@ -1,12 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbqvbechi74v5"]
+[gd_scene load_steps=10 format=3 uid="uid://dbqvbechi74v5"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/hud.gd" id="1_l0bd8"]
+[ext_resource type="Texture2D" uid="uid://dt64r54v4p21" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_w.png" id="2_dxl8i"]
+[ext_resource type="Texture2D" uid="uid://rmbi5yr5l4h7" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_w_outline.png" id="3_60q0w"]
+[ext_resource type="Texture2D" uid="uid://cwe4cjnpfovpj" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_a.png" id="4_butjv"]
+[ext_resource type="Texture2D" uid="uid://kqsbt02j6rkc" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_a_outline.png" id="5_hxowv"]
+[ext_resource type="Texture2D" uid="uid://gyv2xgoplyjq" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_s.png" id="6_fimnn"]
+[ext_resource type="Texture2D" uid="uid://bk0le1anat5d" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_s_outline.png" id="7_27tl3"]
+[ext_resource type="Texture2D" uid="uid://o1ukswusrmn" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_d.png" id="8_mulju"]
+[ext_resource type="Texture2D" uid="uid://b1qpb3uetbjkb" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_d_outline.png" id="9_w3upj"]
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("p1_hp", "p1_en")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("p1_hp", "p1_en", "input_section", "w_key", "a_key", "s_key", "d_key", "vis_btn")]
 layer = 10
 script = ExtResource("1_l0bd8")
 p1_hp = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar")
 p1_en = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar2")
+input_section = NodePath("Control/inputs")
+w_key = NodePath("Control/inputs/w_btn")
+a_key = NodePath("Control/inputs/a_btn")
+s_key = NodePath("Control/inputs/s_btn")
+d_key = NodePath("Control/inputs/d_btn")
+vis_btn = NodePath("Control/Button")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -58,3 +72,48 @@ modulate = Color(0, 0.648482, 0.444248, 1)
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 show_percentage = false
+
+[node name="inputs" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="w_btn" type="TextureButton" parent="Control/inputs"]
+layout_mode = 2
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource("2_dxl8i")
+texture_pressed = ExtResource("3_60q0w")
+
+[node name="a_btn" type="TextureButton" parent="Control/inputs"]
+layout_mode = 2
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource("4_butjv")
+texture_pressed = ExtResource("5_hxowv")
+
+[node name="s_btn" type="TextureButton" parent="Control/inputs"]
+layout_mode = 2
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource("6_fimnn")
+texture_pressed = ExtResource("7_27tl3")
+
+[node name="d_btn" type="TextureButton" parent="Control/inputs"]
+layout_mode = 2
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource("8_mulju")
+texture_pressed = ExtResource("9_w3upj")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+offset_right = 8.0
+offset_bottom = 8.0
+shortcut_feedback = false
+text = "toggle"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

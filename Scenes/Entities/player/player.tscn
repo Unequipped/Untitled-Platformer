@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=87 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://8p06bgcjfssc" path="res://Assets/Character/Outline/120x80_PNGSheets/_Jump.png" id="3_dvl3g"]
 [ext_resource type="Texture2D" uid="uid://be7idgbeq8p1s" path="res://Assets/Character/Outline/120x80_PNGSheets/_Run.png" id="3_fgymf"]
 [ext_resource type="Texture2D" uid="uid://xvkqqu3swpi7" path="res://Assets/Character/Outline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_jg78k"]
+[ext_resource type="Texture2D" uid="uid://jare2nhuehxf" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchAll.png" id="4_n57s3"]
+[ext_resource type="Texture2D" uid="uid://cxbef8fytq3x4" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchWalk.png" id="5_1w4tc"]
 [ext_resource type="Texture2D" uid="uid://d3ealn0vlegll" path="res://Assets/Character/Outline/120x80_PNGSheets/_Roll.png" id="7_dknti"]
 [ext_resource type="Script" path="res://Scenes/Entities/movement_manager.gd" id="9_kbs1b"]
 [ext_resource type="Script" path="res://Scenes/Entities/input_manager.gd" id="9_uitvm"]
@@ -21,6 +23,8 @@
 [ext_resource type="Script" path="res://Scenes/Entities/States/attack2.gd" id="18_6og88"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/roll.gd" id="20_fctga"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
+[ext_resource type="Script" path="res://Scenes/Entities/States/crouch.gd" id="21_t1avu"]
+[ext_resource type="Script" path="res://Scenes/Entities/States/crouch_walk.gd" id="24_jw3yf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
 atlas = ExtResource("2_cewkk")
@@ -61,6 +65,46 @@ region = Rect2(480, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_yl1q7"]
 atlas = ExtResource("3_jg78k")
 region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w884"]
+atlas = ExtResource("4_n57s3")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrxa2"]
+atlas = ExtResource("4_n57s3")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqknr"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bknsh"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l045a"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by8xq"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmu4c"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nity"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inrum"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pelcc"]
+atlas = ExtResource("5_1w4tc")
+region = Rect2(840, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2kbd"]
 atlas = ExtResource("2_qfr0e")
@@ -258,6 +302,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3w884")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrxa2")
+}],
+"loop": false,
+"name": &"crouch",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqknr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bknsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l045a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by8xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmu4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nity")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inrum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pelcc")
+}],
+"loop": true,
+"name": &"crouch_walk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f2kbd")
 }, {
 "duration": 1.0,
@@ -415,8 +499,9 @@ dmg_box = NodePath("spritePivot/dmg_box")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"idle"
-frame_progress = 0.687786
+animation = &"crouch"
+frame = 1
+frame_progress = 1.0
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 
@@ -486,5 +571,14 @@ script = ExtResource("20_fctga")
 actor = NodePath("../..")
 roll_speed = 110
 
+[node name="crouch" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("21_t1avu")
+actor = NodePath("../..")
+
+[node name="crouch_walk" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("24_jw3yf")
+actor = NodePath("../..")
+
 [node name="HUD" parent="." node_paths=PackedStringArray("player_one") instance=ExtResource("21_25cfi")]
+visible = false
 player_one = NodePath("..")

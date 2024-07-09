@@ -4,7 +4,8 @@ extends Node
 @export var actor: CharacterBody2D
 @export var input_manager: InputManager
 
-@export var SPEED: int = 80
+@export var MAX_SPEED: int = 80
+var SPEED: int = 0
 @export var y_accel: int = 6
 @export var y_max: int = 200
 
@@ -19,6 +20,10 @@ var current_vel: Vector2
 var x_vel: float
 var attacking: bool = false
 static var rolling: bool = false
+
+
+func _ready():
+	SPEED = MAX_SPEED
 
 func x_movement(x_dir):
 	x_vel = current_vel.x
