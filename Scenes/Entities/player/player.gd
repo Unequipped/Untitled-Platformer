@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 @onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
+@onready var crouch_check:RayCast2D = $crouch_check
 
 @export var animator:AnimatedSprite2D
 @export var hp_comp: health_component
@@ -53,6 +54,9 @@ func crouch_collision(toggle):
 	if toggle:
 		crouch_collision_shape.disabled = false
 		physics_collision_shape.disabled = true
-	else:
+	elif !toggle:
 		crouch_collision_shape.disabled = true
 		physics_collision_shape.disabled = false
+
+func can_uncrouch():
+	return !crouch_check.is_colliding()

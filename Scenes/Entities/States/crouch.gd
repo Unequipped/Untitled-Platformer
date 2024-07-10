@@ -17,25 +17,22 @@ func update(delta):
 
 func physics_update(delta):
 	switch_state()
+	print(actor.can_uncrouch())
 
 func switch_state():
 	if !actor.is_on_floor():
 		Transitioned.emit(self, "fall")
 	
-	if inputManager.x_inp() == 0 and inputManager.y_inp() == 0:
-		Transitioned.emit(self, "idle")
-	
-	if inputManager.x_inp() != 0 and inputManager.y_inp() == 0:
-		Transitioned.emit(self, "run")
-	
-	if inputManager.jump_inp():
-		Transitioned.emit(self, "jump")
-	
-	if inputManager.x_inp() != 0 and inputManager.y_inp() == 1: # UNIMPLEMENTED
+	if actor.can_uncrouch():
+		if inputManager.y_inp() <= 0:
+			if inputManager.x_inp() == 0:
+				Transitioned.emit(self, "idle")
+
+			elif inputManager.x_inp() != 0:
+				Transitioned.emit(self, "run")
+		
+		if inputManager.jump_inp():
+			Transitioned.emit(self, "jump")
+		
+	if inputManager.x_inp() != 0 and (inputManager.y_inp() == 1 or !actor.can_uncrouch()):
 		Transitioned.emit(self, "crouch_walk")
-	
-	#if InputManager.attack_inp():
-		#Transitioned.emit(self, "attack")
-	#
-	#if Input.is_action_pressed("roll") and actor.roll_cd >= 100:
-		#Transitioned.emit(self, "roll")
