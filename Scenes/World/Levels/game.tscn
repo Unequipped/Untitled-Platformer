@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://oyt3xs8lvcv3"]
+
+[ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_mbdqs"]
+[ext_resource type="PackedScene" uid="uid://bxorft57mvw0y" path="res://Scenes/Menus/main_menu.tscn" id="2_3bld3"]
+[ext_resource type="PackedScene" uid="uid://c2bq6338e52dv" path="res://Scenes/Menus/settings.tscn" id="3_cc4da"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_mbdqs")
+
+[node name="main_menu" parent="." instance=ExtResource("2_3bld3")]
+
+[node name="settings_ui" parent="." instance=ExtResource("3_cc4da")]
+visible = false

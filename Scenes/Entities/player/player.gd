@@ -22,16 +22,17 @@ var walking:bool = false
 var jumping:bool = false
 
 func _ready():
-	if standard == false:
-		self.scale = Vector2(0.5, 0.5)
-	else:
-		self.scale = Vector2(0.75, 0.75)
+	pass
+	#if standard == false:
+		#self.scale = Vector2(0.5, 0.5)
+	#else:
+		#self.scale = Vector2(0.75, 0.75)
 
 func _physics_process(delta: float):
 	move_and_slide()
 
 func _process(delta: float):
-	if roll_cd < 100:
+	if roll_cd < 100: # energy should be a component
 		roll_cd +=1
 	else:
 		roll_cd = 100
