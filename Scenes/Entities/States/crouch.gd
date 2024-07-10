@@ -5,9 +5,12 @@ extends State
 
 func enter():
 	actor.animate(str(name)) # didn't know I could do this for attacking...
+	# the issue with the above is that if you transition from crouch walk to crouch the animation plays
+	# passing a value into enter that dictates whether an animation plays or not could be used to fix this
+	actor.crouch_collision(true)
 
 func exit():
-	pass
+	actor.crouch_collision(false)
 
 func update(delta):
 	actor.animate()

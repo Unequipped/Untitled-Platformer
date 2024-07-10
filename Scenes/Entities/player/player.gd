@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var state_machine: Object = $state_machine
 @onready var hitbox_comp: Area2D = $htibox_component
 
+@onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
+@onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
+
 @export var animator:AnimatedSprite2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
@@ -32,11 +35,7 @@ func _process(delta: float):
 	else:
 		roll_cd = 100
 
-func animate(animation: String = ""): # it might be better to separate out the scale.x snippet
-	if velocity.x > 0:
-			sprite_pivot.scale.x = 1
-	elif velocity.x < 0:
-		sprite_pivot.scale.x = -1
+func animate(animation: String = ""):
 	if animation:
 		animator.play(animation)
 		return animator.is_playing()
@@ -49,3 +48,11 @@ func apply_dmg():
 			if body.hp_comp.health <= 0:
 				get_parent().reset_game()
 				body.call_deferred("queue_free")
+
+func crouch_collision(toggle):
+	if toggle:
+		crouch_collision_shape.disabled = false
+		physics_collision_shape.disabled = true
+	else:
+		crouch_collision_shape.disabled = true
+		physics_collision_shape.disabled = false

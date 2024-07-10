@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=87 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -483,9 +483,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7gx"]
 size = Vector2(35.75, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga2i0"]
-size = Vector2(14, 25)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqj1f"]
 radius = 6.0
 height = 32.0
@@ -502,7 +499,9 @@ dmg_box = NodePath("spritePivot/dmg_box")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"crouch_walk"
+animation = &"crouch"
+frame = 1
+frame_progress = 1.0
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 
@@ -516,12 +515,7 @@ position = Vector2(0, 7)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_rh7gx")
 
-[node name="crouch_collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12.5)
-shape = SubResource("RectangleShape2D_ga2i0")
-
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
-visible = false
 collision_mask = 4
 health = NodePath("../health")
 
