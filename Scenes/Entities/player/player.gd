@@ -59,4 +59,4 @@ func crouch_collision(toggle):
 		physics_collision_shape.disabled = false
 
 func can_uncrouch():
-	return !crouch_check.is_colliding()
+	return !crouch_check.is_colliding() # returns false if is colliding because you CANT uncrouch

@@ -480,8 +480,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7gx"]
-size = Vector2(35.75, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k7yu4"]
+radius = 7.0
+height = 36.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga2i0"]
 size = Vector2(14, 25)
@@ -501,14 +502,13 @@ dmg_box = NodePath("spritePivot/dmg_box")
 target_position = Vector2(0, -11)
 collision_mask = 4
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="spritePivot" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"crouch_walk"
+animation = &"idle"
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 
@@ -519,8 +519,7 @@ polygon = PackedVector2Array(4.58333, 2.08333, 9.55357, 3.2619, 10.4107, -0.8095
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_rh7gx")
+shape = SubResource("CapsuleShape2D_k7yu4")
 
 [node name="crouch_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)

@@ -17,7 +17,6 @@ func update(delta):
 
 func physics_update(delta):
 	switch_state()
-	print(actor.can_uncrouch())
 
 func switch_state():
 	if !actor.is_on_floor():

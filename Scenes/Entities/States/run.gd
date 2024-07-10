@@ -30,3 +30,6 @@ func switch_state():
 	
 	if Input.is_action_pressed("roll") and actor.roll_cd >= 100:
 		Transitioned.emit(self, "roll")
+	
+	if inputManager.y_inp() == 1:
+		Transitioned.emit(self, "crouch")
