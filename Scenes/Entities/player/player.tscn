@@ -499,11 +499,6 @@ animator = NodePath("spritePivot/AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("spritePivot/dmg_box")
 
-[node name="crouch_check" type="RayCast2D" parent="."]
-target_position = Vector2(0, -11)
-collision_mask = 4
-collide_with_areas = true
-
 [node name="spritePivot" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
@@ -519,10 +514,12 @@ scale = Vector2(4.66667, 4.66667)
 polygon = PackedVector2Array(4.58333, 2.08333, 9.55357, 3.2619, 10.4107, -0.809527, 8.91071, -3.80953, 5.48214, -5.7381, -2.01786, -5.09524, 1.83928, -3.59524, 4.625, -1.45238, 4.58333, -0.416668)
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_k7yu4")
 
 [node name="crouch_collision_shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_ga2i0")
 disabled = true
@@ -598,3 +595,20 @@ actor = NodePath("../..")
 [node name="HUD" parent="." node_paths=PackedStringArray("player_one") instance=ExtResource("21_25cfi")]
 visible = false
 player_one = NodePath("..")
+
+[node name="crouch_check" type="RayCast2D" parent="."]
+target_position = Vector2(0, -11)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="crouch_check2" type="RayCast2D" parent="."]
+position = Vector2(2.66667, 0)
+target_position = Vector2(0, -11)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="crouch_check3" type="RayCast2D" parent="."]
+position = Vector2(-2.66667, 0)
+target_position = Vector2(0, -11)
+collision_mask = 4
+collide_with_areas = true
