@@ -2,14 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 @onready var sprite_pivot: Node2D = $spritePivot
-@onready var state_machine: Object = $state_machine
+@onready var state_machine: State_Machine = $state_machine
 @onready var hitbox_comp: Area2D = $htibox_component
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 @onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
 @onready var crouch_check:RayCast2D = $crouch_check
 
-@export var animator:AnimatedSprite2D
+@export var animator: AnimatedSprite2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 
@@ -21,21 +21,15 @@ var vel = Vector2.ZERO
 var walking:bool = false
 var jumping:bool = false
 
+
 func _ready():
 	pass
-	#if standard == false:
-		#self.scale = Vector2(0.5, 0.5)
-	#else:
-		#self.scale = Vector2(0.75, 0.75)
 
 func _physics_process(delta: float):
 	move_and_slide()
 
 func _process(delta: float):
-	if roll_cd < 100: # energy should be a component
-		roll_cd +=1
-	else:
-		roll_cd = 100
+	roll_cd_dec()
 
 func animate(animation: String = ""):
 	if animation:
@@ -61,3 +55,9 @@ func crouch_collision(toggle):
 
 func can_uncrouch():
 	return !crouch_check.is_colliding() # returns false if is colliding because you CANT uncrouch
+
+func roll_cd_dec(): # This function should be in roll, not here
+	if roll_cd < 100: # energy should be a component
+		roll_cd +=1
+	else:
+		roll_cd = 100
