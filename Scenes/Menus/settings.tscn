@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2dashfyrcmm6" path="res://Scenes/Menus/ui_audio_elements/vol_lvl_label.tscn" id="4_ydigq"]
 
 [node name="settings_ui" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_hb23r")
 
 [node name="Panel" type="Panel" parent="."]

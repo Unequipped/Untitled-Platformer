@@ -20,11 +20,6 @@ func _ready():
 	visible = true
 
 
-func _input(event):
-	if event.is_action_pressed("escape"):
-		visible = !visible
-
-
 func _process(delta):
 	if player_one:
 		p1_hp.max_value = player_one.hp_comp.MAX_HEALTH

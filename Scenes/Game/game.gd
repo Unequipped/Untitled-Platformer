@@ -6,6 +6,7 @@ extends Node
 
 var game_state:int = 0
 var current_level:Object
+var hud: Object
 
 func _ready():
 	pass # Replace with function body.
