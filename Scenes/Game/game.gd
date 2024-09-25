@@ -17,4 +17,3 @@ func _process(_delta):
 func _add_scene(scene_to_add):
 	current_level = scene_to_add.instantiate()
 	call_deferred("add_child", current_level) #imperative to have .instantiate() here instead of preload
-
