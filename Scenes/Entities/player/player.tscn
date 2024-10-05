@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://jare2nhuehxf" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchAll.png" id="4_n57s3"]
 [ext_resource type="Texture2D" uid="uid://cxbef8fytq3x4" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchWalk.png" id="5_1w4tc"]
 [ext_resource type="Texture2D" uid="uid://d3ealn0vlegll" path="res://Assets/Character/Outline/120x80_PNGSheets/_Roll.png" id="7_dknti"]
-[ext_resource type="Script" path="res://Scenes/Entities/movement_manager.gd" id="9_kbs1b"]
-[ext_resource type="Script" path="res://Scenes/Entities/input_manager.gd" id="9_uitvm"]
-[ext_resource type="Script" path="res://Scenes/Entities/state_machine.gd" id="10_r3ar5"]
+[ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="9_kbs1b"]
+[ext_resource type="Script" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
+[ext_resource type="Script" path="res://Scenes/Entities/Scripts/state_machine.gd" id="10_r3ar5"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/idle.gd" id="11_m0tou"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/run.gd" id="12_h0by1"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/fall.gd" id="13_pdonm"]
@@ -515,6 +515,7 @@ frame_progress = 0.796482
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 visible = false
+collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spritePivot/dmg_box"]
 position = Vector2(0, 10)
@@ -532,12 +533,12 @@ position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_ga2i0")
 disabled = true
 
-[node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
+[node name="hitbox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
 visible = false
 collision_mask = 4
 health = NodePath("../health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="htibox_component"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_aqj1f")
 

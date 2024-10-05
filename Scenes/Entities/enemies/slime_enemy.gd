@@ -1,9 +1,9 @@
-class_name Enemy
+class_name Slime_Enemy
 extends CharacterBody2D
 
 #@onready var sprite_pivot: Node2D = $spritePivot # not needed?
 #@onready var state_machine: State_Machine = $state_machine # hasn't been added yet
-@onready var hitbox_comp: Area2D = $htibox_component
+@onready var hitbox_comp: Area2D = $hitbox_component
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 
@@ -32,12 +32,3 @@ func animate(animation: String = ""):
 	if animation:
 		animator.play(animation)
 		return animator.is_playing()
-
-func apply_dmg():
-	var bodies:Array = dmg_box.get_overlapping_bodies()
-	for body in bodies:
-		if body.name == "enemy":
-			#body.hp_comp.take_dmg(1)
-			if body.hp_comp.health <= 0:
-				get_parent().reset_game()
-				body.call_deferred("queue_free")
