@@ -1,19 +1,16 @@
 class_name Enemy
 extends CharacterBody2D
 
-@onready var sprite_pivot: Node2D = $spritePivot
-@onready var state_machine: State_Machine = $state_machine
+#@onready var sprite_pivot: Node2D = $spritePivot # not needed?
+@onready var state_machine: State_Machine = $state_machine # hasn't been added yet
 @onready var hitbox_comp: Area2D = $htibox_component
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
-@onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
-@onready var crouch_check:RayCast2D = $crouch_check
 
 @export var animator:AnimationPlayer #: AnimatedSprite2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 
-@export var roll_cd: int = 100 # Need to fix this later
 @export var standard: bool = false
 
 # Movement related stuff 
