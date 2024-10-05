@@ -26,6 +26,7 @@ func _ready():
 	SPEED = MAX_SPEED
 
 func x_movement(x_dir):
+	flip_actor(x_dir)
 	x_vel = current_vel.x
 	if x_dir != 0: # if player is inputting x movement
 		x_vel = lerp(x_vel, SPEED * x_dir, x_accel)
@@ -34,8 +35,8 @@ func x_movement(x_dir):
 			x_vel = lerp(x_vel, 0.0, x_decel)
 		else:
 			x_vel = lerp(x_vel, 0.0, x_decel_air)
-	if actor.is_on_wall(): #causes a bug where you can't turn around immediately while facing/touching a wall
-		x_vel = 0
+	#if actor.is_on_wall(): #causes a bug where you can't turn around immediately while facing/touching a wall
+		#x_vel = 0 #I've removed these lines temporarily but still need to look into the 'storing speed' bug as well
 	return x_vel
 
 func y_movement():
@@ -49,6 +50,12 @@ func vec_movement():
 	#new_vel.y = y_movement(direction.y) # UNIMPLEMENTED
 	
 	return new_vel
+
+func flip_actor(facing):
+	if facing > 0:
+		actor.sprite_pivot.scale.x = 1
+	elif facing < 0:
+		actor.sprite_pivot.scale.x = -1
 
 func apply_movement():
 	current_vel = vec_movement()

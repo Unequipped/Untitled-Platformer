@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=88 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://jare2nhuehxf" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchAll.png" id="4_n57s3"]
 [ext_resource type="Texture2D" uid="uid://cxbef8fytq3x4" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchWalk.png" id="5_1w4tc"]
 [ext_resource type="Texture2D" uid="uid://d3ealn0vlegll" path="res://Assets/Character/Outline/120x80_PNGSheets/_Roll.png" id="7_dknti"]
-[ext_resource type="Texture2D" uid="uid://cife1s7ibyft7" path="res://Assets/Character/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="7_vu6h2"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="9_kbs1b"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/state_machine.gd" id="10_r3ar5"]
@@ -118,14 +117,6 @@ region = Rect2(120, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rv7hr"]
 atlas = ExtResource("2_qfr0e")
 region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tp8ts"]
-atlas = ExtResource("7_vu6h2")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_38xa0"]
-atlas = ExtResource("7_vu6h2")
-region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpai5"]
 atlas = ExtResource("2_5dh45")
@@ -365,17 +356,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tp8ts")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_38xa0")
-}],
-"loop": false,
-"name": &"fall_transition",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_kpai5")
 }, {
 "duration": 1.0,
@@ -530,7 +510,8 @@ collide_with_areas = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"fall_transition"
+animation = &"idle"
+frame_progress = 0.796482
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 visible = false

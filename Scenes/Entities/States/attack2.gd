@@ -29,3 +29,6 @@ func switch_state():
 	if !inputManager.attack_inp() and !attack_playing:
 		if actor.is_on_floor():
 			Transitioned.emit(self, "idle")
+		
+		else:
+			Transitioned.emit(self, "fall")

@@ -31,12 +31,9 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Knight 1v1 Untitled Game"
+text = "Untitled_"
 horizontal_alignment = 1
 
 [node name="start_button" type="Button" parent="VBoxContainer"]

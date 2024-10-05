@@ -10,7 +10,10 @@ func exit():
 	pass
 
 func update(delta):
-	actor.animate(str(name))
+	if actor.animator.animation == "fall_transition" and actor.animator.is_playing():
+		return
+	else:
+		actor.animate(str(name))
 
 func physics_update(delta):
 	switch_state()

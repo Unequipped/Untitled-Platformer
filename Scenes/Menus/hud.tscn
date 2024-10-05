@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b1qpb3uetbjkb" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_d_outline.png" id="9_w3upj"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("p1_hp", "p1_en", "input_section", "w_key", "a_key", "s_key", "d_key", "vis_btn")]
-layer = 10
 script = ExtResource("1_l0bd8")
 p1_hp = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar")
 p1_en = NodePath("Control/playerOneStats/HBoxContainer/ProgressBar2")

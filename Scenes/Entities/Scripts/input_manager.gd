@@ -2,8 +2,9 @@ class_name InputManager
 extends Node
 
 #need to rename vars
-@export var jump_buffer_timer: float = 0.4
+@export var jump_buffer_timer: float = 0.5
 var jump_buffer_time: float = 0.0
+
 
 func _input(event):
 	if Input.is_action_just_pressed("up"):
@@ -28,6 +29,10 @@ static func attack_inp():
 
 func jump_inp():
 	return jump_buffer_time > 0 #Input.is_action_just_pressed("up")
+
+
+func jump_inp_released():
+	return !Input.is_action_pressed("up")#jump_release_time > 0
 
 
 func get_direction():

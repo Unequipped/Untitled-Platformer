@@ -6,6 +6,7 @@ extends State
 @export var roll_speed: int = 100
 
 func enter():
+	actor.animate(str(name))
 	Movement.rolling = true
 	actor.velocity.x = actor.sprite_pivot.scale.x * roll_speed
 	actor.hitbox_comp.monitoring = false
@@ -16,7 +17,7 @@ func exit():
 	actor.hitbox_comp.monitoring = true
 
 func update(delta):
-	actor.animate(str(name))
+	pass
 
 func physics_update(delta):
 	if actor.animator.frame < end_frame:
