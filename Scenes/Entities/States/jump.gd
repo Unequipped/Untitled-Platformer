@@ -11,7 +11,7 @@ func enter():
 	jump_duration = 0
 
 func exit():
-	pass
+	actor.animate("fall_transition")
 
 func update(delta):
 	actor.animate(str(name))

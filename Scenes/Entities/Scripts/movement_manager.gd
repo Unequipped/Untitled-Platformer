@@ -35,8 +35,8 @@ func x_movement(x_dir):
 			x_vel = lerp(x_vel, 0.0, x_decel)
 		else:
 			x_vel = lerp(x_vel, 0.0, x_decel_air)
-	if actor.is_on_wall(): #causes a bug where you can't turn around immediately while facing/touching a wall
-		x_vel = 0
+	#if actor.is_on_wall(): #causes a bug where you can't turn around immediately while facing/touching a wall
+		#x_vel = 0 #I've removed these lines temporarily but still need to look into the 'storing speed' bug as well
 	return x_vel
 
 func y_movement():
