@@ -58,7 +58,7 @@ animator = NodePath("AnimationPlayer")
 hp_comp = NodePath("health")
 dmg_box = NodePath("htibox_component")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="physics_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_ao08u")
 
@@ -69,6 +69,7 @@ region_enabled = true
 region_rect = Rect2(432, 112, 64, 16)
 
 [node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_5msxc")]
+collision_layer = 8
 health = NodePath("../health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="htibox_component"]

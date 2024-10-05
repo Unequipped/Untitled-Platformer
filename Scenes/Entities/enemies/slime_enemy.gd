@@ -2,7 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 #@onready var sprite_pivot: Node2D = $spritePivot # not needed?
-@onready var state_machine: State_Machine = $state_machine # hasn't been added yet
+#@onready var state_machine: State_Machine = $state_machine # hasn't been added yet
 @onready var hitbox_comp: Area2D = $htibox_component
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape

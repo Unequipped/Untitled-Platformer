@@ -7,5 +7,6 @@ var health:int = 0
 func _ready():
 	health = MAX_HEALTH
 
-func take_dmg(dmg_val):
+func take_dmg(dmg_val): #removing this?
 	health -= dmg_val
+	print(health)
