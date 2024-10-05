@@ -2,8 +2,8 @@ extends State
 
 @export var actor: CharacterBody2D
 @export var jump_force: int = 110
+@export var min_jump_duration:int = 10 # minimum duration for the jump
 
-var min_jump_duration:int = 10 # minimum duration for the jump
 var jump_duration:int = 0
 
 func enter():
@@ -30,7 +30,8 @@ func switch_state():
 		Transitioned.emit(self, "fall")
 	
 	elif inputManager.jump_inp_released() and jump_duration >= min_jump_duration:
-		Transitioned.emit(self, "fall")
+		Transitioned.emit(self, "fall") #The main issue with this is the sudden vel cut off (can only be fixed by rewriting part of the state script)
+
 
 func jump_apply():
 	actor.velocity.y = -jump_force
