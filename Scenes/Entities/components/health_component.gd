@@ -1,7 +1,7 @@
 extends Node
 class_name health_component
 
-@export var MAX_HEALTH: int = 100
+@export var MAX_HEALTH: int = 10
 var health:int = 0
 
 func _ready():

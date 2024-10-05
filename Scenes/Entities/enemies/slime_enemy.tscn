@@ -1,12 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqdkc4ub70ada"]
+[gd_scene load_steps=10 format=3 uid="uid://cqdkc4ub70ada"]
 
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/slime_enemy.gd" id="1_12lrf"]
 [ext_resource type="Texture2D" uid="uid://d1oexyeri8lp7" path="res://Assets/Enemies/0x72_DungeonTilesetII_v1.7.png" id="1_afw2n"]
+[ext_resource type="PackedScene" uid="uid://bvc20mqmyjoyq" path="res://Scenes/Entities/components/hitbox_component.tscn" id="3_5msxc"]
+[ext_resource type="Script" path="res://Scenes/Entities/components/health_component.gd" id="4_qwyhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao08u"]
+size = Vector2(16, 13)
 
-[node name="slime_enemy" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rby58"]
+size = Vector2(14, 13)
+
+[sub_resource type="Animation" id="Animation_ysgev"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_7nh7b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jupnm"]
+_data = {
+"RESET": SubResource("Animation_7nh7b"),
+"idle": SubResource("Animation_ysgev")
+}
+
+[node name="slime_enemy" type="CharacterBody2D" node_paths=PackedStringArray("animator", "hp_comp", "dmg_box")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_12lrf")
+animator = NodePath("AnimationPlayer")
+hp_comp = NodePath("health")
+dmg_box = NodePath("htibox_component")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_ao08u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,3 +67,18 @@ texture = ExtResource("1_afw2n")
 hframes = 4
 region_enabled = true
 region_rect = Rect2(432, 112, 64, 16)
+
+[node name="htibox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_5msxc")]
+health = NodePath("../health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="htibox_component"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_rby58")
+
+[node name="health" type="Node" parent="."]
+script = ExtResource("4_qwyhb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jupnm")
+}

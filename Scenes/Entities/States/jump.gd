@@ -22,6 +22,9 @@ func switch_state():
 	
 	if actor.velocity.y > 0:
 		Transitioned.emit(self, "fall")
+	
+	elif inputManager.jump_inp_released():
+		Transitioned.emit(self, "fall")
 
 func jump_apply():
 	actor.velocity.y = -jump_force
