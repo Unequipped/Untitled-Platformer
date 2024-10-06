@@ -31,10 +31,11 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	roll_cd_dec()
 
-func animate(animation: String = ""):
+func animate(animation: String = "", anim_to_check: String = ""): ## Animates & returns in animation is playing
 	if animation:
-		animator.play(animation)
-		return animator.is_playing()
+		if !(animator.animation == anim_to_check and animator.is_playing() and anim_to_check != ""):
+			animator.play(animation)
+	return animator.is_playing()
 
 func apply_dmg():
 	var bodies:Array = dmg_box.get_overlapping_bodies()
