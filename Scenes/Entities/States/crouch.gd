@@ -4,16 +4,15 @@ extends State
 @export var actor: CharacterBody2D
 
 func enter():
-	actor.animate(str(name)) # didn't know I could do this for attacking...
-	# the issue with the above is that if you transition from crouch walk to crouch the animation plays
-	# passing a value into enter that dictates whether an animation plays or not could be used to fix this
+	actor.animate("crouch_transition", "crouch_walk")
 	actor.crouch_collision(true)
 
 func exit():
 	actor.crouch_collision(false)
+	actor.animate("crouch_transition", "", true) 
 
 func update(delta):
-	actor.animate()
+	actor.animate(str(name), "crouch_transition")
 
 func physics_update(delta):
 	switch_state()
