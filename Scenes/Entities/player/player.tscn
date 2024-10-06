@@ -460,9 +460,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_guhsn")
 }],
-"loop": true,
+"loop": false,
 "name": &"roll",
-"speed": 30.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -530,7 +530,9 @@ collide_with_areas = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"fall_transition"
+animation = &"roll"
+frame = 11
+frame_progress = 1.0
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
 visible = false
