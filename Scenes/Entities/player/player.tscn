@@ -68,15 +68,15 @@ region = Rect2(480, 0, 120, 80)
 atlas = ExtResource("3_jg78k")
 region = Rect2(600, 0, 120, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6tmn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv0bv"]
 atlas = ExtResource("4_bsv11")
 region = Rect2(0, 0, 120, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fuoq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_egt72"]
 atlas = ExtResource("4_n57s3")
 region = Rect2(0, 0, 120, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tjq80"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dafqg"]
 atlas = ExtResource("4_n57s3")
 region = Rect2(120, 0, 120, 80)
 
@@ -316,7 +316,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n6tmn")
+"texture": SubResource("AtlasTexture_yv0bv")
 }],
 "loop": false,
 "name": &"crouch",
@@ -324,10 +324,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4fuoq")
+"texture": SubResource("AtlasTexture_egt72")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tjq80")
+"texture": SubResource("AtlasTexture_dafqg")
 }],
 "loop": false,
 "name": &"crouch_transition",
@@ -473,9 +473,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_guhsn")
 }],
-"loop": true,
+"loop": false,
 "name": &"roll",
-"speed": 30.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
