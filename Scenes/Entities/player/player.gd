@@ -31,10 +31,13 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	roll_cd_dec()
 
-func animate(animation: String = "", anim_to_check: String = ""): ## Animates & returns in animation is playing
+func animate(animation: String = "", anim_to_check: String = "", reverse:bool = false): ## Animates & returns if animation is playing
 	if animation:
 		if !(animator.animation == anim_to_check and animator.is_playing() and anim_to_check != ""):
-			animator.play(animation)
+			if !reverse:
+				animator.play(animation)
+			else:
+				animator.play_backwards(animation)
 	return animator.is_playing()
 
 func apply_dmg():
