@@ -19,7 +19,6 @@ func update(delta):
 func physics_update(delta):
 	switch_state()
 	if jump_duration < min_jump_duration:
-		print(jump_duration)
 		jump_duration += 1
 
 func switch_state():
@@ -30,6 +29,7 @@ func switch_state():
 		Transitioned.emit(self, "fall")
 	
 	elif inputManager.jump_inp_released() and jump_duration >= min_jump_duration:
+		actor.velocity.y = 0
 		Transitioned.emit(self, "fall") #The main issue with this is the sudden vel cut off (can only be fixed by rewriting part of the state script)
 
 

@@ -14,6 +14,7 @@ extends CharacterBody2D
 @export var dmg_box: Area2D
 
 @export var roll_cd: int = 100 # Need to fix this later
+@export var damage: int = 10
 @export var standard: bool = false
 
 # Movement related stuff 
@@ -45,7 +46,7 @@ func apply_dmg():
 	for body in bodies:
 		print(body.name)
 		if body.is_in_group("enemies"):
-			body.hp_comp.take_dmg(1)
+			body.hp_comp.take_dmg(damage)
 			if body.hp_comp.health <= 0:
 				body.call_deferred("queue_free")
 
