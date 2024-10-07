@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var sprite_pivot: Node2D = $spritePivot
 @onready var state_machine: State_Machine = $state_machine
+@onready var movement: Movement = $movement
 @onready var hitbox_comp: Area2D = $hitbox_component
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
@@ -42,11 +43,10 @@ func animate(animation: String = "", anim_to_check: String = "", reverse:bool = 
 	return animator.is_playing()
 
 func apply_dmg():
-	var bodies:Array = dmg_box.get_overlapping_bodies()
-	for body in bodies:
-		#print(body.name)
-		if body.is_in_group("enemies"):
-			body.hp_comp.take_dmg(damage)
+	var areas:Array = dmg_box.get_overlapping_areas()
+	for area in areas:
+		if area.is_in_group("enemies"):
+			area.register_attack(damage)
 
 func crouch_collision(toggle):
 	if toggle:
