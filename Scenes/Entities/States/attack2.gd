@@ -10,10 +10,12 @@ func enter():
 	actor.animate(str(name))
 
 func exit():
-	actor.apply_dmg()
+	pass
 
 func update(delta):
 	attack_playing = actor.animate()
+	if !attack_playing:
+		actor.apply_dmg()
 
 func physics_update(delta):
 	actor.velocity.x = 0
@@ -25,3 +27,6 @@ func switch_state():
 			Transitioned.emit(self, "idle")
 		else:
 			Transitioned.emit(self, "fall")
+	
+	if inputManager.jump_inp():
+		Transitioned.emit(self, "jump")
