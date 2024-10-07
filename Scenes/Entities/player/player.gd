@@ -44,11 +44,9 @@ func animate(animation: String = "", anim_to_check: String = "", reverse:bool = 
 func apply_dmg():
 	var bodies:Array = dmg_box.get_overlapping_bodies()
 	for body in bodies:
-		print(body.name)
+		#print(body.name)
 		if body.is_in_group("enemies"):
 			body.hp_comp.take_dmg(damage)
-			if body.hp_comp.health <= 0:
-				body.call_deferred("queue_free")
 
 func crouch_collision(toggle):
 	if toggle:

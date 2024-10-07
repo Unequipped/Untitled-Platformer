@@ -9,4 +9,6 @@ func _ready():
 
 func take_dmg(dmg_val): #removing this?
 	health -= dmg_val
+	if health <= 0:
+		self.call_deferred("queue_free")
 	print(health)
