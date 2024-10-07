@@ -27,8 +27,8 @@ func switch_state():
 	if inputManager.attack_inp() and !attack_playing and actor.is_on_floor():
 			Transitioned.emit(self, "attack2")
 	
-	elif !attack_playing:
-		Transitioned.emit(self, "idle")
+	#elif !attack_playing:
+		#Transitioned.emit(self, "idle")
 
 	elif !inputManager.attack_inp() and !attack_playing:
 		if actor.is_on_floor():
