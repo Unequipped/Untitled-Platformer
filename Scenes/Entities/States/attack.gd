@@ -8,16 +8,14 @@ extends State
 var attack_playing:bool
 
 func enter():
-	attack_playing = true
+	actor.animate(str(name))
 
 func exit():
 	actor.apply_dmg()
 
 func update(delta):
-	if actor.animator.frame < end_frame:
-		attack_playing = actor.animate(str(name)) # THIS NEEDS TO BE UPDATED SO ITS SAFER TO USE
-	else:
-		attack_playing = false
+	attack_playing = actor.animate() # returns true if animation is playing
+	print(attack_playing)
 
 func physics_update(delta):
 	actor.velocity.x = 0
@@ -30,6 +28,6 @@ func switch_state():
 	#elif !attack_playing: #There seems to be this really weird attack bug and I think it's related to this
 		#Transitioned.emit(self, "idle")
 
-	if !inputManager.attack_inp() and !attack_playing:
+	if !attack_playing:
 		if actor.is_on_floor():
 			Transitioned.emit(self, "idle")
