@@ -7,8 +7,8 @@ var health:int = 0
 func _ready():
 	health = MAX_HEALTH
 
-func take_dmg(dmg_val): #removing this?
+func take_dmg(dmg_val): #might need to relocate this as well
 	health -= dmg_val
 	if health <= 0:
-		self.call_deferred("queue_free")
+		get_parent().call_deferred("queue_free")
 	print(health)
