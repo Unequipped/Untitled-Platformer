@@ -26,7 +26,7 @@ func _ready():
 	SPEED = MAX_SPEED
 
 func x_movement(x_dir):
-	flip_actor(x_dir)
+	actor.pivot(x_dir)
 	x_vel = current_vel.x
 	if x_dir != 0: # if player is inputting x movement
 		x_vel = lerp(x_vel, SPEED * x_dir, x_accel)
@@ -50,12 +50,6 @@ func vec_movement():
 	#new_vel.y = y_movement(direction.y) # UNIMPLEMENTED
 	
 	return new_vel
-
-func flip_actor(facing):
-	if facing > 0:
-		actor.sprite_pivot.scale.x = 1
-	elif facing < 0:
-		actor.sprite_pivot.scale.x = -1
 
 func apply_movement():
 	current_vel = vec_movement()

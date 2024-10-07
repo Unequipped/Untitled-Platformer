@@ -64,3 +64,13 @@ func roll_cd_dec(): # This function should be in roll, not here
 		roll_cd +=1
 	else:
 		roll_cd = 100
+
+func pivot(facing):
+	if !(get_current_state() == "attack2" or get_current_state() == "attack"): # not the best way to do this
+		if facing > 0:
+			sprite_pivot.scale.x = 1
+		elif facing < 0:
+			sprite_pivot.scale.x = -1
+
+func get_current_state():
+	return state_machine.current_state.name
