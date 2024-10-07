@@ -28,7 +28,7 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	pass
 
-func animate(animation: String = ""):
+func animate(animation: String = ""): # We need an entity class that has this function instead of just copying it
 	if animation:
 		animator.play(animation)
 		return animator.is_playing()
