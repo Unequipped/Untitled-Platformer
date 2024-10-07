@@ -24,12 +24,12 @@ func physics_update(delta):
 	switch_state()
 
 func switch_state():
-	if inputManager.attack_inp() and !attack_playing and actor.is_on_floor():
-			Transitioned.emit(self, "attack2")
+	#if inputManager.attack_inp() and !attack_playing and actor.is_on_floor():
+			#Transitioned.emit(self, "attack2")
 	
-	#elif !attack_playing:
+	#elif !attack_playing: #There seems to be this really weird attack bug and I think it's related to this
 		#Transitioned.emit(self, "idle")
 
-	elif !inputManager.attack_inp() and !attack_playing:
+	if !inputManager.attack_inp() and !attack_playing:
 		if actor.is_on_floor():
 			Transitioned.emit(self, "idle")

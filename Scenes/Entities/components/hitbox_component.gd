@@ -10,4 +10,4 @@ func _ready():
 
 func register_attack(dmg_value):
 	health.take_dmg(dmg_value)
-	actor.animate("hurt")
+	print(actor.animate("hurt"))
