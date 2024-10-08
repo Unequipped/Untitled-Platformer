@@ -528,6 +528,9 @@ height = 32.0
 scale = Vector2(0.75, 0.75)
 collision_mask = 4
 script = ExtResource("1_rygmp")
+roll_cd = null
+damage = null
+standard = null
 animator = NodePath("spritePivot/AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("spritePivot/dmg_box")
@@ -543,9 +546,10 @@ collide_with_areas = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"attack2"
+animation = &"idle"
 
 [node name="dmg_box" type="Area2D" parent="spritePivot"]
+visible = false
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spritePivot/dmg_box"]
