@@ -566,8 +566,6 @@ metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("2_2dmkk")]
 position = Vector2(96, 112)
-roll_cd = null
-damage = null
 standard = true
 metadata/_edit_group_ = true
 

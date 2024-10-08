@@ -1,9 +1,8 @@
-class_name Idle
-extends State
+class_name Idle extends PlayerState
 
 @export var actor: CharacterBody2D
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	pass
 
 func exit():

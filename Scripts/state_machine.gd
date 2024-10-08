@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
 
-func on_child_transitioned(state:State, new_state_name, temp_val:bool = false):
+func on_child_transitioned(state:State, new_state_name, temp_val := {}):
 	if state != current_state:
 		return
 	
@@ -40,5 +40,5 @@ func on_child_transitioned(state:State, new_state_name, temp_val:bool = false):
 	if current_state:
 		current_state.exit()
 	
-	new_state.enter()
+	new_state.enter(state.name, temp_val)
 	current_state = new_state

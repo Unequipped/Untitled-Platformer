@@ -1,5 +1,4 @@
-class_name Attack
-extends State
+class_name Attack extends PlayerState
 
 # The issue with attack and attack2 is that I'll probably need to end up
 # hard coding apply damage to when the correct frame is reached
@@ -11,7 +10,7 @@ extends State
 
 var attack_playing:bool
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	actor.animate(str(name))
 
 func exit():

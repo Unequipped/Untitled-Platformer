@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cife1s7ibyft7" path="res://Assets/Character/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="7_vu6h2"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="9_kbs1b"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
-[ext_resource type="Script" path="res://Scenes/Entities/Scripts/state_machine.gd" id="10_r3ar5"]
+[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="10_r3ar5"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/idle.gd" id="11_m0tou"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/run.gd" id="12_h0by1"]
 [ext_resource type="Script" path="res://Scenes/Entities/States/fall.gd" id="13_pdonm"]
@@ -528,12 +528,12 @@ height = 32.0
 scale = Vector2(0.75, 0.75)
 collision_mask = 4
 script = ExtResource("1_rygmp")
-roll_cd = null
-damage = null
-standard = null
 animator = NodePath("spritePivot/AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("spritePivot/dmg_box")
+roll_cd = null
+damage = null
+standard = null
 
 [node name="crouch_check" type="RayCast2D" parent="."]
 visible = false
