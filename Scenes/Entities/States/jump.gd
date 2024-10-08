@@ -25,7 +25,7 @@ func switch_state():
 	if actor.is_on_floor() and not actor.velocity.y < 0:
 		Transitioned.emit(self, "idle")
 	
-	if actor.velocity.y > -45:
+	if actor.velocity.y >= -45:
 		Transitioned.emit(self, "fall")
 	
 	elif inputManager.jump_inp_released() and jump_duration >= min_jump_duration:

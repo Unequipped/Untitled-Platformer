@@ -613,7 +613,7 @@ actor = NodePath("../..")
 [node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("15_2ioh0")
 actor = NodePath("../..")
-jump_force = 175
+jump_force = 185
 
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("16_rblma")
