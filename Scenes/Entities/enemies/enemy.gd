@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 
-@export var animator:AnimationPlayer #: AnimatedSprite2D
+@export var animator: AnimatedSprite2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 
@@ -32,7 +32,7 @@ func _process(delta: float):
 # We need an entity class that has this function instead of just copying it
 func animate(animation: String = "", anim_to_check: String = "", reverse:bool = false): ## Animates & returns if animation is playing
 	if animation:
-		if !(animator.current_animation == anim_to_check and animator.is_playing() and anim_to_check != ""):
+		if !(animator.animation == anim_to_check and animator.is_playing() and anim_to_check != ""):
 			if !reverse:
 				animator.play(animation)
 			else:

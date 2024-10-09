@@ -1,12 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://cqdkc4ub70ada"]
+[gd_scene load_steps=34 format=3 uid="uid://cqdkc4ub70ada"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy.gd" id="1_12lrf"]
 [ext_resource type="Texture2D" uid="uid://dekqwryt7nxoi" path="res://Assets/Enemies/Skeleton/Attack.png" id="2_2yea0"]
 [ext_resource type="PackedScene" uid="uid://bvc20mqmyjoyq" path="res://Scenes/Entities/components/hitbox_component.tscn" id="3_5msxc"]
+[ext_resource type="Texture2D" uid="uid://bo4k8dbcbs0or" path="res://Assets/Enemies/Skeleton/Take Hit.png" id="3_t2q5v"]
 [ext_resource type="Texture2D" uid="uid://cyku2suy0v0o7" path="res://Assets/Enemies/Skeleton/Idle.png" id="3_x2idf"]
 [ext_resource type="Texture2D" uid="uid://w0uuevixov52" path="res://Assets/Enemies/Skeleton/Walk.png" id="4_iumki"]
 [ext_resource type="Script" path="res://Scenes/Entities/components/health_component.gd" id="4_qwyhb"]
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="7_7xtx1"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/AI.gd" id="8_2nx4y"]
+[ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="8_ra6a6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro6lj"]
 atlas = ExtResource("2_2yea0")
@@ -39,6 +42,22 @@ region = Rect2(900, 0, 150, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jeug"]
 atlas = ExtResource("2_2yea0")
 region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37l6p"]
+atlas = ExtResource("3_t2q5v")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hirlw"]
+atlas = ExtResource("3_t2q5v")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m02ht"]
+atlas = ExtResource("3_t2q5v")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhluf"]
+atlas = ExtResource("3_t2q5v")
+region = Rect2(450, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl0pk"]
 atlas = ExtResource("3_x2idf")
@@ -105,6 +124,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_37l6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hirlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m02ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhluf")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dl0pk")
 }, {
 "duration": 1.0,
@@ -145,10 +181,11 @@ size = Vector2(16, 27)
 radius = 4.0
 height = 18.0
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("hp_comp", "dmg_box") groups=["enemies"]]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("animator", "hp_comp", "dmg_box") groups=["enemies"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_12lrf")
+animator = NodePath("AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("hitbox_component")
 
@@ -156,8 +193,7 @@ dmg_box = NodePath("hitbox_component")
 position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jdgeh")
-animation = &"idle"
-frame_progress = 0.662929
+animation = &"hurt"
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -175,6 +211,20 @@ shape = SubResource("CapsuleShape2D_f05i8")
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("4_qwyhb")
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("8_2nx4y")
+
+[node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
+script = ExtResource("8_ra6a6")
+actor = NodePath("..")
+input_manager = NodePath("../AI")
+MAX_SPEED = null
+y_accel = null
+y_max = null
+x_accel = null
+x_decel = null
+x_decel_air = null
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("7_7xtx1")

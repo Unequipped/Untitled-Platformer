@@ -3,8 +3,8 @@ class_name Falling extends PlayerState
 @export var actor: CharacterBody2D
 
 func enter(previous_state_path: String = "", data := {}):
-	if previous_state_path == "jump": #intended for some roll over instead of abrupt
-		actor.velocity.y = -45
+	if previous_state_path == "jump": # intended for some roll over instead of abrupt
+		actor.velocity.y = -45 # hard-coded approach - will need to change in future
 
 func exit():
 	pass

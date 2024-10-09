@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cxbef8fytq3x4" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchWalk.png" id="5_1w4tc"]
 [ext_resource type="Texture2D" uid="uid://d3ealn0vlegll" path="res://Assets/Character/Outline/120x80_PNGSheets/_Roll.png" id="7_dknti"]
 [ext_resource type="Texture2D" uid="uid://cife1s7ibyft7" path="res://Assets/Character/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="7_vu6h2"]
-[ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="9_kbs1b"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="10_r3ar5"]
 [ext_resource type="Script" path="res://Scenes/Entities/player/States/idle.gd" id="11_m0tou"]
@@ -22,6 +21,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/player/States/fall.gd" id="13_pdonm"]
 [ext_resource type="Script" path="res://Scenes/Entities/player/States/jump.gd" id="15_2ioh0"]
 [ext_resource type="Script" path="res://Scenes/Entities/player/States/attack.gd" id="16_rblma"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/player_movement.gd" id="16_v0bgd"]
 [ext_resource type="Script" path="res://Scenes/Entities/player/States/attack2.gd" id="18_6og88"]
 [ext_resource type="Script" path="res://Scenes/Entities/player/States/roll.gd" id="20_fctga"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
@@ -585,12 +585,15 @@ MAX_HEALTH = 20
 script = ExtResource("9_uitvm")
 
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
-script = ExtResource("9_kbs1b")
+script = ExtResource("16_v0bgd")
 actor = NodePath("..")
 input_manager = NodePath("../input_manager")
-x_accel = 0.5
-x_decel = 0.3
-x_decel_air = 0.035
+MAX_SPEED = null
+y_accel = null
+y_max = null
+x_accel = null
+x_decel = null
+x_decel_air = null
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager", "inputManager")]
 script = ExtResource("10_r3ar5")

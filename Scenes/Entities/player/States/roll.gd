@@ -6,13 +6,13 @@ class_name Roll extends PlayerState
 
 func enter(previous_state_path: String = "", data := {}):
 	actor.animate(str(name))
-	Movement.rolling = true
+	Movement.movable = true
 	actor.velocity.x = actor.sprite_pivot.scale.x * roll_speed
 	actor.hitbox_comp.monitoring = false
 
 func exit():
 	actor.roll_cd = 0
-	Movement.rolling = false
+	Movement.movable = false
 	actor.hitbox_comp.monitoring = true
 
 func update(delta):

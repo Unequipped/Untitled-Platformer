@@ -19,7 +19,7 @@ var SPEED: int = 0
 var current_vel: Vector2
 var x_vel: float
 var attacking: bool = false
-static var rolling: bool = false
+static var movable: bool = false
 
 
 func _ready():
@@ -63,6 +63,6 @@ func apply_gravity():
 
 func _physics_process(delta):
 	apply_gravity()
-	if !rolling:
+	if !movable:
 		apply_movement()
 	
