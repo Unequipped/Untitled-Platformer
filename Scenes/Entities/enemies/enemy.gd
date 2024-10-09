@@ -1,4 +1,4 @@
-class_name Slime_Enemy
+class_name Enemy
 extends CharacterBody2D
 
 #@onready var sprite_pivot: Node2D = $spritePivot # not needed?
@@ -18,6 +18,7 @@ var vel = Vector2.ZERO
 var walking:bool = false
 var jumping:bool = false
 
+var vulnerable: bool = true
 
 func _ready():
 	animate("idle")
@@ -28,7 +29,12 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	pass
 
-func animate(animation: String = ""): # We need an entity class that has this function instead of just copying it
+# We need an entity class that has this function instead of just copying it
+func animate(animation: String = "", anim_to_check: String = "", reverse:bool = false): ## Animates & returns if animation is playing
 	if animation:
-		animator.play(animation)
-		return animator.is_playing()
+		if !(animator.current_animation == anim_to_check and animator.is_playing() and anim_to_check != ""):
+			if !reverse:
+				animator.play(animation)
+			else:
+				animator.play_backwards(animation)
+	return animator.is_playing()

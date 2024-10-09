@@ -17,16 +17,16 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="9_kbs1b"]
 [ext_resource type="Script" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="10_r3ar5"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/idle.gd" id="11_m0tou"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/run.gd" id="12_h0by1"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/fall.gd" id="13_pdonm"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/jump.gd" id="15_2ioh0"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/attack.gd" id="16_rblma"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/attack2.gd" id="18_6og88"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/roll.gd" id="20_fctga"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/idle.gd" id="11_m0tou"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/run.gd" id="12_h0by1"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/fall.gd" id="13_pdonm"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/jump.gd" id="15_2ioh0"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/attack.gd" id="16_rblma"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/attack2.gd" id="18_6og88"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/roll.gd" id="20_fctga"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/crouch.gd" id="21_t1avu"]
-[ext_resource type="Script" path="res://Scenes/Entities/States/crouch_walk.gd" id="24_jw3yf"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/crouch.gd" id="21_t1avu"]
+[ext_resource type="Script" path="res://Scenes/Entities/player/States/crouch_walk.gd" id="24_jw3yf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
 atlas = ExtResource("2_cewkk")
@@ -535,12 +535,6 @@ roll_cd = null
 damage = null
 standard = null
 
-[node name="crouch_check" type="RayCast2D" parent="."]
-visible = false
-target_position = Vector2(0, -11)
-collision_mask = 4
-collide_with_areas = true
-
 [node name="spritePivot" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
@@ -556,6 +550,12 @@ collision_mask = 8
 position = Vector2(0, 10)
 scale = Vector2(4.66667, 4.66667)
 polygon = PackedVector2Array(4.58333, 2.08333, 9.55357, 3.2619, 10.4107, -0.809527, 8.91071, -3.80953, 5.48214, -5.7381, -2.01786, -5.09524, 1.83928, -3.59524, 4.625, -1.45238, 4.58333, -0.416668)
+
+[node name="crouch_check" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(0, -11)
+collision_mask = 4
+collide_with_areas = true
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
 visible = false
