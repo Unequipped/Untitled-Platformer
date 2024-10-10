@@ -1,9 +1,9 @@
-class_name State_Machine
+class_name StateMachine
 extends Node
 
 @export var initial_state: State
 @export var movementManager: Movement
-@export var inputManager: InputManager
+@export var inputManager: LogicManager
 
 var current_state: State
 var states: Dictionary = {}
@@ -15,7 +15,6 @@ func _ready():
 			child.movementManager = movementManager
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transitioned)
-	
 	
 	if initial_state:
 		initial_state.enter()
@@ -29,7 +28,7 @@ func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
 
-func on_child_transitioned(state:State, new_state_name, temp_val:bool = false):
+func on_child_transitioned(state:State, new_state_name, data := {}):
 	if state != current_state:
 		return
 	
@@ -40,5 +39,5 @@ func on_child_transitioned(state:State, new_state_name, temp_val:bool = false):
 	if current_state:
 		current_state.exit()
 	
-	new_state.enter()
+	new_state.enter(state.name, data)
 	current_state = new_state

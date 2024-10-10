@@ -1,9 +1,8 @@
-class_name Crouch_walk
-extends State
+class_name Crouch_walk extends PlayerState
 
 @export var actor: CharacterBody2D
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	movementManager.SPEED = 30
 	actor.crouch_collision(true)
 

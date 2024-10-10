@@ -1,19 +1,18 @@
-class_name Roll
-extends State
+class_name Roll extends PlayerState
 
 @export var actor: CharacterBody2D
 @export var end_frame: int = 11
 @export var roll_speed: int = 100
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	actor.animate(str(name))
-	Movement.rolling = true
+	Movement.unmovable = true
 	actor.velocity.x = actor.sprite_pivot.scale.x * roll_speed
 	actor.hitbox_comp.monitoring = false
 
 func exit():
 	actor.roll_cd = 0
-	Movement.rolling = false
+	Movement.unmovable = false
 	actor.hitbox_comp.monitoring = true
 
 func update(delta):

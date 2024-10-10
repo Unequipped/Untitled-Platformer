@@ -1,5 +1,4 @@
-class_name Slime_Enemy
-extends CharacterBody2D
+class_name Enemy extends Entity
 
 #@onready var sprite_pivot: Node2D = $spritePivot # not needed?
 #@onready var state_machine: State_Machine = $state_machine # hasn't been added yet
@@ -7,7 +6,6 @@ extends CharacterBody2D
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 
-@export var animator:AnimationPlayer #: AnimatedSprite2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 
@@ -18,6 +16,7 @@ var vel = Vector2.ZERO
 var walking:bool = false
 var jumping:bool = false
 
+var vulnerable: bool = true
 
 func _ready():
 	animate("idle")
@@ -27,8 +26,3 @@ func _physics_process(delta: float):
 
 func _process(delta: float):
 	pass
-
-func animate(animation: String = ""): # We need an entity class that has this function instead of just copying it
-	if animation:
-		animator.play(animation)
-		return animator.is_playing()

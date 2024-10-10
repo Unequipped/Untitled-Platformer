@@ -1,16 +1,14 @@
-class_name Player
-extends CharacterBody2D
+class_name Player extends Entity
 
 @onready var sprite_pivot: Node2D = $spritePivot
-@onready var state_machine: State_Machine = $state_machine
+@onready var state_machine: StateMachine = $state_machine
 @onready var movement: Movement = $movement
 @onready var hitbox_comp: Area2D = $hitbox_component
 
 @onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 @onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
-@onready var crouch_check:RayCast2D = $crouch_check
+@onready var crouch_check: RayCast2D = $crouch_check
 
-@export var animator: AnimatedSprite2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
 

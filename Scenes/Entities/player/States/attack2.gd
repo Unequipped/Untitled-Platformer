@@ -1,12 +1,11 @@
-class_name Attack2
-extends State
+class_name Attack2 extends PlayerState
 
 @export var actor: CharacterBody2D
 @export var end_frame: int = 5
 
 var attack_playing:bool
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	actor.animate(str(name))
 
 func exit():

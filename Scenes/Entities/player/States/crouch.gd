@@ -1,9 +1,8 @@
-class_name Crouch
-extends State
+class_name Crouch extends PlayerState
 
 @export var actor: CharacterBody2D
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	actor.animate("crouch_transition", "crouch_walk")
 	actor.crouch_collision(true)
 

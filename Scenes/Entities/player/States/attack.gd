@@ -1,17 +1,16 @@
-class_name Attack
-extends State
+class_name Attack extends PlayerState
 
 # The issue with attack and attack2 is that I'll probably need to end up
 # hard coding apply damage to when the correct frame is reached
 # it might be good to create an entirely separate node handling animations
 
 @export var actor: CharacterBody2D
-@export var end_frame: int = 3
-@export var dmg: int = 5 # remove?
+@export var dmg_frame: int = 1
+@export var dmg: int = 5 # UNUSED - can be used to give attacks unique dmg
 
 var attack_playing:bool
 
-func enter():
+func enter(previous_state_path: String = "", data := {}):
 	actor.animate(str(name))
 
 func exit():

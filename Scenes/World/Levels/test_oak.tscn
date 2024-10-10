@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Misc/dynamic_camera.gd" id="3_k7fab"]
 [ext_resource type="Texture2D" uid="uid://d4hhclm7qqdg3" path="res://Assets/background/background_layer_2.png" id="4_ykchq"]
 [ext_resource type="Texture2D" uid="uid://c26xjai40k64k" path="res://Assets/background/background_layer_3.png" id="5_73pls"]
-[ext_resource type="PackedScene" uid="uid://cqdkc4ub70ada" path="res://Scenes/Entities/enemies/slime_enemy.tscn" id="6_qfemc"]
+[ext_resource type="PackedScene" uid="uid://cqdkc4ub70ada" path="res://Scenes/Entities/enemies/enemy.tscn" id="6_qfemc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wenn7"]
 texture = ExtResource("1_b5nye")
@@ -566,8 +566,6 @@ metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("2_2dmkk")]
 position = Vector2(96, 112)
-roll_cd = null
-damage = null
 standard = true
 metadata/_edit_group_ = true
 
@@ -580,8 +578,8 @@ drag_top_margin = 1.0
 script = ExtResource("3_k7fab")
 actor = NodePath("..")
 
-[node name="slime_enemy" parent="." instance=ExtResource("6_qfemc")]
-position = Vector2(192, 160)
+[node name="enemy" parent="." instance=ExtResource("6_qfemc")]
+position = Vector2(184, 152)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(5, 0)
