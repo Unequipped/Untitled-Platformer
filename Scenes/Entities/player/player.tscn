@@ -524,16 +524,13 @@ size = Vector2(14, 25)
 radius = 6.0
 height = 32.0
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "hp_comp", "dmg_box")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("hp_comp", "dmg_box", "animator")]
 scale = Vector2(0.75, 0.75)
 collision_mask = 4
 script = ExtResource("1_rygmp")
-animator = NodePath("spritePivot/AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("spritePivot/dmg_box")
-roll_cd = null
-damage = null
-standard = null
+animator = NodePath("spritePivot/AnimatedSprite2D")
 
 [node name="spritePivot" type="Node2D" parent="."]
 
@@ -588,12 +585,6 @@ script = ExtResource("9_uitvm")
 script = ExtResource("16_v0bgd")
 actor = NodePath("..")
 input_manager = NodePath("../input_manager")
-MAX_SPEED = null
-y_accel = null
-y_max = null
-x_accel = null
-x_decel = null
-x_decel_air = null
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager", "inputManager")]
 script = ExtResource("10_r3ar5")

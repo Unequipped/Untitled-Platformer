@@ -1,5 +1,4 @@
-class_name InputManager
-extends Node
+class_name InputManager extends LogicManager
 
 #need to rename vars
 @export var jump_buffer_timer: float = 0.5

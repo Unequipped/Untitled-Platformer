@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://w0uuevixov52" path="res://Assets/Enemies/Skeleton/Walk.png" id="4_iumki"]
 [ext_resource type="Script" path="res://Scenes/Entities/components/health_component.gd" id="4_qwyhb"]
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="7_7xtx1"]
-[ext_resource type="Script" path="res://Scenes/Entities/enemies/AI.gd" id="8_2nx4y"]
-[ext_resource type="Script" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="8_ra6a6"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/ai.gd" id="8_myta7"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy_movement.gd" id="8_o0mvh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro6lj"]
 atlas = ExtResource("2_2yea0")
@@ -181,13 +181,13 @@ size = Vector2(16, 27)
 radius = 4.0
 height = 18.0
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("animator", "hp_comp", "dmg_box") groups=["enemies"]]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("hp_comp", "dmg_box", "animator") groups=["enemies"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_12lrf")
-animator = NodePath("AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("hitbox_component")
+animator = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -213,18 +213,13 @@ shape = SubResource("CapsuleShape2D_f05i8")
 script = ExtResource("4_qwyhb")
 
 [node name="AI" type="Node" parent="."]
-script = ExtResource("8_2nx4y")
+script = ExtResource("8_myta7")
 
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
-script = ExtResource("8_ra6a6")
+script = ExtResource("8_o0mvh")
 actor = NodePath("..")
 input_manager = NodePath("../AI")
-MAX_SPEED = null
-y_accel = null
-y_max = null
-x_accel = null
-x_decel = null
-x_decel_air = null
+MAX_SPEED = 30
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("7_7xtx1")

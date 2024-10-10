@@ -1,9 +1,9 @@
-class_name State_Machine
+class_name StateMachine
 extends Node
 
 @export var initial_state: State
 @export var movementManager: Movement
-@export var inputManager: InputManager
+@export var inputManager: LogicManager
 
 var current_state: State
 var states: Dictionary = {}
