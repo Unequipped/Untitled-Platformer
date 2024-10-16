@@ -194,6 +194,7 @@ position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jdgeh")
 animation = &"hurt"
+metadata/_edit_lock_ = true
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -212,8 +213,10 @@ shape = SubResource("CapsuleShape2D_f05i8")
 [node name="health" type="Node" parent="."]
 script = ExtResource("4_qwyhb")
 
-[node name="AI" type="Node" parent="."]
+[node name="AI" type="Node" parent="." node_paths=PackedStringArray("sight_raycast_R", "sight_raycast_L")]
 script = ExtResource("8_myta7")
+sight_raycast_R = NodePath("../RayCast2D_RIGHT")
+sight_raycast_L = NodePath("../RayCast2D2_LEFT")
 
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_manager")]
 script = ExtResource("8_o0mvh")
@@ -229,3 +232,9 @@ script = ExtResource("7_7xtx1")
 [node name="walk" type="Node" parent="state_machine"]
 
 [node name="attack" type="Node" parent="state_machine"]
+
+[node name="RayCast2D_RIGHT" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+
+[node name="RayCast2D2_LEFT" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
