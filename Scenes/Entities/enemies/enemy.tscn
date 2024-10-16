@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cqdkc4ub70ada"]
+[gd_scene load_steps=36 format=3 uid="uid://cqdkc4ub70ada"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy.gd" id="1_12lrf"]
 [ext_resource type="Texture2D" uid="uid://dekqwryt7nxoi" path="res://Assets/Enemies/Skeleton/Attack.png" id="2_2yea0"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="7_7xtx1"]
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/ai.gd" id="8_myta7"]
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy_movement.gd" id="8_o0mvh"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/states/idle.gd" id="11_cwn3h"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/states/run.gd" id="12_b78vo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro6lj"]
 atlas = ExtResource("2_2yea0")
@@ -170,7 +172,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_w02iw")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"run",
 "speed": 6.0
 }]
 
@@ -181,10 +183,11 @@ size = Vector2(16, 27)
 radius = 4.0
 height = 18.0
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("hp_comp", "dmg_box", "animator") groups=["enemies"]]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_pivot", "hp_comp", "dmg_box", "animator") groups=["enemies"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_12lrf")
+sprite_pivot = NodePath("AnimatedSprite2D")
 hp_comp = NodePath("health")
 dmg_box = NodePath("hitbox_component")
 animator = NodePath("AnimatedSprite2D")
@@ -193,7 +196,7 @@ animator = NodePath("AnimatedSprite2D")
 position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jdgeh")
-animation = &"hurt"
+animation = &"attack"
 metadata/_edit_lock_ = true
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
@@ -230,11 +233,22 @@ actor = NodePath("..")
 input_manager = NodePath("../AI")
 MAX_SPEED = 30
 
-[node name="state_machine" type="Node" parent="."]
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "movementManager", "inputManager")]
 script = ExtResource("7_7xtx1")
+initial_state = NodePath("idle")
+movementManager = NodePath("../movement")
+inputManager = NodePath("../AI")
 
-[node name="idle" type="Node" parent="state_machine"]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("11_cwn3h")
+actor = NodePath("../..")
 
-[node name="run" type="Node" parent="state_machine"]
+[node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("12_b78vo")
+actor = NodePath("../..")
 
 [node name="attack" type="Node" parent="state_machine"]
+
+[node name="hurt" type="Node" parent="state_machine"]
+
+[node name="fall" type="Node" parent="state_machine"]

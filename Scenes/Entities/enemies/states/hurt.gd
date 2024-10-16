@@ -1,4 +1,4 @@
-class_name EHurt extends PlayerState
+class_name EHurt extends EnemyState
 
 @export var actor: CharacterBody2D
 

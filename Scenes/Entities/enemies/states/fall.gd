@@ -1,4 +1,4 @@
-class_name EIdle extends EnemyState
+class_name EFall extends EnemyState
 
 @export var actor: CharacterBody2D
 
@@ -9,11 +9,11 @@ func exit():
 	pass
 
 func update(delta):
-	actor.animate(str(name))
+	pass #actor.animate(str(name), "fall_transition")
 
 func physics_update(delta):
 	switch_state()
 
 func switch_state():
-	if inputManager.get_direction() != Vector2.ZERO:
-		Transitioned.emit(self, "run")
+	if actor.is_on_floor():
+		Transitioned.emit(self, "idle")
