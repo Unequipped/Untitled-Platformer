@@ -29,8 +29,8 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	pass
 
-#func pivot(facing):
-		#if facing == Vector2.RIGHT:
-			#sprite_pivot.scale.x = 1
-		#elif facing == Vector2.LEFT:
-			#sprite_pivot.scale.x = -1
+func pivot(facing):
+	if facing > 0:
+		sprite_pivot.scale.x = 0.5
+	elif facing < 0:
+		sprite_pivot.scale.x = -0.5

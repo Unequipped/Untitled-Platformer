@@ -3,13 +3,13 @@ class_name EFall extends EnemyState
 @export var actor: CharacterBody2D
 
 func enter(previous_state_path: String = "", data := {}):
-	pass
+	actor.animate(str(name))
 
 func exit():
 	pass
 
 func update(delta):
-	pass #actor.animate(str(name), "fall_transition")
+	pass
 
 func physics_update(delta):
 	switch_state()
