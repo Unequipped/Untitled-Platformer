@@ -17,3 +17,6 @@ func physics_update(delta):
 func switch_state():
 	if inputManager.get_direction() != Vector2.ZERO:
 		Transitioned.emit(self, "run")
+	
+	if inputManager.can_attack():
+		Transitioned.emit(self, "attack")

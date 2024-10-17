@@ -20,3 +20,6 @@ func switch_state():
 	else:
 		if inputManager.get_direction() == Vector2.ZERO:
 			Transitioned.emit(self, "idle")
+	
+	if inputManager.can_attack():
+		Transitioned.emit(self, "attack")

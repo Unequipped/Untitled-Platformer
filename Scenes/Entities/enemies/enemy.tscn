@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cqdkc4ub70ada"]
+[gd_scene load_steps=39 format=3 uid="uid://cqdkc4ub70ada"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy.gd" id="1_12lrf"]
 [ext_resource type="Texture2D" uid="uid://dekqwryt7nxoi" path="res://Assets/Enemies/Skeleton/Attack.png" id="2_2yea0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy_movement.gd" id="8_o0mvh"]
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/states/idle.gd" id="11_cwn3h"]
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/states/run.gd" id="12_b78vo"]
+[ext_resource type="Script" path="res://Scenes/Entities/enemies/states/attack.gd" id="13_or17p"]
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/states/fall.gd" id="13_qrydf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro6lj"]
@@ -125,7 +126,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7jeug")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 12.0
 }, {
@@ -209,7 +210,7 @@ animator = NodePath("AnimatedSprite2D")
 position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jdgeh")
-animation = &"fall"
+animation = &"attack"
 metadata/_edit_lock_ = true
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
@@ -260,7 +261,9 @@ actor = NodePath("../..")
 script = ExtResource("12_b78vo")
 actor = NodePath("../..")
 
-[node name="attack" type="Node" parent="state_machine"]
+[node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("13_or17p")
+actor = NodePath("../..")
 
 [node name="hurt" type="Node" parent="state_machine"]
 
