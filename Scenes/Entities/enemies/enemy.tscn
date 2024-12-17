@@ -221,6 +221,7 @@ frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="hitbox_component" parent="spritePivot" node_paths=PackedStringArray("health", "actor") groups=["enemies"] instance=ExtResource("3_5msxc")]
+visible = false
 collision_layer = 8
 health = NodePath("../../health")
 actor = NodePath("../..")
@@ -235,13 +236,16 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4of5y")
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ao08u")
 
 [node name="RayCast2D_RIGHT" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(40, 0)
 
 [node name="RayCast2D2_LEFT" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(-40, 0)
 
 [node name="health" type="Node" parent="."]
