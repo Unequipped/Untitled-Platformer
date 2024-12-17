@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cqdkc4ub70ada"]
+[gd_scene load_steps=40 format=3 uid="uid://cqdkc4ub70ada"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemies/enemy.gd" id="1_12lrf"]
 [ext_resource type="Texture2D" uid="uid://dekqwryt7nxoi" path="res://Assets/Enemies/Skeleton/Attack.png" id="2_2yea0"]
@@ -190,42 +190,53 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao08u"]
-size = Vector2(16, 27)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f05i8"]
 radius = 4.0
 height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4of5y"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao08u"]
+size = Vector2(16, 27)
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_pivot", "hp_comp", "dmg_box", "animator") groups=["enemies"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_12lrf")
-sprite_pivot = NodePath("AnimatedSprite2D")
+sprite_pivot = NodePath("spritePivot")
 hp_comp = NodePath("health")
-dmg_box = NodePath("hitbox_component")
-animator = NodePath("AnimatedSprite2D")
+dmg_box = NodePath("spritePivot/hitbox_component")
+animator = NodePath("spritePivot/AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="spritePivot" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jdgeh")
 animation = &"attack"
+frame = 7
+frame_progress = 1.0
 metadata/_edit_lock_ = true
+
+[node name="hitbox_component" parent="spritePivot" node_paths=PackedStringArray("health", "actor") groups=["enemies"] instance=ExtResource("3_5msxc")]
+collision_layer = 8
+health = NodePath("../../health")
+actor = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spritePivot/hitbox_component"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_f05i8")
+
+[node name="attack_area" type="CollisionShape2D" parent="spritePivot/hitbox_component"]
+position = Vector2(17, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4of5y")
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ao08u")
-
-[node name="hitbox_component" parent="." node_paths=PackedStringArray("health", "actor") groups=["enemies"] instance=ExtResource("3_5msxc")]
-visible = false
-collision_layer = 8
-health = NodePath("../health")
-actor = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_f05i8")
 
 [node name="RayCast2D_RIGHT" type="RayCast2D" parent="."]
 target_position = Vector2(40, 0)

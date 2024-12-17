@@ -1,6 +1,5 @@
 class_name Enemy extends Entity
 
-#@onready var sprite_pivot: Node2D = $spritePivot # not needed?
 #@onready var state_machine: State_Machine = $state_machine # hasn't been added yet
 @onready var hitbox_comp: Area2D = $hitbox_component
 
@@ -31,6 +30,6 @@ func _process(delta: float):
 
 func pivot(facing):
 	if facing > 0:
-		sprite_pivot.scale.x = 0.5
+		sprite_pivot.scale.x = 1
 	elif facing < 0:
-		sprite_pivot.scale.x = -0.5
+		sprite_pivot.scale.x = -1
