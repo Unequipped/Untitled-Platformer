@@ -9,6 +9,7 @@ class_name Enemy extends Entity
 @export var sprite_pivot: Node2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
+@export var attack_area: CollisionShape2D
 @export var standard: bool = false
 
 # Movement related stuff 

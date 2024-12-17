@@ -14,10 +14,7 @@ func exit():
 	pass
 
 func update(delta):
-	attack_playing = actor.animate() # returns true if animation is playing
-	if actor.animator.frame == attack_frame_index and !attack_is_done:
-		print("HIT")
-		attack_is_done = true
+	execute_attack()
 
 func physics_update(delta):
 	actor.velocity.x = 0
@@ -29,3 +26,9 @@ func switch_state():
 			Transitioned.emit(self, "idle")
 		else:
 			Transitioned.emit(self, "fall")
+
+func execute_attack():
+	attack_playing = actor.animate() # returns true if animation is playing
+	if actor.animator.frame == attack_frame_index and !attack_is_done:
+		if actor.attack_area.get
+		attack_is_done = true
