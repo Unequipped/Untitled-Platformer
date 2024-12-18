@@ -46,6 +46,12 @@ func apply_dmg():
 		if area.is_in_group("enemies"):
 			area.register_attack(damage)
 
+func apply_damage(value):
+	if 1 == 1: # condition can be added for invulnerability
+		hp_comp.health -= 1
+		print(hp_comp.health)
+		print(hp_comp.MAX_HEALTH)
+
 func crouch_collision(toggle):
 	if toggle:
 		crouch_collision_shape.disabled = false

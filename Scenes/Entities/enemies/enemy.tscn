@@ -201,15 +201,15 @@ radius = 8.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao08u"]
 size = Vector2(16, 27)
 
-[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("hitbox_comp", "sprite_pivot", "hp_comp", "dmg_box", "attack_area", "animator") groups=["enemies"]]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_pivot", "hitbox_comp", "attack_area", "hp_comp", "dmg_box", "animator") groups=["enemies"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_12lrf")
-hitbox_comp = NodePath("spritePivot/hitbox_component")
 sprite_pivot = NodePath("spritePivot")
+hitbox_comp = NodePath("spritePivot/hitbox_component")
+attack_area = NodePath("spritePivot/attackbox_component")
 hp_comp = NodePath("health")
 dmg_box = NodePath("spritePivot/hitbox_component")
-attack_area = NodePath("spritePivot/attackbox_component/attack_area")
 animator = NodePath("spritePivot/AnimatedSprite2D")
 
 [node name="spritePivot" type="Node2D" parent="."]

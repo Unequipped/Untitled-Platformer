@@ -6,11 +6,11 @@ class_name Enemy extends Entity
 
 @onready var state_machine: StateMachine = $state_machine
 
-@export var hitbox_comp: Area2D
 @export var sprite_pivot: Node2D
+@export var hitbox_comp: Area2D
+@export var attack_area: Area2D
 @export var hp_comp: health_component
 @export var dmg_box: Area2D
-@export var attack_area: CollisionShape2D
 @export var standard: bool = false
 
 # Movement related stuff 
