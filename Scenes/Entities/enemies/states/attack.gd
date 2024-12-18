@@ -30,5 +30,5 @@ func switch_state():
 func execute_attack():
 	attack_playing = actor.animate() # returns true if animation is playing
 	if actor.animator.frame == attack_frame_index and !attack_is_done:
-		if actor.attack_area.get
+		print("HIT")
 		attack_is_done = true
