@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ygx7frg5y6q7"]
 
-[ext_resource type="Script" path="res://Scenes/World/Levels/level.gd" id="1_uojfp"]
+[ext_resource type="Script" uid="uid://d35srkt10c3j0" path="res://Scenes/World/Levels/level.gd" id="1_uojfp"]
 [ext_resource type="PackedScene" uid="uid://cibwhf4tqdq7g" path="res://Scenes/World/Tiles/castleTiles.tscn" id="2_fk8c7"]
 [ext_resource type="PackedScene" uid="uid://da4s40vtvfjng" path="res://Scenes/Entities/player/player.tscn" id="3_en8up"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="5_6k7rp"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbqvbechi74v5"]
 
-[ext_resource type="Script" path="res://Scenes/Menus/hud.gd" id="1_l0bd8"]
+[ext_resource type="Script" uid="uid://b3103atuh6fbu" path="res://Scenes/Menus/hud.gd" id="1_l0bd8"]
 [ext_resource type="Texture2D" uid="uid://dt64r54v4p21" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_w.png" id="2_dxl8i"]
 [ext_resource type="Texture2D" uid="uid://rmbi5yr5l4h7" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_w_outline.png" id="3_60q0w"]
 [ext_resource type="Texture2D" uid="uid://cwe4cjnpfovpj" path="res://Assets/Ui/Keyboard & Mouse/Default/keyboard_a.png" id="4_butjv"]

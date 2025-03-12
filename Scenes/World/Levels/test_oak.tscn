@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://5vh6l5vajmr1" path="res://Assets/Tiles/oak_woods_tileset.png" id="1_b5nye"]
 [ext_resource type="PackedScene" uid="uid://da4s40vtvfjng" path="res://Scenes/Entities/player/player.tscn" id="2_2dmkk"]
 [ext_resource type="Texture2D" uid="uid://dyaheaqxrvp7k" path="res://Assets/background/background_layer_1.png" id="3_3st6x"]
-[ext_resource type="Script" path="res://Scenes/Misc/dynamic_camera.gd" id="3_k7fab"]
+[ext_resource type="Script" uid="uid://c1yrecbujrr7v" path="res://Scenes/Misc/dynamic_camera.gd" id="3_k7fab"]
 [ext_resource type="Texture2D" uid="uid://d4hhclm7qqdg3" path="res://Assets/background/background_layer_2.png" id="4_ykchq"]
 [ext_resource type="Texture2D" uid="uid://c26xjai40k64k" path="res://Assets/background/background_layer_3.png" id="5_73pls"]
 [ext_resource type="PackedScene" uid="uid://cqdkc4ub70ada" path="res://Scenes/Entities/enemies/enemy.tscn" id="6_qfemc"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://een5uuf10rts"]
 
-[ext_resource type="Script" path="res://Scenes/Menus/ui_audio_elements/vol_slider.gd" id="1_n65kq"]
+[ext_resource type="Script" uid="uid://rpkynk0d4t1h" path="res://Scenes/Menus/ui_audio_elements/vol_slider.gd" id="1_n65kq"]
 
 [node name="vol_slider" type="HSlider"]
 max_value = 1.0

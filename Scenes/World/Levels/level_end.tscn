@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://00rnn2sr0t2r"]
 
-[ext_resource type="Script" path="res://Scenes/World/Levels/level_end.gd" id="1_a0ixp"]
+[ext_resource type="Script" uid="uid://b4800mff63t5g" path="res://Scenes/World/Levels/level_end.gd" id="1_a0ixp"]
 [ext_resource type="Texture2D" uid="uid://bs533bv2ewica" path="res://Assets/tileset.png" id="1_kc2q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gicli"]

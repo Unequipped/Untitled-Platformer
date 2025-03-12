@@ -5,7 +5,7 @@ class_name StateMachine extends Node
 @export var inputManager: LogicManager
 
 var current_state: State
-var states: Dictionary = {}
+var states: Dictionary = {} #the Transitioned.emit(self, "") needs dictionary to work.
 
 func _ready():
 	for child in get_children():
