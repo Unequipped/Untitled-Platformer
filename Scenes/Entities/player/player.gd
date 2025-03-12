@@ -40,13 +40,13 @@ func _process(delta: float):
 				#animator.play_backwards(animation)
 	#return animator.is_playing()
 
-func apply_dmg():
+func apply_dmg(): # for attacking enemy
 	var areas:Array = dmg_box.get_overlapping_areas()
 	for area in areas:
 		if area.is_in_group("enemies"):
 			area.register_attack(damage)
 
-func apply_damage(value):
+func apply_damage(value): # for taking damage
 	if 1 == 1: # condition can be added for invulnerability
 		hp_comp.health -= 1
 		print(hp_comp.health)

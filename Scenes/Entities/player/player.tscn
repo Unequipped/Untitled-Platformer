@@ -1,11 +1,11 @@
 [gd_scene load_steps=94 format=3 uid="uid://da4s40vtvfjng"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
+[ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
 [ext_resource type="Texture2D" uid="uid://teawjfaqmuh" path="res://Assets/Character/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="2_cewkk"]
 [ext_resource type="Texture2D" uid="uid://74lj7y28bb2e" path="res://Assets/Character/Outline/120x80_PNGSheets/_Fall.png" id="2_qfr0e"]
 [ext_resource type="PackedScene" uid="uid://bvc20mqmyjoyq" path="res://Scenes/Entities/components/hitbox_component.tscn" id="3_4rgno"]
-[ext_resource type="Script" path="res://Scenes/Entities/components/health_component.gd" id="3_6pdar"]
+[ext_resource type="Script" uid="uid://dofwbl1chriwq" path="res://Scenes/Entities/components/health_component.gd" id="3_6pdar"]
 [ext_resource type="Texture2D" uid="uid://8p06bgcjfssc" path="res://Assets/Character/Outline/120x80_PNGSheets/_Jump.png" id="3_dvl3g"]
 [ext_resource type="Texture2D" uid="uid://be7idgbeq8p1s" path="res://Assets/Character/Outline/120x80_PNGSheets/_Run.png" id="3_fgymf"]
 [ext_resource type="Texture2D" uid="uid://xvkqqu3swpi7" path="res://Assets/Character/Outline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_jg78k"]
@@ -14,20 +14,20 @@
 [ext_resource type="Texture2D" uid="uid://cxbef8fytq3x4" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchWalk.png" id="5_1w4tc"]
 [ext_resource type="Texture2D" uid="uid://d3ealn0vlegll" path="res://Assets/Character/Outline/120x80_PNGSheets/_Roll.png" id="7_dknti"]
 [ext_resource type="Texture2D" uid="uid://cife1s7ibyft7" path="res://Assets/Character/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="7_vu6h2"]
-[ext_resource type="Script" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
-[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="10_r3ar5"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/idle.gd" id="11_m0tou"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/run.gd" id="12_h0by1"]
+[ext_resource type="Script" uid="uid://xlaorm2h4lt0" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
+[ext_resource type="Script" uid="uid://bdcdygi1w58yn" path="res://Scripts/state_machine.gd" id="10_r3ar5"]
+[ext_resource type="Script" uid="uid://b70oosem4njx5" path="res://Scenes/Entities/player/states/idle.gd" id="11_m0tou"]
+[ext_resource type="Script" uid="uid://cikc4sda1r64e" path="res://Scenes/Entities/player/states/run.gd" id="12_h0by1"]
 [ext_resource type="PackedScene" uid="uid://d0kflr7trwhmb" path="res://Scenes/Entities/components/attackbox_component.tscn" id="13_e7jni"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/fall.gd" id="13_pdonm"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/jump.gd" id="15_2ioh0"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/attack.gd" id="16_rblma"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/player_movement.gd" id="16_v0bgd"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/attack2.gd" id="18_6og88"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/roll.gd" id="20_fctga"]
+[ext_resource type="Script" uid="uid://beqvy44671l71" path="res://Scenes/Entities/player/states/fall.gd" id="13_pdonm"]
+[ext_resource type="Script" uid="uid://bcwl1x7c6ymk0" path="res://Scenes/Entities/player/states/jump.gd" id="15_2ioh0"]
+[ext_resource type="Script" uid="uid://d5dbttfwccxd" path="res://Scenes/Entities/player/states/attack.gd" id="16_rblma"]
+[ext_resource type="Script" uid="uid://dircufolrkc4b" path="res://Scenes/Entities/player/player_movement.gd" id="16_v0bgd"]
+[ext_resource type="Script" uid="uid://cghyu8gnwadx2" path="res://Scenes/Entities/player/states/attack2.gd" id="18_6og88"]
+[ext_resource type="Script" uid="uid://2u8vegfuu3lj" path="res://Scenes/Entities/player/states/roll.gd" id="20_fctga"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/crouch.gd" id="21_t1avu"]
-[ext_resource type="Script" path="res://Scenes/Entities/player/states/crouch_walk.gd" id="24_jw3yf"]
+[ext_resource type="Script" uid="uid://cdo5e0qqc6set" path="res://Scenes/Entities/player/states/crouch.gd" id="21_t1avu"]
+[ext_resource type="Script" uid="uid://cv5t83no4uw03" path="res://Scenes/Entities/player/states/crouch_walk.gd" id="24_jw3yf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
 atlas = ExtResource("2_cewkk")
@@ -548,28 +548,25 @@ scale = Vector2(4.66667, 4.66667)
 polygon = PackedVector2Array(4.58333, 2.08333, 9.55357, 3.2619, 10.4107, -0.809527, 8.91071, -3.80953, 5.48214, -5.7381, -2.01786, -5.09524, 1.83928, -3.59524, 4.625, -1.45238, 4.58333, -0.416668)
 
 [node name="crouch_check" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(0, -11)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_k7yu4")
 
 [node name="crouch_collision_shape" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_ga2i0")
 disabled = true
 
 [node name="hitbox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
-visible = false
 collision_mask = 4
 health = NodePath("../health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
+visible = false
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_aqj1f")
 

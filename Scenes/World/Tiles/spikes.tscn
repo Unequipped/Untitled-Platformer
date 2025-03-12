@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0h086fam4e1b"]
 
 [ext_resource type="Texture2D" uid="uid://bs533bv2ewica" path="res://Assets/tileset.png" id="1_fh31v"]
-[ext_resource type="Script" path="res://Scenes/World/Tiles/spikes.gd" id="1_wyhkv"]
+[ext_resource type="Script" uid="uid://y3t7i4pbkroa" path="res://Scenes/World/Tiles/spikes.gd" id="1_wyhkv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6my3n"]
 radius = 2.0

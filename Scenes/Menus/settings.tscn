@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2bq6338e52dv"]
 
-[ext_resource type="Script" path="res://Scenes/Menus/settings.gd" id="1_hb23r"]
+[ext_resource type="Script" uid="uid://bg5krspulihok" path="res://Scenes/Menus/settings.gd" id="1_hb23r"]
 [ext_resource type="PackedScene" uid="uid://een5uuf10rts" path="res://Scenes/Menus/ui_audio_elements/vol_slider.tscn" id="2_8lpt4"]
 [ext_resource type="AudioStream" uid="uid://1ir30jrv4a8d" path="res://Assets/Audio/Music/Alone(loop) - melancholic - slow.mp3" id="2_jbrrx"]
 [ext_resource type="PackedScene" uid="uid://ct4y5yhcqilif" path="res://Scenes/Menus/ui_audio_elements/vol_mute.tscn" id="3_nmpa3"]
