@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=93 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" uid="uid://bcwl1x7c6ymk0" path="res://Scenes/Entities/player/states/jump.gd" id="15_2ioh0"]
 [ext_resource type="Script" uid="uid://d5dbttfwccxd" path="res://Scenes/Entities/player/states/attack.gd" id="16_rblma"]
 [ext_resource type="Script" uid="uid://dircufolrkc4b" path="res://Scenes/Entities/player/player_movement.gd" id="16_v0bgd"]
-[ext_resource type="Script" uid="uid://cghyu8gnwadx2" path="res://Scenes/Entities/player/states/attack2.gd" id="18_6og88"]
 [ext_resource type="Script" uid="uid://2u8vegfuu3lj" path="res://Scenes/Entities/player/states/roll.gd" id="20_fctga"]
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
 [ext_resource type="Script" uid="uid://cdo5e0qqc6set" path="res://Scenes/Entities/player/states/crouch.gd" id="21_t1avu"]
@@ -607,10 +606,6 @@ jump_force = 185
 
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("16_rblma")
-actor = NodePath("../..")
-
-[node name="attack2" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
-script = ExtResource("18_6og88")
 actor = NodePath("../..")
 
 [node name="roll" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]

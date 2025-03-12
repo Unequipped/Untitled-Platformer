@@ -28,7 +28,8 @@ func physics_update(delta):
 func switch_state():
 	if !attack_playing:
 		if inputManager.attack_inp():
-			Transitioned.emit(self, "attack2")
+			#Transitioned.emit(self, "attack2") removed to simplify attack
+			Transitioned.emit(self, "attack")
 		if actor.is_on_floor():
 			Transitioned.emit(self, "idle")
 	
