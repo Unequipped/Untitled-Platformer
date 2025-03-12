@@ -48,9 +48,10 @@ func apply_dmg(): # for attacking enemy
 
 func apply_damage(value): # for taking damage
 	if 1 == 1: # condition can be added for invulnerability
-		hp_comp.health -= 1
-		print(hp_comp.health)
-		print(hp_comp.MAX_HEALTH)
+		state_machine.current_state.attacked()
+		#hp_comp.health -= 1
+		#print(hp_comp.health)
+		#print(hp_comp.MAX_HEALTH)
 
 func crouch_collision(toggle):
 	if toggle:

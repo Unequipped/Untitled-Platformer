@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=96 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cxbef8fytq3x4" path="res://Assets/Character/Outline/120x80_PNGSheets/_CrouchWalk.png" id="5_1w4tc"]
 [ext_resource type="Texture2D" uid="uid://d3ealn0vlegll" path="res://Assets/Character/Outline/120x80_PNGSheets/_Roll.png" id="7_dknti"]
 [ext_resource type="Texture2D" uid="uid://cife1s7ibyft7" path="res://Assets/Character/Outline/120x80_PNGSheets/_JumpFallInbetween.png" id="7_vu6h2"]
+[ext_resource type="Texture2D" uid="uid://bqm53d0rn1gb" path="res://Assets/Character/Outline/120x80_PNGSheets/_Hit.png" id="9_rd67o"]
 [ext_resource type="Script" uid="uid://xlaorm2h4lt0" path="res://Scenes/Entities/Scripts/input_manager.gd" id="9_uitvm"]
 [ext_resource type="Script" uid="uid://bdcdygi1w58yn" path="res://Scripts/state_machine.gd" id="10_r3ar5"]
 [ext_resource type="Script" uid="uid://b70oosem4njx5" path="res://Scenes/Entities/player/states/idle.gd" id="11_m0tou"]
@@ -27,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dbqvbechi74v5" path="res://Scenes/Menus/hud.tscn" id="21_25cfi"]
 [ext_resource type="Script" uid="uid://cdo5e0qqc6set" path="res://Scenes/Entities/player/states/crouch.gd" id="21_t1avu"]
 [ext_resource type="Script" uid="uid://cv5t83no4uw03" path="res://Scenes/Entities/player/states/crouch_walk.gd" id="24_jw3yf"]
+[ext_resource type="Script" uid="uid://rosu3fxba57q" path="res://Scenes/Entities/shared/hurt.gd" id="28_24qya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
 atlas = ExtResource("2_cewkk")
@@ -131,6 +133,10 @@ region = Rect2(0, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_38xa0"]
 atlas = ExtResource("7_vu6h2")
 region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24qya"]
+atlas = ExtResource("9_rd67o")
+region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpai5"]
 atlas = ExtResource("2_5dh45")
@@ -389,6 +395,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_24qya")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kpai5")
 }, {
 "duration": 1.0,
@@ -537,7 +551,7 @@ animator = NodePath("spritePivot/AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"idle"
+animation = &"hurt"
 
 [node name="attackbox_component" parent="spritePivot" instance=ExtResource("13_e7jni")]
 
@@ -620,6 +634,11 @@ actor = NodePath("../..")
 [node name="crouch_walk" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("24_jw3yf")
 actor = NodePath("../..")
+
+[node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
+script = ExtResource("28_24qya")
+actor = NodePath("../..")
+metadata/_custom_type_script = "uid://rosu3fxba57q"
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player_one") instance=ExtResource("21_25cfi")]
 visible = false
