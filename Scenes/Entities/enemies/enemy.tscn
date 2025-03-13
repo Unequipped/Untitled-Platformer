@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://w0uuevixov52" path="res://Assets/Enemies/Skeleton/Walk.png" id="4_iumki"]
 [ext_resource type="Script" uid="uid://dofwbl1chriwq" path="res://Scenes/Entities/components/health_component.gd" id="4_qwyhb"]
 [ext_resource type="PackedScene" uid="uid://d0kflr7trwhmb" path="res://Scenes/Entities/components/attackbox_component.tscn" id="7_2wxn1"]
-[ext_resource type="Script" uid="uid://bdcdygi1w58yn" path="res://Scripts/state_machine.gd" id="7_7xtx1"]
+[ext_resource type="Script" uid="uid://bdcdygi1w58yn" path="res://Scenes/Entities/Scripts/state_machine.gd" id="7_7xtx1"]
 [ext_resource type="Script" uid="uid://boad3mod38l3f" path="res://Scenes/Entities/enemies/ai.gd" id="8_myta7"]
 [ext_resource type="Script" uid="uid://ckysmwc4t2w53" path="res://Scenes/Entities/enemies/enemy_movement.gd" id="8_o0mvh"]
 [ext_resource type="Script" uid="uid://rtnrg4qcsidq" path="res://Scenes/Entities/enemies/states/idle.gd" id="11_cwn3h"]
