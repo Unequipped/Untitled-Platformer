@@ -617,14 +617,18 @@ actor = NodePath("../..")
 script = ExtResource("15_2ioh0")
 actor = NodePath("../..")
 jump_force = 185
+min_jump_duration = null
 
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("16_rblma")
 actor = NodePath("../..")
+dmg_frame = null
+dmg = null
 
 [node name="roll" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
 script = ExtResource("20_fctga")
 actor = NodePath("../..")
+end_frame = null
 roll_speed = 140
 
 [node name="crouch" type="Node" parent="state_machine" node_paths=PackedStringArray("actor")]
