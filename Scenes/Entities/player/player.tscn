@@ -530,7 +530,7 @@ animator = NodePath("spritePivot/AnimatedSprite2D")
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
 animation = &"idle"
-frame_progress = 0.353158
+frame_progress = 0.519481
 
 [node name="crouch_check" type="RayCast2D" parent="."]
 visible = false
