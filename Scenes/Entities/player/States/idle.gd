@@ -32,3 +32,6 @@ func switch_state():
 	
 	if inputManager.y_inp() == 1:
 		Transitioned.emit(self, "crouch")
+	
+	if actor.is_hit:
+		Transitioned.emit(self, "hurt")

@@ -31,15 +31,6 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	roll_cd_dec()
 
-#func animate(animation: String = "", anim_to_check: String = "", reverse:bool = false): ## Animates & returns if animation is playing
-	#if animation:
-		#if !(animator.animation == anim_to_check and animator.is_playing() and anim_to_check != ""):
-			#if !reverse:
-				#animator.play(animation)
-			#else:
-				#animator.play_backwards(animation)
-	#return animator.is_playing()
-
 func apply_dmg(): # for attacking enemy
 	var areas:Array = dmg_box.get_overlapping_areas()
 	for area in areas:
@@ -48,10 +39,10 @@ func apply_dmg(): # for attacking enemy
 
 func apply_damage(value): # for taking damage
 	if 1 == 1: # condition can be added for invulnerability
-		state_machine.current_state.attacked()
-		#hp_comp.health -= 1
-		#print(hp_comp.health)
-		#print(hp_comp.MAX_HEALTH)
+		#state_machine.current_state.attacked(10) # REMOVE
+		hp_comp.health -= 1
+		print(hp_comp.health)
+		print(hp_comp.MAX_HEALTH)
 
 func crouch_collision(toggle):
 	if toggle:

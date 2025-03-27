@@ -551,7 +551,7 @@ animator = NodePath("spritePivot/AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"hurt"
+animation = &"crouch"
 
 [node name="attackbox_component" parent="spritePivot" instance=ExtResource("13_e7jni")]
 
@@ -574,9 +574,10 @@ position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_ga2i0")
 disabled = true
 
-[node name="hitbox_component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_4rgno")]
+[node name="hitbox_component" parent="." node_paths=PackedStringArray("health", "actor") instance=ExtResource("3_4rgno")]
 collision_mask = 4
 health = NodePath("../health")
+actor = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
 visible = false
@@ -643,6 +644,10 @@ actor = NodePath("../..")
 script = ExtResource("28_24qya")
 actor = NodePath("../..")
 metadata/_custom_type_script = "uid://rosu3fxba57q"
+
+[node name="Timer" type="Timer" parent="state_machine/hurt"]
+wait_time = 0.1
+one_shot = true
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player_one") instance=ExtResource("21_25cfi")]
 visible = false
