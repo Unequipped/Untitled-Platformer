@@ -1,36 +1,40 @@
 class_name Jump extends PlayerState
 
-@export var actor: CharacterBody2D
-@export var jump_force: int = 110
-@export var min_jump_duration:int = 10 # minimum duration for the jump
+@export var jump_force = 150
+@export var min_jump_dur: int = 10
+@export var run_over_vel: int = -45
+## The remaining 'run over' velocity after releasing jump
+# a run off velocity of 0 results in a very abrupt fall
 
-var jump_duration:int = 0
+var jump_dur: int = 0
+var end_early: bool = false
 
-func enter(previous_state_path: String = "", data := {}):
-	jump_apply()
-	jump_duration = 0
+func enter():
+	actor.velocity.y -= jump_force
+	jump_dur = 0
+	end_early = false
 
 func exit():
-	actor.animate("fall_transition")
+	if end_early:
+		actor.velocity.y = run_over_vel # still could be better way of handling this
 
-func update(delta):
-	actor.animate(str(name))
+func update(_delta) -> void:
+	pass
 
-func physics_update(delta):
-	switch_state()
-	if jump_duration < min_jump_duration:
-		jump_duration += 1
+func physics_update(_delta) -> void:
+	movement_manager.x_movement(movement_manager.x_decel)
+	movement_manager.apply_gravity()
+	if jump_dur < min_jump_dur:
+		jump_dur += 1
+	switch_cond()
 
-func switch_state():
+func switch_cond():
 	if actor.is_on_floor() and not actor.velocity.y < 0:
-		Transitioned.emit(self, "idle")
-	
-	if actor.velocity.y >= -45:
-		Transitioned.emit(self, "fall")
-	
-	elif inputManager.jump_inp_released() and jump_duration >= min_jump_duration:
-		Transitioned.emit(self, "fall")
+		state_machine.check_switch(&"Idle")
 
-
-func jump_apply():
-	actor.velocity.y = -jump_force
+	if !actor.is_on_floor() and actor.velocity.y == 0:
+		state_machine.check_switch(&"Fall")
+	
+	elif input_manager.jump_inp_released() and jump_dur >= min_jump_dur:
+		end_early = true
+		state_machine.check_switch(&"Fall")

@@ -1,23 +1,19 @@
-class_name Falling extends PlayerState
+class_name Fall extends PlayerState
 
-@export var actor: CharacterBody2D
-
-func enter(previous_state_path: String = "", data := {}):
-	if previous_state_path == "jump": # intended for some roll over instead of abrupt
-		actor.velocity.y = -45 # hard-coded approach - will need to change in future
+func enter():
+	pass
 
 func exit():
 	pass
 
-func update(delta):
-	actor.animate(str(name), "fall_transition")
+func update(_delta) -> void:
+	pass
 
-func physics_update(delta):
-	switch_state()
+func physics_update(_delta) -> void:
+	movement_manager.x_movement(movement_manager.x_decel)
+	movement_manager.apply_gravity()
+	switch_cond()
 
-func switch_state():
+func switch_cond():
 	if actor.is_on_floor():
-		Transitioned.emit(self, "idle")
-
-	if actor.is_on_floor() and Input.get_axis("left", "right") != 0:
-		Transitioned.emit(self, "run")
+		state_machine.check_switch(&"Idle")
