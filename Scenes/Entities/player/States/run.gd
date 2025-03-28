@@ -1,31 +1,21 @@
 class_name Run extends PlayerState
 
-@export var actor: CharacterBody2D
-
-func enter(previous_state_path: String = "", data := {}):
+func enter():
 	pass
 
 func exit():
 	pass
 
-func update(delta):
-	actor.animate(str(name))
+func update(_delta) -> void:
+	pass
 
-func physics_update(delta):
-	switch_state()
+func physics_update(_delta) -> void:
+	movement_manager.apply_movement()
+	switch_cond()
 
-func switch_state():
+func switch_cond():
 	if !actor.is_on_floor():
-		Transitioned.emit(self, "fall")
+		state_machine.check_switch(&"Fall")
 	
-	if inputManager.x_inp() == 0:
-		Transitioned.emit(self, "idle")
-	
-	if inputManager.jump_inp():
-		Transitioned.emit(self, "jump")
-	
-	if inputManager.attack_inp():
-		Transitioned.emit(self, "attack")
-	
-	if inputManager.y_inp() == 1:
-		Transitioned.emit(self, "crouch")
+	if input_manager.x_inp() == 0:
+		state_machine.check_switch(&"Idle")

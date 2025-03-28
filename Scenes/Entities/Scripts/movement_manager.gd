@@ -26,7 +26,7 @@ func _ready():
 	SPEED = MAX_SPEED
 
 func x_movement(x_dir):
-	actor.pivot(x_dir)
+	#actor.pivot(x_dir)
 	x_vel = current_vel.x
 	if x_dir != 0: # if player is inputting x movement
 		x_vel = lerp(x_vel, SPEED * x_dir, x_accel)
@@ -57,6 +57,7 @@ func apply_gravity():
 		actor.velocity.y = y_max
 
 func _physics_process(_delta):
-	apply_gravity()
-	if !unmovable:
-		apply_movement()
+	pass
+	#apply_gravity()
+	#if !unmovable:
+		#apply_movement()
