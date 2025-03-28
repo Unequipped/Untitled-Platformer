@@ -20,4 +20,5 @@ func switch_cond():
 	if input_manager.x_inp() != 0:
 		state_machine.check_switch(&"Run")
 	
-	#if input_manager.
+	if input_manager.jump_inp():
+		state_machine.check_switch(&"Jump")

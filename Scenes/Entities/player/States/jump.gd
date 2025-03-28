@@ -1,7 +1,9 @@
-class_name Run extends PlayerState
+class_name Jump extends PlayerState
+
+@export var jump_force = 150
 
 func enter():
-	pass
+	actor.velocity.y -= jump_force
 
 func exit():
 	pass
@@ -16,9 +18,3 @@ func physics_update(_delta) -> void:
 func switch_cond():
 	if !actor.is_on_floor():
 		state_machine.check_switch(&"Fall")
-	
-	if input_manager.x_inp() == 0:
-		state_machine.check_switch(&"Idle")
-
-	if input_manager.jump_inp():
-		state_machine.check_switch(&"Jump")
