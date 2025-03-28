@@ -19,7 +19,6 @@ var SPEED: int = 0
 var current_vel: Vector2
 var x_vel: float
 var attacking: bool = false
-static var unmovable: bool = false
 
 
 func _ready():
@@ -36,6 +35,14 @@ func x_movement(x_dir):
 		else:
 			x_vel = lerp(x_vel, 0.0, x_decel_air)
 	return x_vel
+
+func apply_x_accel():
+	pass
+
+func apply_x_deccel(vel):
+	x_vel = actor.velocity.x
+	x_vel = lerp(x_vel, 0.0, vel)
+	actor.velocity.x -= x_vel
 
 func y_movement():
 	pass
