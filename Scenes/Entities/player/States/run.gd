@@ -10,7 +10,7 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	movement_manager.apply_movement()
+	movement_manager.x_movement(movement_manager.x_accel)
 	switch_cond()
 
 func switch_cond():

@@ -18,7 +18,7 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	movement_manager.apply_movement()
+	movement_manager.x_movement(movement_manager.x_decel)
 	movement_manager.apply_gravity()
 	if jump_dur < min_jump_dur:
 		jump_dur += 1

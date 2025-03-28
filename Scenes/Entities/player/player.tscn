@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=88 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -20,7 +20,8 @@
 [ext_resource type="Script" uid="uid://dvd4llnu5oe3u" path="res://Scenes/Entities/player/states/fall.gd" id="16_j5c6h"]
 [ext_resource type="Script" uid="uid://cbd6c5kp7381g" path="res://Scenes/Entities/player/states/run.gd" id="19_iq2rp"]
 [ext_resource type="Script" uid="uid://bkau8uoueoksn" path="res://Scenes/Entities/player/states/jump.gd" id="20_bqky3"]
-[ext_resource type="Script" uid="uid://diph50pjsdys7" path="res://Scenes/Entities/Scripts/state_display.gd" id="20_j5eje"]
+[ext_resource type="Script" uid="uid://diph50pjsdys7" path="res://Scenes/Entities/Scripts/debugging/state_display.gd" id="20_j5eje"]
+[ext_resource type="Script" uid="uid://vx4p4rxg7etd" path="res://Scenes/Entities/Scripts/debugging/move_display.gd" id="22_x5yqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
 atlas = ExtResource("2_cewkk")
@@ -592,11 +593,18 @@ metadata/_custom_type_script = "uid://cbd6c5kp7381g"
 script = ExtResource("20_bqky3")
 metadata/_custom_type_script = "uid://bkau8uoueoksn"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="debugging" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("state_machine")]
+[node name="VBoxContainer" type="VBoxContainer" parent="debugging"]
 offset_right = 40.0
-offset_bottom = 23.0
-size_flags_horizontal = 4
+offset_bottom = 40.0
+
+[node name="state_display" type="Label" parent="debugging/VBoxContainer" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
 script = ExtResource("20_j5eje")
-state_machine = NodePath("../../PlayerStateMachine")
+state_machine = NodePath("../../../PlayerStateMachine")
+
+[node name="move_display" type="Label" parent="debugging/VBoxContainer" node_paths=PackedStringArray("player_movement")]
+layout_mode = 2
+script = ExtResource("22_x5yqs")
+player_movement = NodePath("../../../PlayerMovement")
