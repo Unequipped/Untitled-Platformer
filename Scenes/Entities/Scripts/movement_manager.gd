@@ -13,7 +13,7 @@ var SPEED: int = 0
 @export var x_accel:float = 0.7
 @export var x_decel:float = 0.4 #0.4 is better
 # keeps the air drag tame, for a more platformer oriented game you might want this to be lower for more floaty feel
-@export var x_decel_air:float = 0.005
+@export var x_decel_air:float = 0.05
 
 
 var current_vel: Vector2
@@ -47,7 +47,6 @@ func apply_gravity():
 		actor.velocity.y = y_max
 
 func _physics_process(_delta):
+	if abs(actor.velocity.x) < 0.0001:
+		actor.velocity.x = 0
 	pass
-	#apply_gravity()
-	#if !unmovable:
-		#apply_movement()

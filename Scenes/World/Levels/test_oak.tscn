@@ -570,7 +570,6 @@ metadata/_edit_group_ = true
 [node name="Camera2D" type="Camera2D" parent="player" node_paths=PackedStringArray("actor")]
 position = Vector2(0, -20)
 zoom = Vector2(3.75, 3.75)
-position_smoothing_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 1.0
 script = ExtResource("3_k7fab")
