@@ -16,4 +16,4 @@ func physics_update(_delta) -> void:
 
 func switch_cond():
 	if actor.is_on_floor():
-		state_machine.check_switch(&"Idle")
+		state_machine.change_state(&"Idle")

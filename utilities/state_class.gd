@@ -21,9 +21,11 @@ func physics_update(_delta) -> void:
 func handle_input(_event: InputEvent) -> void:
 	pass
 
-func switch_cond():
-	# if condition == true, then returns the NAME of the state to switch to
-	pass
+func switch_cond() -> bool:
+	# if condition == true, executes code in state machine
+	# if condition == false, returns false
+	# state machine should check superstate for condition
+	return false
 
 func get_all_child_states(states:Dictionary, actor, state_machine, movement_manager, input_manager):
 	self.actor = actor

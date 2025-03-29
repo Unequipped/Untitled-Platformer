@@ -14,32 +14,29 @@ func _ready():
 	store_all_states()
 	if initial_state:
 		current_state = initial_state
-	print(states)
 
 
-func change_state(new_state: State) -> void:
-	if current_state:
-		current_state.exit()
-	
-	current_state = new_state
-	current_state.enter()
-
-
-func check_switch(state_name):
-	# check if a switch_state() condition has triggered
-	# find the state you need to switch to
-	# execute switch state
-	# THE ABOVE IS N/A FOR CURRENT IMPLEMENTATION
+func change_state(state_name: StringName) -> void:
 	if state_name and states.has(state_name):
-		change_state(states[state_name])
-	pass
+		if current_state:
+			current_state.exit()
+
+			current_state = states[state_name]
+			current_state.enter()
+
+
+func check_switch(state):
+## Travels backwards from active state
+## checking superstate for any switches
+	if state is State:
+		if !state.switch_cond(): # check if switch condition met
+			check_switch(state.get_parent())
 
 
 func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
-	
-	current_state.switch_cond()
+		check_switch(current_state)
 
 
 func _process(delta):
