@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0kflr7trwhmb"]
-
-[ext_resource type="Script" uid="uid://d0eethfd3xuo4" path="res://Scenes/Entities/components/attackbox_component.gd" id="1_prfg2"]
-
-[node name="attackbox_component" type="Area2D"]
-script = ExtResource("1_prfg2")
