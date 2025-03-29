@@ -5,6 +5,7 @@ extends Node
 @export var input_manager: InputManager
 
 @export var MAX_SPEED: int = 80
+@export var crawl_speed: int = 40
 var SPEED: int = 0
 @export var y_accel: int = 6
 @export var y_max: int = 200
@@ -24,20 +25,20 @@ var attacking: bool = false
 func _ready():
 	SPEED = MAX_SPEED
 
-func x_movement(rate):
+func x_movement(target_speed, rate):
 	var x_dir = input_manager.x_inp()
 	if x_dir != 0:
-		apply_x_accel(x_dir, rate)
+		apply_x_accel(x_dir, target_speed, rate)
 	else:
 		if actor.is_on_floor():
-			apply_x_deccel(x_decel)
+			apply_x_decel(x_decel)
 		else:
-			apply_x_deccel(x_decel_air)
+			apply_x_decel(x_decel_air)
 
-func apply_x_accel(x_dir, rate):
-	actor.velocity.x = lerp(actor.velocity.x, SPEED * x_dir, rate)
+func apply_x_accel(x_dir, target_speed, rate):
+	actor.velocity.x = lerp(actor.velocity.x, target_speed * x_dir, rate)
 
-func apply_x_deccel(rate):
+func apply_x_decel(rate):
 	actor.velocity.x = lerp(actor.velocity.x, 0.0, rate)
 
 func apply_gravity():

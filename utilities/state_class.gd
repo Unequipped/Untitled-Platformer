@@ -22,9 +22,9 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func switch_cond() -> bool:
-	# if condition == true, executes code in state machine
-	# if condition == false, returns false
-	# state machine should check superstate for condition
+	return false
+
+func default_switch(): # check if there's a default substate to switch to
 	return false
 
 func get_all_child_states(states:Dictionary, actor, state_machine, movement_manager, input_manager):
@@ -41,3 +41,6 @@ func get_all_child_states(states:Dictionary, actor, state_machine, movement_mana
 				child.get_all_child_states(states, actor, state_machine, movement_manager, input_manager)
 	else:
 		return
+
+func process_branch():
+	pass

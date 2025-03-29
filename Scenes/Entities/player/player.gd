@@ -6,10 +6,10 @@ class_name Player extends Entity
 @onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
 @onready var crouch_check: RayCast2D = $crouch_check
 
+@onready var sprite: AnimatedSprite2D = $spritePivot/AnimatedSprite2D
+
 # Movement related stuff 
 var vel = Vector2.ZERO
-var walking:bool = false
-var jumping:bool = false
 
 
 func _ready():
@@ -19,7 +19,10 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 func _process(delta: float):
-	pass
+	if velocity.x > 0:
+		sprite_pivot.scale.x = abs(sprite_pivot.scale.x)
+	elif velocity.x < 0:
+		sprite_pivot.scale.x = -abs(sprite_pivot.scale.x)
 
 func crouch_collision(toggle):
 	if toggle:

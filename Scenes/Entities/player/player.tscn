@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=91 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/Player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://qesibs6td8c5" path="res://Assets/Character/Outline/120x80_PNGSheets/_Idle.png" id="2_5dh45"]
@@ -20,8 +20,10 @@
 [ext_resource type="Script" uid="uid://dvd4llnu5oe3u" path="res://Scenes/Entities/Player/States/Airborne/fall.gd" id="16_j5c6h"]
 [ext_resource type="Script" uid="uid://b6m5akmymxvrq" path="res://Scenes/Entities/Player/States/Grounded/grounded.gd" id="17_nr3lb"]
 [ext_resource type="Script" uid="uid://cbd6c5kp7381g" path="res://Scenes/Entities/Player/States/Grounded/run.gd" id="19_iq2rp"]
+[ext_resource type="Script" uid="uid://d1282ngr8ik4s" path="res://Scenes/Entities/Player/States/crouch.gd" id="20_7dcmg"]
 [ext_resource type="Script" uid="uid://bkau8uoueoksn" path="res://Scenes/Entities/Player/States/Airborne/jump.gd" id="20_bqky3"]
 [ext_resource type="Script" uid="uid://diph50pjsdys7" path="res://Scenes/Entities/Scripts/debugging/state_display.gd" id="20_j5eje"]
+[ext_resource type="Script" uid="uid://3kshxkblhqro" path="res://Scenes/Entities/Player/States/Airborne/airborne.gd" id="20_u5nyj"]
 [ext_resource type="Script" uid="uid://vx4p4rxg7etd" path="res://Scenes/Entities/Scripts/debugging/move_display.gd" id="22_x5yqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjlj7"]
@@ -539,8 +541,7 @@ animator = NodePath("spritePivot/AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spritePivot"]
 position = Vector2(4, -15)
 sprite_frames = SubResource("SpriteFrames_ubri2")
-animation = &"idle"
-frame_progress = 0.912667
+animation = &"crouch_transition"
 
 [node name="crouch_check" type="RayCast2D" parent="."]
 visible = false
@@ -589,11 +590,19 @@ metadata/_custom_type_script = "uid://b70oosem4njx5"
 script = ExtResource("19_iq2rp")
 metadata/_custom_type_script = "uid://cbd6c5kp7381g"
 
-[node name="Fall" type="Node" parent="PlayerStateMachine"]
+[node name="Crouch" type="Node" parent="PlayerStateMachine/Grounded"]
+script = ExtResource("20_7dcmg")
+metadata/_custom_type_script = "uid://d1282ngr8ik4s"
+
+[node name="Airborne" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("20_u5nyj")
+metadata/_custom_type_script = "uid://3kshxkblhqro"
+
+[node name="Fall" type="Node" parent="PlayerStateMachine/Airborne"]
 script = ExtResource("16_j5c6h")
 metadata/_custom_type_script = "uid://dvd4llnu5oe3u"
 
-[node name="Jump" type="Node" parent="PlayerStateMachine"]
+[node name="Jump" type="Node" parent="PlayerStateMachine/Airborne"]
 script = ExtResource("20_bqky3")
 metadata/_custom_type_script = "uid://bkau8uoueoksn"
 
