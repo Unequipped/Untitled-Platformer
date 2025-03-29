@@ -26,7 +26,7 @@ func physics_update(_delta) -> void:
 	movement_manager.apply_gravity()
 	if jump_dur < min_jump_dur:
 		jump_dur += 1
-	switch_cond()
+
 
 func switch_cond():
 	if actor.is_on_floor() and not actor.velocity.y < 0:

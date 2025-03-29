@@ -38,6 +38,8 @@ func check_switch(state_name):
 func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
+	
+	current_state.switch_cond()
 
 
 func _process(delta):

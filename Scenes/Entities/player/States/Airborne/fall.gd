@@ -12,7 +12,7 @@ func update(_delta) -> void:
 func physics_update(_delta) -> void:
 	movement_manager.x_movement(movement_manager.x_decel)
 	movement_manager.apply_gravity()
-	switch_cond()
+
 
 func switch_cond():
 	if actor.is_on_floor():

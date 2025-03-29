@@ -11,7 +11,6 @@ func update(_delta) -> void:
 
 func physics_update(_delta) -> void:
 	movement_manager.apply_x_deccel(movement_manager.x_decel)
-	switch_cond()
 
 func switch_cond():
 	if !actor.is_on_floor():
