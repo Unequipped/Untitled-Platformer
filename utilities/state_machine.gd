@@ -43,7 +43,6 @@ func _physics_process(delta):
 func _process(delta):
 	if current_state:
 		current_state.update(delta)
-		actor.sprite.play(current_state.name.to_lower())
 
 
 func store_all_states():

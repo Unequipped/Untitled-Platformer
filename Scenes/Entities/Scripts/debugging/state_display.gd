@@ -9,5 +9,5 @@ func _process(delta):
 		if old_state == null:
 			pass
 		elif old_state != state_machine.current_state:
-			text = "Current State: " + state_machine.current_state.name + ". Previous State: " + old_state.name
+			text =  "Previous State: " + old_state.name + "|| Current State: " + state_machine.current_state.name
 		old_state = state_machine.current_state
