@@ -29,9 +29,6 @@ func physics_update(_delta) -> void:
 
 
 func switch_cond():
-	if actor.is_on_floor() and not actor.velocity.y < 0:
-		state_machine.change_state(&"Idle")
-
 	if !actor.is_on_floor() and actor.velocity.y >= run_over_vel:
 		state_machine.change_state(&"Fall")
 	
