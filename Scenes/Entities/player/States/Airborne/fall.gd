@@ -10,10 +10,10 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	movement_manager.x_movement(movement_manager.x_decel)
+	movement_manager.x_movement(movement_manager.MAX_SPEED, movement_manager.x_decel)
 	movement_manager.apply_gravity()
-	switch_cond()
+
 
 func switch_cond():
 	if actor.is_on_floor():
-		state_machine.check_switch(&"Idle")
+		state_machine.change_state(&"Idle")

@@ -22,19 +22,19 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	movement_manager.x_movement(movement_manager.x_decel)
+	movement_manager.x_movement(movement_manager.MAX_SPEED, movement_manager.x_decel)
 	movement_manager.apply_gravity()
 	if jump_dur < min_jump_dur:
 		jump_dur += 1
-	switch_cond()
+
 
 func switch_cond():
 	if actor.is_on_floor() and not actor.velocity.y < 0:
-		state_machine.check_switch(&"Idle")
+		state_machine.change_state(&"Idle")
 
-	if !actor.is_on_floor() and actor.velocity.y == 0:
-		state_machine.check_switch(&"Fall")
+	if !actor.is_on_floor() and actor.velocity.y >= run_over_vel:
+		state_machine.change_state(&"Fall")
 	
 	elif input_manager.jump_inp_released() and jump_dur >= min_jump_dur:
 		end_early = true
-		state_machine.check_switch(&"Fall")
+		state_machine.change_state(&"Fall")
