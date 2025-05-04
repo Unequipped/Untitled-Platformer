@@ -34,8 +34,19 @@ func check_switch(state):
 			check_switch(state.get_parent())
 
 
+func run_state(state: State):
+	var path = state.state_path
+	print(path)
+	var path_count = path.get_name_count()
+	var nod_name: String
+	for i in path_count:
+		nod_name = path.get_name(i)
+		print(nod_name)
+
+
 func _physics_process(delta):
 	if current_state:
+		#run_state(current_state)
 		current_state.physics_update(delta)
 		check_switch(current_state)
 

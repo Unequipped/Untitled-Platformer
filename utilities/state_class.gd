@@ -5,6 +5,8 @@ var state_machine: StateMachine
 var movement_manager: Movement
 var input_manager: InputManager
 var animations: AnimatedSprite2D
+var state_path: NodePath
+var state_path_list: Array
 
 func enter() -> void:
 	pass
@@ -25,7 +27,7 @@ func switch_cond() -> bool:
 	return false
 
 func default_switch(): # check if there's a default substate to switch to
-	return false
+	return false # doesn't work properly
 
 func get_all_child_states(states:Dictionary, actor, state_machine, movement_manager, input_manager):
 	self.actor = actor
@@ -38,9 +40,16 @@ func get_all_child_states(states:Dictionary, actor, state_machine, movement_mana
 	if children.size() > 0: # checks if the current state has children states
 		for child in children:
 			if child is State:
+				create_path_list(child)
 				child.get_all_child_states(states, actor, state_machine, movement_manager, input_manager)
 	else:
 		return
+
+
+func create_path_list(state: State):
+	state_path = state_machine.get_path_to(state)
+	print(state_path)
+
 
 func process_branch():
 	pass
