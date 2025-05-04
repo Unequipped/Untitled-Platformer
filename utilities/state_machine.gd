@@ -34,31 +34,38 @@ func check_switch(state):
 			check_switch(state.get_parent())
 
 
-func run_state(state: State):
-	var path = state.state_path
-	print(path)
-	var path_count = path.get_name_count()
-	var nod_name: String
-	for i in path_count:
-		nod_name = path.get_name(i)
-		print(nod_name)
+func run_state(state: State, physics, delta):
+	print(state, state.state_path)
+	# we need to:
+	# iterate over each name in the path
+	# find corresponding state in states
+	# run it 
+	var path: Array = state.state_path
+	var live_state: State
+	for i in path:
+		live_state = states[i]
+		if physics:
+			live_state.physics_update(delta)
+		else:
+			live_state.update(delta)
 
 
 func _physics_process(delta):
 	if current_state:
-		#run_state(current_state)
-		current_state.physics_update(delta)
+		run_state(current_state, true, delta)
+		#current_state.physics_update(delta)
 		check_switch(current_state)
 
 
 func _process(delta):
 	if current_state:
-		current_state.update(delta)
+		#current_state.update(delta)
+		run_state(current_state, false, delta)
 
 
 func store_all_states():
 	for child in get_children():
 		if child is State: #and child.is_active:
-			child.get_all_child_states(states, actor, self, player_movement, player_input)
+			child.get_all_child_states(states, actor, self, player_movement, player_input, null)
 ## Gets all states within state machine and stores them
 ## States can be called later by name to get specific state
