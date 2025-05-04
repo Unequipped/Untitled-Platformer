@@ -20,4 +20,4 @@ func switch_cond():
 		state_machine.change_state(&"Jump")
 	
 	if input_manager.y_inp() > 0:
-		state_machine.change_state(&"Crouched")
+		state_machine.change_state(&"Crouch")

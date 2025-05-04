@@ -6,7 +6,7 @@ class_name StateMachine extends Node
 @export var initial_state: State
 
 var current_state: State
-
+var new_state: State
 var states: Dictionary = {}
 
 
@@ -17,11 +17,13 @@ func _ready():
 
 
 func change_state(state_name: StringName) -> void:
-	if state_name and states.has(state_name):
-		if current_state:
+	if state_name and states.has(state_name): #if the state_name is valid
+		new_state = states[state_name]
+		if current_state: # if we're currently in a state
+			print(find_route(current_state, new_state))
 			current_state.exit()
 
-			current_state = states[state_name]
+			current_state = new_state
 			current_state.enter()
 
 
@@ -35,11 +37,8 @@ func check_switch(state):
 
 
 func run_state(state: State, physics, delta):
-	print(state, state.state_path)
-	# we need to:
-	# iterate over each name in the path
-	# find corresponding state in states
-	# run it 
+## Travels forwards from statemachine to active state
+## runs states along the branch
 	var path: Array = state.state_path
 	var live_state: State
 	for i in path:
@@ -63,9 +62,14 @@ func _process(delta):
 		run_state(current_state, false, delta)
 
 
+func find_route(base, target):
+	var node_path: NodePath = base.get_path_to(target)
+	return node_path.get_concatenated_names().split("/")
+
+
 func store_all_states():
-	for child in get_children():
-		if child is State: #and child.is_active:
-			child.get_all_child_states(states, actor, self, player_movement, player_input, null)
 ## Gets all states within state machine and stores them
 ## States can be called later by name to get specific state
+	for child in get_children():
+		if child is State: #and child.is_active:
+			child.get_all_child_states(states, actor, self, player_movement, player_input)
