@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=21 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/Player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://4k8y37r4xrkc" path="res://Assets/Character/Untitled Platformer.png" id="2_p22ti"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://dircufolrkc4b" path="res://Scenes/Entities/Player/player_movement.gd" id="14_6i1xa"]
 [ext_resource type="Script" uid="uid://746jwllunxph" path="res://Scenes/Entities/Player/player_state_machine.gd" id="14_y87ki"]
 [ext_resource type="Script" uid="uid://xlaorm2h4lt0" path="res://Utilities/input_manager.gd" id="15_r8aaq"]
+[ext_resource type="Script" uid="uid://bugrxh042xqdc" path="res://Scenes/Entities/Player/States/wall_slide.gd" id="15_s4doi"]
 [ext_resource type="Script" uid="uid://b70oosem4njx5" path="res://Scenes/Entities/Player/States/Grounded/idle.gd" id="15_y87ki"]
 [ext_resource type="Script" uid="uid://dvd4llnu5oe3u" path="res://Scenes/Entities/Player/States/Airborne/fall.gd" id="16_j5c6h"]
 [ext_resource type="Script" uid="uid://b6m5akmymxvrq" path="res://Scenes/Entities/Player/States/Grounded/grounded.gd" id="17_nr3lb"]
+[ext_resource type="Script" uid="uid://ctihnl5l42ab5" path="res://Scenes/Entities/Scripts/debugging/state_tree_display.gd" id="17_oedhw"]
 [ext_resource type="Script" uid="uid://cbd6c5kp7381g" path="res://Scenes/Entities/Player/States/Grounded/run.gd" id="19_iq2rp"]
 [ext_resource type="Script" uid="uid://d1282ngr8ik4s" path="res://Scenes/Entities/Player/States/Grounded/Crouched/crouch.gd" id="20_7dcmg"]
 [ext_resource type="Script" uid="uid://bkau8uoueoksn" path="res://Scenes/Entities/Player/States/Airborne/jump.gd" id="20_bqky3"]
@@ -103,11 +105,18 @@ metadata/_custom_type_script = "uid://dvd4llnu5oe3u"
 script = ExtResource("20_bqky3")
 metadata/_custom_type_script = "uid://bkau8uoueoksn"
 
+[node name="WallSlide" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("15_s4doi")
+metadata/_custom_type_script = "uid://bugrxh042xqdc"
+
 [node name="debugging" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="debugging"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="state_display" type="Label" parent="debugging/VBoxContainer" node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -118,3 +127,16 @@ state_machine = NodePath("../../../PlayerStateMachine")
 layout_mode = 2
 script = ExtResource("22_x5yqs")
 player_movement = NodePath("../../../PlayerMovement")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="debugging" node_paths=PackedStringArray("state_machine")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("17_oedhw")
+state_machine = NodePath("../../PlayerStateMachine")

@@ -1,5 +1,7 @@
 class_name State extends Node
 
+var active: bool = false
+
 var actor: CharacterBody2D #Auto assign parent entity to each state
 var state_machine: StateMachine
 var movement_manager: Movement
