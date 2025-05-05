@@ -101,6 +101,7 @@ metadata/_custom_type_script = "uid://dvd4llnu5oe3u"
 
 [node name="Jump" type="Node" parent="PlayerStateMachine/Airborne"]
 script = ExtResource("20_bqky3")
+jump_force = 80
 metadata/_custom_type_script = "uid://bkau8uoueoksn"
 
 [node name="debugging" type="CanvasLayer" parent="."]
