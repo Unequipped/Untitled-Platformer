@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=21 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/Player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://4k8y37r4xrkc" path="res://Assets/Character/Untitled Platformer.png" id="2_p22ti"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dircufolrkc4b" path="res://Scenes/Entities/Player/player_movement.gd" id="14_6i1xa"]
 [ext_resource type="Script" uid="uid://746jwllunxph" path="res://Scenes/Entities/Player/player_state_machine.gd" id="14_y87ki"]
 [ext_resource type="Script" uid="uid://xlaorm2h4lt0" path="res://Utilities/input_manager.gd" id="15_r8aaq"]
+[ext_resource type="Script" uid="uid://bugrxh042xqdc" path="res://Scenes/Entities/Player/States/wall_slide.gd" id="15_s4doi"]
 [ext_resource type="Script" uid="uid://b70oosem4njx5" path="res://Scenes/Entities/Player/States/Grounded/idle.gd" id="15_y87ki"]
 [ext_resource type="Script" uid="uid://dvd4llnu5oe3u" path="res://Scenes/Entities/Player/States/Airborne/fall.gd" id="16_j5c6h"]
 [ext_resource type="Script" uid="uid://b6m5akmymxvrq" path="res://Scenes/Entities/Player/States/Grounded/grounded.gd" id="17_nr3lb"]
@@ -103,6 +104,10 @@ metadata/_custom_type_script = "uid://dvd4llnu5oe3u"
 [node name="Jump" type="Node" parent="PlayerStateMachine/Airborne"]
 script = ExtResource("20_bqky3")
 metadata/_custom_type_script = "uid://bkau8uoueoksn"
+
+[node name="WallSlide" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("15_s4doi")
+metadata/_custom_type_script = "uid://bugrxh042xqdc"
 
 [node name="debugging" type="CanvasLayer" parent="."]
 

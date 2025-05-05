@@ -47,6 +47,9 @@ func apply_gravity():
 	elif actor.velocity.y >= y_max:
 		actor.velocity.y = y_max
 
+func y_movement(grip):
+	actor.velocity.y = grip
+
 func _physics_process(_delta):
 	if abs(actor.velocity.x) < 0.0001:
 		actor.velocity.x = 0

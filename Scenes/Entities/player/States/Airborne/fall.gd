@@ -13,4 +13,5 @@ func physics_update(_delta) -> void:
 	pass
 
 func switch_cond():
-	pass
+	if actor.is_on_wall():
+		state_machine.change_state(&"WallSlide")
