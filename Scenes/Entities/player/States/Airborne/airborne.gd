@@ -10,7 +10,7 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	pass
+	movement_manager.x_movement(movement_manager.MAX_SPEED, movement_manager.x_decel)
 
 func switch_cond():
 	if actor.is_on_floor() and not actor.velocity.y < 0:
