@@ -48,4 +48,4 @@ func get_all_child_states(states:Dictionary, actor, state_machine, movement_mana
 func create_path_list(state: State): # generates paths from state_machine to a state
 	var node_path: NodePath = state_machine.get_path_to(state)
 	state_path = node_path.get_concatenated_names().split("/")
-	print(state, state_path)
+	#print(state, state_path)

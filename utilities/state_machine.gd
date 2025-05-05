@@ -19,9 +19,23 @@ func _ready():
 func change_state(state_name: StringName) -> void:
 	if state_name and states.has(state_name): #if the state_name is valid
 		new_state = states[state_name]
-		if current_state: # if we're currently in a state
-			print(find_route(current_state, new_state))
-			current_state.exit()
+		if current_state: # if we're currently in a valid state
+			var pointer: Node = current_state
+			for path_step in find_route(current_state, new_state):
+				#print(pointer)
+				if pointer.get_node(path_step) != null:
+					if path_step == "..":
+						current_state.exit()
+						#print(pointer, find_route(current_state, new_state), path_step)
+						pointer = pointer.get_node(path_step)
+						if pointer is State:
+							current_state = pointer
+						#print(pointer, find_route(current_state, new_state), path_step + "\n")
+					
+					else:
+						print(pointer.get_node(path_step))
+						current_state = pointer.get_node(path_step)
+						current_state.enter()
 
 			current_state = new_state
 			current_state.enter()
