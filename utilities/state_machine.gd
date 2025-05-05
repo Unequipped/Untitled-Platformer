@@ -27,11 +27,13 @@ func change_state(state_name: StringName) -> void:
 					pointer = pointer.get_node(path_step)
 					if path_step == "..":
 						current_state.exit()
+						current_state.active = false
 						if pointer is State:
 							current_state = pointer
 					else:
 						current_state = pointer
 						current_state.enter()
+						current_state.active = true
 
 
 func check_switch(state):
