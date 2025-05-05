@@ -13,6 +13,7 @@ var SPEED: int = 0
 ## x movement lerping
 @export var x_accel:float = 0.7
 @export var x_decel:float = 0.4 #0.4 is better
+@export var x_air_decel:float = 0.01 #0.4 is better
 # keeps the air drag tame, for a more platformer oriented game you might want this to be lower for more floaty feel
 @export var x_decel_air:float = 0.05
 

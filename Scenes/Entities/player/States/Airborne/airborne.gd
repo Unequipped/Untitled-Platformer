@@ -11,7 +11,7 @@ func update(_delta) -> void:
 
 func physics_update(_delta) -> void:
 	movement_manager.apply_gravity()
-	movement_manager.x_movement(movement_manager.MAX_SPEED, movement_manager.x_decel)
+	movement_manager.x_movement(movement_manager.MAX_SPEED, movement_manager.x_air_decel)
 
 func switch_cond():
 	if actor.is_on_floor() and not actor.velocity.y < 0:
