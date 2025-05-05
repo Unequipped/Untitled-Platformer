@@ -33,9 +33,6 @@ func change_state(state_name: StringName) -> void:
 						current_state = pointer
 						current_state.enter()
 
-			current_state = new_state
-			current_state.enter()
-
 
 func check_switch(state):
 ## Travels backwards from active state
