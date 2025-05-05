@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=20 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/Player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://4k8y37r4xrkc" path="res://Assets/Character/Untitled Platformer.png" id="2_p22ti"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ciixyaqj21ev7" path="res://Scenes/Entities/Player/States/Grounded/Crouched/crouch_walk.gd" id="11_qtr04"]
 [ext_resource type="Script" uid="uid://dircufolrkc4b" path="res://Scenes/Entities/Player/player_movement.gd" id="14_6i1xa"]
 [ext_resource type="Script" uid="uid://746jwllunxph" path="res://Scenes/Entities/Player/player_state_machine.gd" id="14_y87ki"]
+[ext_resource type="Script" uid="uid://ctihnl5l42ab5" path="res://Scenes/Entities/Scripts/debugging/debugging.gd" id="15_oedhw"]
 [ext_resource type="Script" uid="uid://xlaorm2h4lt0" path="res://Utilities/input_manager.gd" id="15_r8aaq"]
 [ext_resource type="Script" uid="uid://b70oosem4njx5" path="res://Scenes/Entities/Player/States/Grounded/idle.gd" id="15_y87ki"]
 [ext_resource type="Script" uid="uid://dvd4llnu5oe3u" path="res://Scenes/Entities/Player/States/Airborne/fall.gd" id="16_j5c6h"]
@@ -103,11 +104,16 @@ metadata/_custom_type_script = "uid://dvd4llnu5oe3u"
 script = ExtResource("20_bqky3")
 metadata/_custom_type_script = "uid://bkau8uoueoksn"
 
-[node name="debugging" type="CanvasLayer" parent="."]
+[node name="debugging" type="CanvasLayer" parent="." node_paths=PackedStringArray("state_machine")]
+script = ExtResource("15_oedhw")
+state_machine = NodePath("../PlayerStateMachine")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="debugging"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="state_display" type="Label" parent="debugging/VBoxContainer" node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -118,3 +124,13 @@ state_machine = NodePath("../../../PlayerStateMachine")
 layout_mode = 2
 script = ExtResource("22_x5yqs")
 player_movement = NodePath("../../../PlayerMovement")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="debugging"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+fit_content = true
+autowrap_mode = 0
