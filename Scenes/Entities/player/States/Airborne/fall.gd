@@ -10,8 +10,7 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	movement_manager.apply_gravity()
-
+	pass
 
 func switch_cond():
 	pass
