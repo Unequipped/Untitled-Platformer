@@ -23,6 +23,9 @@ func _process(delta: float):
 		sprite_pivot.scale.x = abs(sprite_pivot.scale.x)
 	elif velocity.x < 0:
 		sprite_pivot.scale.x = -abs(sprite_pivot.scale.x)
+	if get_last_slide_collision():
+		print(get_last_slide_collision().get_normal().x)
+	print(is_on_wall(), is_on_floor(), is_on_ceiling())
 
 func crouch_collision(toggle):
 	if toggle:
