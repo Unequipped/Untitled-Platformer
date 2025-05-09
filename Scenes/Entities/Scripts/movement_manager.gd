@@ -13,9 +13,9 @@ var SPEED: int = 0
 ## x movement lerping
 @export var x_accel:float = 0.7
 @export var x_decel:float = 0.4 #0.4 is better
-@export var x_air_decel:float = 0.05
+@export var x_air_decel:float = 0.06
+@export var x_air_accel:float = 0.4
 # keeps the air drag tame, for a more platformer oriented game you might want this to be lower for more floaty feel
-@export var x_decel_air:float = 0.05
 
 
 var current_vel: Vector2
@@ -29,12 +29,16 @@ func _ready():
 func x_movement(target_speed, rate):
 	var x_dir = input_manager.x_inp()
 	if x_dir != 0:
-		apply_x_accel(x_dir, target_speed, rate)
+		if actor.is_on_floor():
+			apply_x_accel(x_dir, target_speed, rate)
+		else:
+			apply_x_accel(x_dir, target_speed, x_air_accel)
 	else:
 		if actor.is_on_floor():
 			apply_x_decel(x_decel)
 		else:
-			apply_x_decel(x_decel_air)
+			apply_x_decel(x_air_decel)
+	#print(actor.velocity.x)
 
 func apply_x_accel(x_dir, target_speed, rate):
 	actor.velocity.x = lerp(actor.velocity.x, target_speed * x_dir, rate)
