@@ -14,7 +14,7 @@ var SPEED: int = 0
 @export var x_accel:float = 0.7
 @export var x_decel:float = 0.4 #0.4 is better
 @export var x_air_decel:float = 0.06
-@export var x_air_accel:float = 0.4
+@export var x_air_accel:float = 0.2
 # keeps the air drag tame, for a more platformer oriented game you might want this to be lower for more floaty feel
 
 
@@ -28,7 +28,7 @@ func _ready():
 
 func x_movement(target_speed, rate):
 	var x_dir = input_manager.x_inp()
-	if x_dir != 0:
+	if x_dir != 0: #if you ARE moving
 		if actor.is_on_floor():
 			apply_x_accel(x_dir, target_speed, rate)
 		else:
@@ -38,13 +38,15 @@ func x_movement(target_speed, rate):
 			apply_x_decel(x_decel)
 		else:
 			apply_x_decel(x_air_decel)
-	#print(actor.velocity.x)
 
 func apply_x_accel(x_dir, target_speed, rate):
-	actor.velocity.x = lerp(actor.velocity.x, target_speed * x_dir, rate)
+	#actor.velocity.x = move_toward(actor.velocity.x, target_speed * x_dir, rate)
+	actor.velocity.x = lerpf(actor.velocity.x, target_speed * x_dir, rate)
 
 func apply_x_decel(rate):
-	actor.velocity.x = lerp(actor.velocity.x, 0.0, rate)
+	actor.velocity.x = lerpf(actor.velocity.x, 0.0, rate)
+	if abs(actor.velocity.x) <= 0.001:
+		actor.velocity.x = 0
 
 func apply_gravity():
 	if actor.velocity.y < y_max:
@@ -56,6 +58,4 @@ func y_movement(grip):
 	actor.velocity.y = grip
 
 func _physics_process(_delta):
-	if abs(actor.velocity.x) < 0.0001:
-		actor.velocity.x = 0
-	pass
+	actor.velocity.x = snapped(actor.velocity.x, 0.0001)
