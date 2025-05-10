@@ -2,7 +2,9 @@ class_name InputManager extends LogicManager
 
 #need to rename vars
 @export var jump_buffer_timer: float = 0.5
+@export var coyote_timer: float = 0.5
 var jump_buffer_time: float = 0.0
+var coyote_time: float = 0.0
 
 
 func _input(event):
@@ -46,3 +48,8 @@ func inc_jump_buffer():
 		jump_buffer_time -= 0.1
 	else:
 		jump_buffer_time = 0
+	
+	if coyote_time >= 0:
+		coyote_time -= 0.1
+	else:
+		coyote_time = 0
