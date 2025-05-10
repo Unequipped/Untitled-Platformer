@@ -33,11 +33,14 @@ func buffered_is_on_wall():
 	return wall_slide_time > 0
 
 func is_moving_in_to_wall():
-	if last_collision.get_normal().x == -input_manager.x_inp():
+	if last_collision.get_normal().x == -input_manager.x_inp() and actor.is_on_wall():
 		return true
 	elif input_manager.x_inp() == 0:
 		return false
-	elif last_collision.get_normal().x == input_manager.x_inp():
+	elif (last_collision.get_normal().x == input_manager.x_inp()):
+		wall_slide_time = 0
+		return false
+	elif (last_collision.get_normal().x == -input_manager.x_inp()) and !actor.is_on_wall():
 		wall_slide_time = 0
 		return false
 
