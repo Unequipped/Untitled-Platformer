@@ -60,6 +60,7 @@ metadata/_custom_type_script = "uid://dircufolrkc4b"
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("15_r8aaq")
+jump_buffer_timer = 1.0
 metadata/_custom_type_script = "uid://xlaorm2h4lt0"
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("actor", "player_movement", "player_input", "initial_state")]
