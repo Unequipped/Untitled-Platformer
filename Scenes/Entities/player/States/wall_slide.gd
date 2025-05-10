@@ -20,7 +20,6 @@ func update(_delta) -> void:
 	pass
 
 func physics_update(_delta) -> void:
-	print(wall_slide_time)
 	if !is_moving_in_to_wall():
 		buffered_is_on_wall()
 	movement_manager.y_movement(y_friction)

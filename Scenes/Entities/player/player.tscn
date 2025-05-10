@@ -356,7 +356,7 @@ position = Vector2(4, -14)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_fme60")
 animation = &"WallSlide"
-frame_progress = 0.816703
+frame_progress = 0.0439876
 
 [node name="crouch_check" type="RayCast2D" parent="."]
 visible = false
