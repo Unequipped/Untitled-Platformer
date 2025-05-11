@@ -2,7 +2,7 @@ extends Node
 
 @onready var main_menu_scene = preload("res://Scenes/Menus/main_menu.tscn")
 @onready var settings_scene = preload("res://Scenes/Menus/settings.tscn")
-@onready var TEST_OAK = preload("res://Scenes/World/Levels/test_oak.tscn")
+@onready var TEST_OAK = preload("res://Scenes/World/Levels/smooth_world.tscn")
 
 var game_state:int = 0
 var current_level:Object
