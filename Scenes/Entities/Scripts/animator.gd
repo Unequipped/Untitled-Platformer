@@ -8,6 +8,12 @@ var state_to_animate: State
 func play_animation(anim_name: String, speed: float = 1):
 	if anim_name == "WallKick":
 		anim_name = "Jump"
+	elif anim_name == "Walk":
+		anim_name = "Run"
+	elif anim_name == "Run":
+		speed = 3
+	else: 
+		speed = 1
 	animated_sprite.play(anim_name, speed)
 
 func get_current_state():

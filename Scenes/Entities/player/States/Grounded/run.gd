@@ -17,8 +17,11 @@ func switch_cond():
 	if input_manager.x_inp() == 0:
 		state_machine.change_state(&"Idle")
 
-	if input_manager.jump_inp():
+	elif input_manager.jump_inp():
 		state_machine.change_state(&"Jump")
 	
-	if input_manager.y_inp() > 0:
+	elif input_manager.y_inp() > 0:
 		state_machine.change_state(&"Crouch")
+	
+	elif abs(actor.velocity.x) <= 100 and !input_manager.run_inp():
+		state_machine.change_state(&"Walk")

@@ -4,7 +4,8 @@ extends Node
 @export var actor: CharacterBody2D
 @export var input_manager: InputManager
 
-@export var MAX_SPEED: int = 80
+@export var MAX_SPEED: int = 100
+@export var walk_speed: int = 80
 @export var crawl_speed: int = 40
 var SPEED: int = 0
 @export var y_accel: int = 6
@@ -41,7 +42,10 @@ func x_movement(target_speed, rate):
 
 func apply_x_accel(x_dir, target_speed, rate):
 	#actor.velocity.x = move_toward(actor.velocity.x, target_speed * x_dir, rate)
-	actor.velocity.x = lerpf(actor.velocity.x, target_speed * x_dir, rate)
+	if input_manager.run_inp() and input_manager.y_inp() >= 0:
+		actor.velocity.x = lerpf(actor.velocity.x, MAX_SPEED * x_dir, rate)
+	else:
+		actor.velocity.x = lerpf(actor.velocity.x, target_speed * x_dir, rate)
 
 func apply_x_decel(rate):
 	actor.velocity.x = lerpf(actor.velocity.x, 0.0, rate)

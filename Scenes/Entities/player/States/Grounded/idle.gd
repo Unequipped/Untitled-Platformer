@@ -14,7 +14,7 @@ func physics_update(_delta) -> void:
 
 func switch_cond():
 	if input_manager.x_inp() != 0:
-		state_machine.change_state(&"Run")
+		state_machine.change_state(&"Walk")
 	
 	if input_manager.jump_inp():
 		state_machine.change_state(&"Jump")
