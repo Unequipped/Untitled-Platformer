@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi8c5ex7pm572"]
+
+[ext_resource type="Script" uid="uid://ckqruiddwme7d" path="res://Scenes/World/Levels/polygon_segment.gd" id="1_qx8p5"]
+[ext_resource type="PackedScene" uid="uid://da4s40vtvfjng" path="res://Scenes/Entities/Player/player.tscn" id="2_sdty1"]
+[ext_resource type="Script" uid="uid://c1yrecbujrr7v" path="res://Scenes/Misc/dynamic_camera.gd" id="3_61752"]
+[ext_resource type="Texture2D" uid="uid://dyaheaqxrvp7k" path="res://Assets/background/background_layer_1.png" id="4_kw0ku"]
+[ext_resource type="Texture2D" uid="uid://d4hhclm7qqdg3" path="res://Assets/background/background_layer_2.png" id="5_h26cw"]
+[ext_resource type="Texture2D" uid="uid://c26xjai40k64k" path="res://Assets/background/background_layer_3.png" id="6_q6kow"]
+
+[node name="SmoothWorld" type="Node2D"]
+
+[node name="polygon_segment" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_qx8p5")
+
+[node name="Polygon2D" type="Polygon2D" parent="polygon_segment"]
+color = Color(0.431373, 0.286275, 0.270588, 1)
+polygon = PackedVector2Array(0, 168, 0, 0, -64, 0, -64, 240, 0, 240, 640, 240, 704, 240, 704, 0, 640, 0, 640, 168, 544, 168, 544, 144, 520, 144, 520, 120, 488, 120, 488, 144, 464, 144, 464, 168, 408, 168, 352, 136, 232, 136, 168, 168)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="polygon_segment"]
+
+[node name="player" parent="." instance=ExtResource("2_sdty1")]
+position = Vector2(88, 120)
+metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="player" node_paths=PackedStringArray("actor")]
+position = Vector2(0, -20)
+zoom = Vector2(3.55, 3.55)
+drag_vertical_enabled = true
+drag_top_margin = 1.0
+script = ExtResource("3_61752")
+actor = NodePath("..")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(5, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_offset = Vector2(-5, 0)
+motion_mirroring = Vector2(320, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(160, 88)
+texture = ExtResource("4_kw0ku")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(320, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(160, 88)
+texture = ExtResource("5_h26cw")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(320, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(160, 88)
+texture = ExtResource("6_q6kow")
+metadata/_edit_lock_ = true
