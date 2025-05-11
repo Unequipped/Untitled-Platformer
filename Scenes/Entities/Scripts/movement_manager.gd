@@ -14,6 +14,7 @@ var SPEED: int = 0
 ## x movement lerping
 @export var x_accel:float = 0.7
 @export var x_decel:float = 0.4 #0.4 is better
+@export var x_slide:float = 0.06
 @export var x_air_decel:float = 0.06
 @export var x_air_accel:float = 0.2
 # keeps the air drag tame, for a more platformer oriented game you might want this to be lower for more floaty feel
@@ -42,9 +43,9 @@ func x_movement(target_speed, rate):
 
 func apply_x_accel(x_dir, target_speed, rate):
 	#actor.velocity.x = move_toward(actor.velocity.x, target_speed * x_dir, rate)
-	if input_manager.run_inp() and input_manager.y_inp() >= 0:
-		actor.velocity.x = lerpf(actor.velocity.x, MAX_SPEED * x_dir, rate)
-	else:
+	#if input_manager.run_inp() and input_manager.y_inp() >= 0:
+		#actor.velocity.x = lerpf(actor.velocity.x, MAX_SPEED * x_dir, rate)
+	#else:
 		actor.velocity.x = lerpf(actor.velocity.x, target_speed * x_dir, rate)
 
 func apply_x_decel(rate):
@@ -63,3 +64,7 @@ func y_movement(grip):
 
 func _physics_process(_delta):
 	actor.velocity.x = snapped(actor.velocity.x, 0.0001)
+
+# Physics checks
+func can_slide():
+	return abs(actor.velocity.x) > walk_speed

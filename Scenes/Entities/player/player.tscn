@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=74 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/Player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://4k8y37r4xrkc" path="res://Assets/Character/Untitled Platformer.png" id="2_p22ti"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2bai1afvgr7k" path="res://Assets/Character/Outline/120x80_PNGSheets/_WallSlide.png" id="7_u5nyj"]
 [ext_resource type="Texture2D" uid="uid://be7idgbeq8p1s" path="res://Assets/Character/Outline/120x80_PNGSheets/_Run.png" id="8_mt20e"]
 [ext_resource type="Script" uid="uid://b5wvc667n8orr" path="res://Scenes/Entities/Player/States/Grounded/Crouched/crouched.gd" id="9_hkmxn"]
+[ext_resource type="Texture2D" uid="uid://dkg3geouyru1u" path="res://Assets/Character/Outline/120x80_PNGSheets/_Slide.png" id="9_wl017"]
 [ext_resource type="Script" uid="uid://cfvtidlv5agvv" path="res://Scenes/Entities/Scripts/animator.gd" id="10_50st8"]
 [ext_resource type="Script" uid="uid://ciixyaqj21ev7" path="res://Scenes/Entities/Player/States/Grounded/Crouched/crouch_walk.gd" id="11_qtr04"]
 [ext_resource type="Script" uid="uid://dircufolrkc4b" path="res://Scenes/Entities/Player/player_movement.gd" id="14_6i1xa"]
@@ -27,6 +28,7 @@
 [ext_resource type="Script" uid="uid://bkau8uoueoksn" path="res://Scenes/Entities/Player/States/Airborne/jump.gd" id="20_bqky3"]
 [ext_resource type="Script" uid="uid://diph50pjsdys7" path="res://Scenes/Entities/Scripts/debugging/state_display.gd" id="20_j5eje"]
 [ext_resource type="Script" uid="uid://3kshxkblhqro" path="res://Scenes/Entities/Player/States/Airborne/airborne.gd" id="20_u5nyj"]
+[ext_resource type="Script" uid="uid://bnl7cdjlfsh34" path="res://Scenes/Entities/Player/States/Grounded/Crouched/slide.gd" id="22_sajyx"]
 [ext_resource type="Script" uid="uid://vx4p4rxg7etd" path="res://Scenes/Entities/Scripts/debugging/move_display.gd" id="22_x5yqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be1t3"]
@@ -168,6 +170,14 @@ region = Rect2(960, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3prwy"]
 atlas = ExtResource("8_mt20e")
 region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi8fy"]
+atlas = ExtResource("9_wl017")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ailag"]
+atlas = ExtResource("9_wl017")
+region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ornjt"]
 atlas = ExtResource("7_u5nyj")
@@ -320,6 +330,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pi8fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ailag")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ornjt")
 }, {
 "duration": 1.0,
@@ -346,18 +367,18 @@ script = ExtResource("1_rygmp")
 [node name="sprite_pivot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="sprite_pivot"]
-visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_p22ti")
 hframes = 3
 vframes = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="sprite_pivot"]
+visible = false
 position = Vector2(4, -14)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_fme60")
-animation = &"WallSlide"
-frame_progress = 0.59765
+animation = &"Slide"
+frame_progress = 0.88671
 
 [node name="crouch_check" type="RayCast2D" parent="."]
 visible = false
@@ -426,6 +447,10 @@ metadata/_custom_type_script = "uid://d1282ngr8ik4s"
 [node name="CrouchWalk" type="Node" parent="PlayerStateMachine/Grounded/Crouched"]
 script = ExtResource("11_qtr04")
 metadata/_custom_type_script = "uid://ciixyaqj21ev7"
+
+[node name="Slide" type="Node" parent="PlayerStateMachine/Grounded/Crouched"]
+script = ExtResource("22_sajyx")
+metadata/_custom_type_script = "uid://bnl7cdjlfsh34"
 
 [node name="Airborne" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("20_u5nyj")
