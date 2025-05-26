@@ -365,8 +365,10 @@ collision_mask = 4
 script = ExtResource("1_rygmp")
 
 [node name="sprite_pivot" type="Node2D" parent="."]
+position = Vector2(0, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="sprite_pivot"]
+position = Vector2(0, -16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_p22ti")
 hframes = 3
@@ -390,13 +392,16 @@ collide_with_areas = true
 shape = SubResource("RectangleShape2D_p22ti")
 
 [node name="crouch_collision_shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_ga2i0")
 disabled = true
 
-[node name="Animator" type="Node" parent="." node_paths=PackedStringArray("animated_sprite", "state_machine")]
+[node name="Animator" type="Node" parent="." node_paths=PackedStringArray("actor", "animated_sprite", "sprite_pivot", "state_machine")]
 script = ExtResource("10_50st8")
+actor = NodePath("..")
 animated_sprite = NodePath("../sprite_pivot/AnimatedSprite2D")
+sprite_pivot = NodePath("../sprite_pivot")
 state_machine = NodePath("../PlayerStateMachine")
 metadata/_custom_type_script = "uid://cfvtidlv5agvv"
 
