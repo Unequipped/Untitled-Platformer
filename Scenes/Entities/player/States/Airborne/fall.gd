@@ -14,7 +14,7 @@ func physics_update(_delta) -> void:
 
 func switch_cond():
 	if actor.is_on_floor() and input_manager.x_inp() != 0:
-		state_machine.change_state(&"Run")
+		state_machine.change_state(&"Walk")
 	
 	if !actor.is_on_floor() and input_manager.jump_inp() and input_manager.coyote_time > 0:
 		state_machine.change_state(&"Jump")

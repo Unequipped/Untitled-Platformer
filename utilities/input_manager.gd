@@ -28,6 +28,9 @@ static func attack_inp():
 	return Input.is_action_pressed("attack")
 
 
+static func run_inp():
+	return Input.is_action_pressed("run")
+
 func jump_inp():
 	return jump_buffer_time > 0 #Input.is_action_just_pressed("up")
 
