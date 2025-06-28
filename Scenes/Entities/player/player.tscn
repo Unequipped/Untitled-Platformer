@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://da4s40vtvfjng"]
+[gd_scene load_steps=73 format=3 uid="uid://da4s40vtvfjng"]
 
 [ext_resource type="Script" uid="uid://ccy6k5h1be1d6" path="res://Scenes/Entities/Player/player.gd" id="1_rygmp"]
 [ext_resource type="Texture2D" uid="uid://4k8y37r4xrkc" path="res://Assets/Character/Untitled Platformer.png" id="2_p22ti"]
@@ -28,7 +28,6 @@
 [ext_resource type="Script" uid="uid://bkau8uoueoksn" path="res://Scenes/Entities/Player/States/Airborne/jump.gd" id="20_bqky3"]
 [ext_resource type="Script" uid="uid://diph50pjsdys7" path="res://Scenes/Entities/Scripts/debugging/state_display.gd" id="20_j5eje"]
 [ext_resource type="Script" uid="uid://3kshxkblhqro" path="res://Scenes/Entities/Player/States/Airborne/airborne.gd" id="20_u5nyj"]
-[ext_resource type="Script" uid="uid://bnl7cdjlfsh34" path="res://Scenes/Entities/Player/States/Grounded/Crouched/slide.gd" id="22_sajyx"]
 [ext_resource type="Script" uid="uid://vx4p4rxg7etd" path="res://Scenes/Entities/Scripts/debugging/move_display.gd" id="22_x5yqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be1t3"]
@@ -354,8 +353,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p22ti"]
-size = Vector2(16, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wl017"]
+radius = 8.0
+height = 29.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga2i0"]
 size = Vector2(16, 16)
@@ -379,17 +379,16 @@ visible = false
 position = Vector2(4, -14)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_fme60")
-animation = &"Slide"
-frame_progress = 0.88671
+animation = &"Idle"
 
 [node name="crouch_check" type="RayCast2D" parent="."]
-visible = false
-target_position = Vector2(0, -11)
+target_position = Vector2(0, -13)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="physics_collision_shape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_p22ti")
+position = Vector2(0, 1.5)
+shape = SubResource("CapsuleShape2D_wl017")
 
 [node name="crouch_collision_shape" type="CollisionShape2D" parent="."]
 visible = false
@@ -452,10 +451,6 @@ metadata/_custom_type_script = "uid://d1282ngr8ik4s"
 [node name="CrouchWalk" type="Node" parent="PlayerStateMachine/Grounded/Crouched"]
 script = ExtResource("11_qtr04")
 metadata/_custom_type_script = "uid://ciixyaqj21ev7"
-
-[node name="Slide" type="Node" parent="PlayerStateMachine/Grounded/Crouched"]
-script = ExtResource("22_sajyx")
-metadata/_custom_type_script = "uid://bnl7cdjlfsh34"
 
 [node name="Airborne" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("20_u5nyj")

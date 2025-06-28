@@ -616,6 +616,6 @@ sources/0 = SubResource("TileSetAtlasSource_fjqmg")
 tile_set = SubResource("TileSet_leeca")
 format = 2
 
-[node name="Layer0" type="TileMapLayer" parent="."]
+[node name="Layer1" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_set = SubResource("TileSet_leeca")
