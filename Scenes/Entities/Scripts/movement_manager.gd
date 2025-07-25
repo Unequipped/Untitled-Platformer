@@ -2,7 +2,7 @@ class_name Movement
 extends Node
 
 @export var actor: CharacterBody2D
-@export var input_manager: InputManager
+@export var input_manager: LogicManager
 
 @export var MAX_SPEED: int = 100
 @export var walk_speed: int = 80

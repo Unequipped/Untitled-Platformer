@@ -1,8 +1,5 @@
 class_name StateMachine extends Node
 
-@export var actor: CharacterBody2D
-@export var player_movement: Movement
-@export var player_input: InputManager
 @export var initial_state: State
 
 var current_state: State
@@ -17,23 +14,28 @@ func _ready():
 
 
 func change_state(state_name: StringName) -> void:
-	if state_name and states.has(state_name): #if the state_name is valid
+	if current_state and state_name and states.has(state_name): #if the state_name is valid
 		new_state = states[state_name]
-		if current_state: # if we're currently in a valid state
-			var pointer: Node = current_state
+		var pointer: Node = current_state
 			
-			for path_step in find_route(current_state, new_state):
-				if pointer.get_node(path_step) != null:
-					pointer = pointer.get_node(path_step)
-					if path_step == "..":
-						current_state.exit()
-						current_state.active = false
-						if pointer is State:
-							current_state = pointer
-					else:
+		for path_step in find_route(current_state, new_state): # for each step in the path
+			if pointer.get_node(path_step) != null: # check if it's valid
+				pointer = pointer.get_node(path_step) # increment
+				
+				# Moving UP the state tree
+				if path_step == "..": # if you're moving up the tree
+					current_state.exit() # exit the state you're in
+					current_state.active = false # set it as inactive
+					if pointer is State:
 						current_state = pointer
-						current_state.enter()
-						current_state.active = true
+				
+				 # Moving DOWN the state tree
+				else:
+					current_state = pointer
+					current_state.enter()
+					current_state.active = true
+				
+				#continue looping
 
 
 func check_switch(state):
@@ -61,13 +63,11 @@ func run_state(state: State, physics, delta):
 func _physics_process(delta):
 	if current_state:
 		run_state(current_state, true, delta)
-		#current_state.physics_update(delta)
 		check_switch(current_state)
 
 
 func _process(delta):
 	if current_state:
-		#current_state.update(delta)
 		run_state(current_state, false, delta)
 
 
@@ -81,4 +81,6 @@ func store_all_states():
 ## States can be called later by name to get specific state
 	for child in get_children():
 		if child is State: #and child.is_active:
-			child.get_all_child_states(states, actor, self, player_movement, player_input)
+			# passing reference to the states dictionary and state machine (self)
+			# this is bare minimum required for anything that will use states/statemachines
+			child.get_all_child_states(states, self)
