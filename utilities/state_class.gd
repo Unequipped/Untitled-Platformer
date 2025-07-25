@@ -27,11 +27,8 @@ func switch_cond() -> bool:
 func default_switch(): # check if there's a default substate to switch to
 	return false # doesn't work properly
 
-func get_all_child_states(states:Dictionary, actor, state_machine, movement_manager, input_manager):
-	self.actor = actor
+func get_all_child_states(states:Dictionary, state_machine):
 	self.state_machine = state_machine
-	self.movement_manager = movement_manager
-	self.input_manager = input_manager
 	states[self.name] = self
 	
 	create_path_list(self)
@@ -40,7 +37,7 @@ func get_all_child_states(states:Dictionary, actor, state_machine, movement_mana
 	if children.size() > 0: # checks if the current state has children states
 		for child in children:
 			if child is State:
-				child.get_all_child_states(states, actor, state_machine, movement_manager, input_manager)
+				child.get_all_child_states(states, state_machine)
 	else:
 		return
 

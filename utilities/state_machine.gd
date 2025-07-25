@@ -1,8 +1,5 @@
 class_name StateMachine extends Node
 
-@export var actor: CharacterBody2D
-@export var player_movement: Movement
-@export var player_input: InputManager
 @export var initial_state: State
 
 var current_state: State
@@ -81,4 +78,6 @@ func store_all_states():
 ## States can be called later by name to get specific state
 	for child in get_children():
 		if child is State: #and child.is_active:
-			child.get_all_child_states(states, actor, self, player_movement, player_input)
+			# passing reference to the states dictionary and state machine (self)
+			# this is bare minimum required for anything that will use states/statemachines
+			child.get_all_child_states(states, self)
