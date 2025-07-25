@@ -3,7 +3,6 @@ class_name State extends Node
 var active: bool = false
 
 var state_machine: StateMachine
-var animations: AnimatedSprite2D
 var state_path: Array
 
 func enter() -> void:
@@ -44,4 +43,3 @@ func get_all_child_states(states:Dictionary, state_machine):
 func create_path_list(state: State): # generates paths from state_machine to a state
 	var node_path: NodePath = state_machine.get_path_to(state)
 	state_path = node_path.get_concatenated_names().split("/")
-	#print(state, state_path)

@@ -63,13 +63,11 @@ func run_state(state: State, physics, delta):
 func _physics_process(delta):
 	if current_state:
 		run_state(current_state, true, delta)
-		#current_state.physics_update(delta)
 		check_switch(current_state)
 
 
 func _process(delta):
 	if current_state:
-		#current_state.update(delta)
 		run_state(current_state, false, delta)
 
 
