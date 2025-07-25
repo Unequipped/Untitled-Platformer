@@ -14,23 +14,22 @@ func _ready():
 
 
 func change_state(state_name: StringName) -> void:
-	if state_name and states.has(state_name): #if the state_name is valid
+	if current_state and state_name and states.has(state_name): #if the state_name is valid
 		new_state = states[state_name]
-		if current_state: # if we're currently in a valid state
-			var pointer: Node = current_state
+		var pointer: Node = current_state
 			
-			for path_step in find_route(current_state, new_state):
-				if pointer.get_node(path_step) != null:
-					pointer = pointer.get_node(path_step)
-					if path_step == "..":
-						current_state.exit()
-						current_state.active = false
-						if pointer is State:
-							current_state = pointer
-					else:
+		for path_step in find_route(current_state, new_state):
+			if pointer.get_node(path_step) != null:
+				pointer = pointer.get_node(path_step)
+				if path_step == "..":
+					current_state.exit()
+					current_state.active = false
+					if pointer is State:
 						current_state = pointer
-						current_state.enter()
-						current_state.active = true
+				else:
+					current_state = pointer
+					current_state.enter()
+					current_state.active = true
 
 
 func check_switch(state):
