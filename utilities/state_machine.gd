@@ -18,18 +18,24 @@ func change_state(state_name: StringName) -> void:
 		new_state = states[state_name]
 		var pointer: Node = current_state
 			
-		for path_step in find_route(current_state, new_state):
-			if pointer.get_node(path_step) != null:
-				pointer = pointer.get_node(path_step)
-				if path_step == "..":
-					current_state.exit()
-					current_state.active = false
+		for path_step in find_route(current_state, new_state): # for each step in the path
+			if pointer.get_node(path_step) != null: # check if it's valid
+				pointer = pointer.get_node(path_step) # increment
+				
+				# Moving UP the state tree
+				if path_step == "..": # if you're moving up the tree
+					current_state.exit() # exit the state you're in
+					current_state.active = false # set it as inactive
 					if pointer is State:
 						current_state = pointer
+				
+				 # Moving DOWN the state tree
 				else:
 					current_state = pointer
 					current_state.enter()
 					current_state.active = true
+				
+				#continue looping
 
 
 func check_switch(state):
