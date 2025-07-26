@@ -15,7 +15,7 @@ var SPEED: int = 0
 
 ## x movement lerping
 @export var x_accel:float = 10
-@export var x_decel:float = 10 #0.4 is better
+@export var x_decel:float = 10
 
 @export var x_air_accel:float = 10
 @export var x_air_decel:float = 10
