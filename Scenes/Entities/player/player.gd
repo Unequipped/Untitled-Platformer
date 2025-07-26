@@ -9,7 +9,7 @@ class_name Player extends Entity
 @onready var sprite: Sprite2D = $sprite_pivot/Sprite2D
 
 # Movement related stuff 
-var vel = Vector2.ZERO
+var vel: Vector2 = Vector2.ZERO
 
 
 func _ready():
