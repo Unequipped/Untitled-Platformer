@@ -26,15 +26,9 @@ func _ready():
 func x_movement(target_speed, rate):
 	var x_dir = input_provider.x_inp()
 	if x_dir != 0: #if you ARE moving
-		if actor.is_on_floor():
-			apply_x_accel(x_dir, target_speed, rate)
-		else:
-			apply_x_accel(x_dir, target_speed, rate)
+		apply_x_accel(x_dir, target_speed, rate)
 	else:
-		if actor.is_on_floor():
-			apply_x_decel(x_decel)
-		else:
-			apply_x_decel(x_air_decel)
+		apply_x_decel(x_decel)
 
 func apply_x_accel(x_dir, target_speed, rate):
 	actor.velocity.x = move_toward(actor.velocity.x, target_speed * x_dir, rate)
