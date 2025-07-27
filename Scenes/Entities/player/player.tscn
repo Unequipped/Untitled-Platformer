@@ -28,9 +28,12 @@ height = 29.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga2i0"]
 size = Vector2(16, 16)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("physics_collision_shape", "sprite_pivot", "sprite")]
 collision_mask = 4
 script = ExtResource("1_rygmp")
+physics_collision_shape = NodePath("physics_collision_shape")
+sprite_pivot = NodePath("sprite_pivot")
+sprite = NodePath("sprite_pivot/Sprite2D")
 
 [node name="sprite_pivot" type="Node2D" parent="."]
 position = Vector2(0, 16)

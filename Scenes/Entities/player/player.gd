@@ -1,12 +1,7 @@
 class_name Player extends Entity
 
-@onready var sprite_pivot: Node2D = $sprite_pivot
-
-@onready var physics_collision_shape: CollisionShape2D = $physics_collision_shape
 @onready var crouch_collision_shape: CollisionShape2D = $crouch_collision_shape
 @onready var crouch_check: RayCast2D = $crouch_check
-
-@onready var sprite: Sprite2D = $sprite_pivot/Sprite2D
 
 # Movement related stuff 
 var vel: Vector2 = Vector2.ZERO
