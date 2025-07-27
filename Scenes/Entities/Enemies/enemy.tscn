@@ -1,15 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhp6qfh5giy66"]
+[gd_scene load_steps=12 format=3 uid="uid://bhp6qfh5giy66"]
 
 [ext_resource type="Texture2D" uid="uid://4k8y37r4xrkc" path="res://Assets/Character/Untitled Platformer.png" id="1_bcqat"]
 [ext_resource type="Script" uid="uid://xgnw06aiel5f" path="res://Scenes/Entities/Enemies/enemy.gd" id="1_n8464"]
+[ext_resource type="Script" uid="uid://dr0rv0ldh6xg" path="res://Utilities/enemy_ai.gd" id="3_4cflg"]
+[ext_resource type="Script" uid="uid://dieg5xh7g46bb" path="res://Scenes/Entities/Enemies/enemy_state_machine.gd" id="4_4cflg"]
+[ext_resource type="Script" uid="uid://cm3djo0qfaoqb" path="res://Scenes/Entities/Scripts/movement_manager.gd" id="4_i5qoo"]
+[ext_resource type="Script" uid="uid://bpkjcthjvi23p" path="res://Scenes/Entities/Enemies/States/Grounded/grounded.gd" id="5_5ncfx"]
+[ext_resource type="Script" uid="uid://boui82uve5wf3" path="res://Scenes/Entities/Enemies/States/Grounded/idle.gd" id="7_4cflg"]
+[ext_resource type="Script" uid="uid://clmjt16a7kw6s" path="res://Scenes/Entities/Enemies/States/Grounded/walk.gd" id="8_i5qoo"]
+[ext_resource type="Script" uid="uid://va4ug5e0qph1" path="res://Scenes/Entities/Enemies/States/Airborne/airborne.gd" id="8_xmfpm"]
+[ext_resource type="Script" uid="uid://dne8saswlawdb" path="res://Scenes/Entities/Enemies/States/Airborne/fall.gd" id="9_i5qoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8464"]
-size = Vector2(32, 64)
+size = Vector2(16, 32)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("physics_collision_shape", "sprite")]
+collision_layer = 8
+collision_mask = 21
 script = ExtResource("1_n8464")
+physics_collision_shape = NodePath("phsyics_collision_shape")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_bcqat")
 hframes = 3
 vframes = 2
@@ -20,3 +33,41 @@ shape = SubResource("RectangleShape2D_n8464")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(30, 0)
+
+[node name="EnemyAI" type="Node" parent="."]
+script = ExtResource("3_4cflg")
+metadata/_custom_type_script = "uid://dr0rv0ldh6xg"
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor", "input_provider")]
+script = ExtResource("4_i5qoo")
+actor = NodePath("..")
+input_provider = NodePath("../EnemyAI")
+metadata/_custom_type_script = "uid://cm3djo0qfaoqb"
+
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("actor", "enemy_movement", "input_provider", "initial_state")]
+script = ExtResource("4_4cflg")
+actor = NodePath("..")
+enemy_movement = NodePath("../Movement")
+input_provider = NodePath("../EnemyAI")
+initial_state = NodePath("EAirborne/EFall")
+metadata/_custom_type_script = "uid://dieg5xh7g46bb"
+
+[node name="EGrounded" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("5_5ncfx")
+metadata/_custom_type_script = "uid://bpkjcthjvi23p"
+
+[node name="EIdle" type="Node" parent="EnemyStateMachine/EGrounded"]
+script = ExtResource("7_4cflg")
+metadata/_custom_type_script = "uid://boui82uve5wf3"
+
+[node name="EWalk" type="Node" parent="EnemyStateMachine/EGrounded"]
+script = ExtResource("8_i5qoo")
+metadata/_custom_type_script = "uid://clmjt16a7kw6s"
+
+[node name="EAirborne" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("8_xmfpm")
+metadata/_custom_type_script = "uid://va4ug5e0qph1"
+
+[node name="EFall" type="Node" parent="EnemyStateMachine/EAirborne"]
+script = ExtResource("9_i5qoo")
+metadata/_custom_type_script = "uid://dne8saswlawdb"

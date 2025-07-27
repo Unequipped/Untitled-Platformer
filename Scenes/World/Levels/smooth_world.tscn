@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi8c5ex7pm572"]
+[gd_scene load_steps=8 format=3 uid="uid://bi8c5ex7pm572"]
 
 [ext_resource type="Script" uid="uid://ckqruiddwme7d" path="res://Scenes/World/Levels/polygon_segment.gd" id="1_qx8p5"]
 [ext_resource type="PackedScene" uid="uid://da4s40vtvfjng" path="res://Scenes/Entities/Player/player.tscn" id="2_sdty1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dyaheaqxrvp7k" path="res://Assets/background/background_layer_1.png" id="4_kw0ku"]
 [ext_resource type="Texture2D" uid="uid://d4hhclm7qqdg3" path="res://Assets/background/background_layer_2.png" id="5_h26cw"]
 [ext_resource type="Texture2D" uid="uid://c26xjai40k64k" path="res://Assets/background/background_layer_3.png" id="6_q6kow"]
+[ext_resource type="PackedScene" uid="uid://bhp6qfh5giy66" path="res://Scenes/Entities/Enemies/enemy.tscn" id="7_sdty1"]
 
 [node name="SmoothWorld" type="Node2D"]
 
@@ -64,3 +65,6 @@ metadata/_edit_lock_ = true
 position = Vector2(160, 88)
 texture = ExtResource("6_q6kow")
 metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("7_sdty1")]
+position = Vector2(144, 120)

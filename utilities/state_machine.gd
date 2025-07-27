@@ -1,5 +1,6 @@
 class_name StateMachine extends Node
 
+@export var input_provider: LogicManager
 @export var initial_state: State
 
 var current_state: State
