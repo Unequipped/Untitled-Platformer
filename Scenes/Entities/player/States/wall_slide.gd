@@ -22,7 +22,7 @@ func update(_delta) -> void:
 func physics_update(_delta) -> void:
 	if !is_moving_in_to_wall():
 		buffered_is_on_wall()
-	movement_manager.y_movement(y_friction)
+	movement_manager.wall_slide(y_friction)
 	movement_manager.x_movement(movement_manager.MAX_SPEED, 1)
 	# you need the above so that you can 'move' into the wall and hence trigger is_on_wall() as true
 	# need to keep an eye on this in case it causes issues in the future

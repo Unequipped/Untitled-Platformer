@@ -9,16 +9,16 @@ class_name Movement extends Node
 
 var SPEED: int = 0
 
-# Gravity 
+## Gravity 
 @export var y_accel: int = 6
 @export var y_max: int = 200
 
-## x movement lerping
+## x movement
 @export var x_accel:float = 10
-@export var x_decel:float = 10
+@export var x_decel:float = 7
 
-@export var x_air_accel:float = 10
-@export var x_air_decel:float = 10
+@export var x_air_accel:float = 8
+@export var x_air_decel:float = 4
 
 func _ready():
 	SPEED = MAX_SPEED
@@ -41,11 +41,7 @@ func apply_x_decel(rate):
 func apply_gravity():
 	actor.velocity.y = move_toward(actor.velocity.y, y_max, y_accel)
 
-func y_movement(grip):
-	actor.velocity.y = grip
-
 func _physics_process(_delta):
-	#actor.velocity.x = snapped(actor.velocity.x, 0.0001)
 	pass
 
 ## Physics checks

@@ -12,3 +12,6 @@ func airborne_x_move(target_speed, accel, decel):
 		apply_x_accel(get_x_dir(), target_speed, accel)
 	else:
 		apply_x_decel(decel)
+
+func wall_slide(grip):
+	actor.velocity.y = grip
