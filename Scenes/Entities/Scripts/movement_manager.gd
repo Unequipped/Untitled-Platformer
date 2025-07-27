@@ -23,10 +23,12 @@ var SPEED: int = 0
 func _ready():
 	SPEED = MAX_SPEED
 
+func get_x_dir() -> float:
+	return input_provider.x_inp()
+
 func x_movement(target_speed, rate):
-	var x_dir = input_provider.x_inp()
-	if x_dir != 0: #if you ARE moving
-		apply_x_accel(x_dir, target_speed, rate)
+	if get_x_dir() != 0: #if you ARE moving
+		apply_x_accel(get_x_dir(), target_speed, rate)
 	else:
 		apply_x_decel(x_decel)
 

@@ -7,5 +7,8 @@ class_name PlayerMovement extends Movement
 @export var x_slide:float = 0.06
 
 
-func airborne_x_move():
-	pass
+func airborne_x_move(target_speed, accel, decel):
+	if get_x_dir() != 0:
+		apply_x_accel(get_x_dir(), target_speed, accel)
+	else:
+		apply_x_decel(decel)

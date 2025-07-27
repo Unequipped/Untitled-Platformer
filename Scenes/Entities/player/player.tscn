@@ -61,7 +61,6 @@ disabled = true
 script = ExtResource("14_6i1xa")
 actor = NodePath("..")
 input_provider = NodePath("../InputManager")
-x_air_accel = 0.06
 metadata/_custom_type_script = "uid://dircufolrkc4b"
 
 [node name="InputManager" type="Node" parent="."]
